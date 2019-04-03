@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "emailjs-com": "^2.3.2",
     "react": "^16.7.0",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.7.0",
+    "react-image": "^2.1.1",
     "react-redux": "^6.0.1",
     "react-router5": "^6.5.3",
     "react-scripts": "2.1.3",

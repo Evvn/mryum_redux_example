@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { applyMiddleware, compose, createStore } from 'redux';
 import { router5Middleware } from 'redux-router5';
 import makeRootReducer from './rootReducer';
@@ -10,10 +11,12 @@ export default (router, initialState = {}) => {
   const store = createStore(
     makeRootReducer(),
     initialState,
-    /* window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    // for dev
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       trace: true,
-    })(applyMiddleware(...middleware), ...enhancers),*/
-    compose(applyMiddleware(...middleware), ...enhancers),
+    })(applyMiddleware(...middleware), ...enhancers),
+    // for prod
+    // compose(applyMiddleware(...middleware), ...enhancers),
   );
   store.asyncReducers = {};
 
