@@ -6,3 +6,10 @@ import * as actionTypes from './actionTypes/actionTypes.js';
 //     route,
 //   };
 // }
+
+export function getMenuData(venueName) {
+  return {
+    type: actionTypes.GET_MENU_DATA_REQUEST,
+    venueName,
+  }
+}
