@@ -6,23 +6,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Switch from './Switch';
-import logo from './white_logo.svg';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: true
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-
 
   render() {
     const { moduleMappings } = this.props;
