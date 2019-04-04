@@ -1,8 +1,21 @@
-import * as actionTypes from '../../components/Menu/actions/actionTypes/actionTypes.js'
-import { takeLatest } from 'redux-saga/effects'
+import * as actionTypes from '../../components/Menu/actions/actionTypes/actionTypes.js';
+import { takeLatest, put } from 'redux-saga/effects';
+import callBff from '../callBff.js'
 
 export function* getMenuData(action) {
-  yield console.log(action.venueName);
+  try {
+    const res = yield callBff('/menu', 'GET')
+      .then(response => response)
+      yield put({
+        type: actionTypes.GET_MENU_DATA_SUCCESS,
+        res,
+      })
+  } catch (error) {
+    yield put({
+      type: actionTypes.GET_MENU_DATA_FAILURE,
+      error,
+    })
+  }
 }
 
 export function* actionWatcher() {

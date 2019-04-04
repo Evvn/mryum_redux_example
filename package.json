@@ -16,7 +16,7 @@
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-router5": "^6.0.5",
-    "redux-saga": "^1.0.2",
+    "redux-saga": "^0.16.2",
     "router5": "^6.6.1",
     "router5-helpers": "^5.2.1",
     "webfontloader": "^1.6.28"

@@ -3,8 +3,8 @@ import { all } from 'redux-saga/effects';
 import { actionWatcher as menuIntegration } from './menuIntegration.js';
 
 export default function* rootSaga() {
-  yield console.log('init root saga');
-
+  // The next line of code is used by the code generator -
+  // any modifications to it will require changes to the generator.
   yield all([
     menuIntegration(),
   ]);

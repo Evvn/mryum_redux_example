@@ -9,6 +9,7 @@ function Switch({ route, moduleMappings }) {
   const testRoute = startsWithSegment(name);
   let Component = '';
 
+  // eslint-disable-next-line
   Object.keys(moduleMappings).map((key) => {
     if (testRoute(key)) {
       Component = moduleMappings[`${key}`].component;
