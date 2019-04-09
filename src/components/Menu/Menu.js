@@ -9,6 +9,7 @@ import NotFound from '../NotFound/NotFound.js'
 import Section from './Section.js'
 import MenuItem from './MenuItem.js'
 import Header from './Header.js'
+import Footer from './Footer.js'
 
 class Menu extends Component {
 
@@ -60,10 +61,14 @@ class Menu extends Component {
           <LoadingScreen />
           :
            <div className="Menu">
-             <Header />
+             <Header venueName={'LM&O'} />
+
              <div className="menu">
                {this.printMenu(bffRes, filter)}
+
+               <Footer />
              </div>
+
            </div>
          }
       </div>

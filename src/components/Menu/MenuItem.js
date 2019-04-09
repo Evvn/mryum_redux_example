@@ -1,6 +1,35 @@
 import React from 'react'
+import LinesEllipsis from 'react-lines-ellipsis'
 
 class MenuItem extends React.Component {
+
+  itemDetails(item) {
+    const clampedDesc = (
+      <LinesEllipsis
+        text={item.fields['Item Description']}
+        maxLine={3}
+        ellipsis='...'
+        basedOn='words'
+        trimRight
+      />
+    )
+    let trimmedName = item.fields['Item Name']
+    if (trimmedName.length > 30) {
+      trimmedName = trimmedName.substring(0,31).trim() + '...'
+    }
+
+    return (
+      <div>
+        <h3 className="title">{trimmedName}</h3>
+        <div className="bodyText">{clampedDesc}</div>
+        <div className="info">
+          <span className="price">{item.fields['Price']}</span>
+          <span className="tags">{item.fields['Tags'].join(' ')}</span>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const { item, itemIndex } = this.props
     const style = {
@@ -16,23 +45,13 @@ class MenuItem extends React.Component {
           <div className="menuItem">
             <div className="leftBox" style={style}></div>
             <div className="rightBox">
-              <h3 className="title">{item.fields['Item Name']}</h3>
-              <div className="bodyText">{item.fields['Item Description']}</div>
-              <div className="info">
-                <span className="price">{item.fields['Price']}</span>
-                <span className="tags">{item.fields['Tags'].join(' ')}</span>
-              </div>
+              { this.itemDetails(item) }
             </div>
           </div>
           :
           <div className="menuItem">
             <div className="leftBox">
-              <h3 className="title">{item.fields['Item Name']}</h3>
-              <div className="bodyText">{item.fields['Item Description']}</div>
-              <div className="info">
-                <span className="price">{item.fields['Price']}</span>
-                <span className="tags">{item.fields['Tags'].join(' ')}</span>
-              </div>
+              { this.itemDetails(item) }
             </div>
             <div className="rightBox" style={style}></div>
           </div>

@@ -1541,7 +1541,7 @@ h1 {
 }
 
 footer {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   height: 57px;
