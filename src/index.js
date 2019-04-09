@@ -17,7 +17,7 @@ const routes = [
   { name: 'contact', path: '/contact' },
   { name: 'faq', path: '/faq' },
   { name: 'menu', path: '/menu', children: [
-    { name: 'venue', path: '/venue' },
+    { name: 'venue', path: '/:venue' },
   ] },
 ];
 
