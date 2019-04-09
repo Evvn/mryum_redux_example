@@ -4,6 +4,9 @@ import callBff from '../callBff.js'
 
 export function* getMenuData(action) {
   try {
+    // const getVenueName = state => state.router.route;
+    // const venueName = yield select(getVenueName);
+
     const res = yield callBff('/menu', 'GET')
       .then(response => response)
       yield put({
