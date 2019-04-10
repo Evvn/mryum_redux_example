@@ -1452,10 +1452,10 @@ h1 {
     padding: 5px 10px 0 10px;
     max-width: $maxWidth;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     div:first-of-type {
-      text-decoration: underline;
+      // text-decoration: underline;
     }
 
     a, a:focus {

@@ -10,12 +10,12 @@ import Switch from './Switch';
 class App extends React.Component {
 
   render() {
-    const { moduleMappings } = this.props;
+    const { moduleMappings, routeTo } = this.props;
     const displayedRoutes = _.cloneDeep(moduleMappings);
     delete displayedRoutes.home;
 
     return (
-      <Switch moduleMappings={moduleMappings} />
+      <Switch moduleMappings={moduleMappings} routeTo={routeTo} />
     );
   }
 }
