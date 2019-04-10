@@ -1,38 +1,57 @@
 import React from 'react'
+import LinesEllipsis from 'react-lines-ellipsis'
 
 class MenuItem extends React.Component {
+
+  itemDetails(item) {
+    const clampedDesc = (
+      <LinesEllipsis
+        text={item['Item Description']}
+        maxLine={3}
+        ellipsis='...'
+        basedOn='words'
+        trimRight
+      />
+    )
+    let trimmedName = item['Item Name']
+    if (trimmedName.length > 30) {
+      trimmedName = trimmedName.substring(0,31).trim() + '...'
+    }
+
+    return (
+      <div>
+        <h3 className="title">{trimmedName}</h3>
+        <div className="bodyText">{clampedDesc}</div>
+        <div className="info">
+          <span className="price">{item['Price']}</span>
+          <span className="tags">{ item.Tags ? item.Tags.join(' ') : null}</span>
+        </div>
+      </div>
+    )
+  }
+
   render() {
-    const { item, itemIndex } = this.props
+    const { item, itemIndex, onClick } = this.props;
     const style = {
-      backgroundImage: 'url(' + item.fields['Image'][0].url + ')',
+      backgroundImage: 'url(' + item['Image'][0].url + ')',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'
     }
 
     return (
-      <div>
+      <div onClick={(e) => onClick(e)}>
         { itemIndex % 2 === 0 ?
           <div className="menuItem">
             <div className="leftBox" style={style}></div>
             <div className="rightBox">
-              <h3 className="title">{item.fields['Item Name']}</h3>
-              <div className="bodyText">{item.fields['Item Description']}</div>
-              <div className="info">
-                <span className="price">{item.fields['Price']}</span>
-                <span className="tags">{item.fields['Tags'].join(' ')}</span>
-              </div>
+              { this.itemDetails(item) }
             </div>
           </div>
           :
           <div className="menuItem">
             <div className="leftBox">
-              <h3 className="title">{item.fields['Item Name']}</h3>
-              <div className="bodyText">{item.fields['Item Description']}</div>
-              <div className="info">
-                <span className="price">{item.fields['Price']}</span>
-                <span className="tags">{item.fields['Tags'].join(' ')}</span>
-              </div>
+              { this.itemDetails(item) }
             </div>
             <div className="rightBox" style={style}></div>
           </div>

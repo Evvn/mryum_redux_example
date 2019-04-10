@@ -17,7 +17,9 @@ const routes = [
   { name: 'contact', path: '/contact' },
   { name: 'faq', path: '/faq' },
   { name: 'menu', path: '/menu', children: [
-    { name: 'venue', path: '/:venue' },
+    { name: 'venue', path: '/:venue', children: [
+      {  name: 'item', path: '/:item' },
+    ]},
   ] },
 ];
 
@@ -32,6 +34,7 @@ const router = initializeRouter({
   routes,
   defaultRoute: 'home',
 });
+
 const store = configureStore(router);
 const App = (
   <Provider store={store}>

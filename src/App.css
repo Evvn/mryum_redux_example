@@ -1259,10 +1259,7 @@ h1 img {
   padding: 5px 10px 0 10px;
   max-width: 500px;
   display: flex;
-  justify-content: space-between;
-}
-.previewModal .imageCredit div:first-of-type {
-  text-decoration: underline;
+  justify-content: flex-end;
 }
 .previewModal .imageCredit a, .previewModal .imageCredit a:focus {
   color: #6f6f6f;
@@ -1337,7 +1334,7 @@ h1 img {
 }
 
 footer {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   height: 57px;
