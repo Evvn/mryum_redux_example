@@ -2,10 +2,15 @@ import React from 'react'
 
 class Section extends React.Component {
   render() {
-    const { name } = this.props
+    let { name, itemIndex } = this.props
+    let subSection = ""
+    if (name.indexOf("%") !== -1) {
+      subSection = name.substring((name.indexOf('%') + 1), name.length)
+      name = name.substring(0, name.indexOf('%'))
+    }
 
     return (
-      <h2>{name}</h2>
+      <h2 className={`section ${ itemIndex === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
     )
   }
 }

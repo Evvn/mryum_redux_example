@@ -411,7 +411,8 @@ body {
 }
 
 .venue {
-  color: #373737;
+  color: white;
+  background-color: #282828;
   font-weight: bold;
   font-size: 20px;
 }
@@ -506,15 +507,21 @@ header {
   width: 100vw;
   max-width: 500px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   position: fixed;
   top: 0;
-  background-color: white;
   color: #373737;
+  background-color: #282828;
   z-index: 5;
   padding: 15px;
   transition: 0.4s ease-in-out all;
+}
+header .headerBackArrow, header .previewBackArrow {
+  height: 20px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 }
 header .arrowPadding {
   padding-left: 35px;
@@ -552,7 +559,7 @@ header .filterWarningCont .filterWarning h3 {
   font-size: 150%;
 }
 header .filterWarningCont .filterWarning p {
-  background-color: #fc4250;
+  background-color: #70d3c7;
   color: white;
   width: 70%;
   border-radius: 15px;
@@ -572,19 +579,19 @@ header .filter {
 header .filter .filterIcon {
   width: 8px;
   height: 8px;
-  background-color: #fc4250;
+  background-color: #70d3c7;
   border-radius: 10px;
   position: fixed;
   z-index: 1;
   top: 20px;
-  right: 20px;
+  right: 47px;
 }
 header .filter .filterList {
   background-color: white;
   border: 1px solid #aaa;
   position: absolute;
   top: 50px;
-  right: 20px;
+  right: 45px;
   border-radius: 4px;
   font-size: 14px;
   transition: 0.2s ease all;
@@ -617,15 +624,15 @@ header .filter .filterList p .checkBox {
 }
 header .filter .filterList p .checkedBox {
   border-radius: 2px;
-  border-color: #fc4250;
-  background-color: #fc4250;
+  border-color: #70d3c7;
+  background-color: #70d3c7;
 }
 header .filter .filterList p:nth-of-type(1) {
   border-top: none;
 }
 header .filter .open {
   opacity: 1;
-  height: 151px;
+  height: 101px;
 }
 header .filter .open p {
   width: 90%;
@@ -637,26 +644,39 @@ header .filter .open p .checkBox {
 header .filter .hamburger-inner {
   width: 30%;
   top: 26px;
+  background-color: white;
 }
 header .filter .hamburger-inner::before {
   top: -6px;
   right: -4px;
+  background-color: white;
 }
 header .filter .hamburger-inner::after {
   top: 6px;
   right: 3px;
   width: 50%;
+  background-color: white;
 }
 header .filter .hamburger.is-active .hamburger-inner {
   width: 20px;
   left: -5px;
+  background-color: white;
 }
 header .filter .hamburger.is-active .hamburger-inner::before,
 header .filter .hamburger.is-active .hamburger-inner::after {
-  background-color: #373737;
+  background-color: white;
   width: 20px;
   top: 0;
   right: 0;
+}
+header .cartIcon {
+  height: 8px;
+  width: 8px;
+  border-radius: 8px;
+  background-color: #70d3c7;
+  position: absolute;
+  top: 18px;
+  right: 10px;
 }
 
 .selectLanguage {
@@ -1027,6 +1047,42 @@ h1 img {
   opacity: 0;
 }
 
+.menuListItem {
+  grid-template-columns: 1fr;
+  min-height: 80px;
+  height: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 0 17px;
+}
+.menuListItem .leftBox, .menuListItem .rightBox {
+  background-image: none !important;
+  grid-area: leftBox;
+  width: 100%;
+  max-width: 500px;
+}
+.menuListItem .leftBox .title, .menuListItem .rightBox .title {
+  padding: 15px 10px 5px 10px;
+}
+.menuListItem .leftBox .title h3, .menuListItem .rightBox .title h3 {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.menuListItem .leftBox .title .info, .menuListItem .rightBox .title .info {
+  padding: 0;
+  position: relative;
+  width: auto;
+  display: inline-block;
+  font-size: 18px;
+}
+.menuListItem .leftBox .bodyText, .menuListItem .rightBox .bodyText {
+  padding-left: 10px;
+  max-width: 250px;
+}
+.menuListItem .leftBox .tags, .menuListItem .rightBox .tags {
+  display: none;
+}
+
 .tiny {
   height: 0px;
   opacity: 0;
@@ -1347,7 +1403,7 @@ footer {
   letter-spacing: 0.5px;
   text-align: center;
   color: white;
-  background-color: #fc4250;
+  background-color: #282828;
   width: 100%;
 }
 footer a, footer a:focus {
@@ -1598,7 +1654,8 @@ footer a, footer a:focus {
   background-color: #fafafa;
   padding-bottom: 30px;
 }
-.menuList .listSection {
+
+.listSection {
   padding: 35px 15px 11px 15px;
   display: block;
   font-family: "SFUIDisplay-Semibold", "Helvetica", sans-serif;
@@ -1607,21 +1664,22 @@ footer a, footer a:focus {
   color: #494949;
   letter-spacing: 0.5px;
 }
-.menuList .listItem {
+
+.listItem {
   display: flex;
   justify-content: space-between;
   padding: 5px 15px;
 }
-.menuList .listItem .itemDesc {
+.listItem .itemDesc {
   white-space: pre-wrap;
   font-family: "SFUIText-Normal", "Helvetica", sans-serif;
   font-size: 13px;
   color: #6f6f6f;
 }
-.menuList .listItem .itemDesc::first-letter {
+.listItem .itemDesc::first-letter {
   text-transform: uppercase;
 }
-.menuList .listItem .itemPrice {
+.listItem .itemPrice {
   font-family: "SFUIDisplay-Bold", "Helvetica", sans-serif;
   font-weight: bold;
   font-size: 13px;
