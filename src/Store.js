@@ -1,21 +1,33 @@
 // eslint-disable-next-line
 import { applyMiddleware, compose, createStore } from 'redux';
-import { router5Middleware } from 'redux-router5';
+import { persistStore, persistReducer } from 'redux-persist'
+import { routerMiddleware } from 'connected-react-router';
+import storage from 'redux-persist/lib/storage'
+import { createBrowserHistory } from 'history'
 import makeRootReducer from './rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './integration/sagas/rootSaga.js'
+import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
 
-export default (router, initialState = {}) => {
+export const history = createBrowserHistory();
+
+export default (initialState = {}) => {
 
   const sagaMiddleware = createSagaMiddleware();
+  const persistConfig = {
+    key: 'root',
+    storage,
+    stateReconciler: autoMergeLevel1,
+    blacklist: ['router']
+  }
 
   const middleware = [
-    router5Middleware(router),
+    routerMiddleware(history),
     sagaMiddleware,
   ];
   const enhancers = [];
   const store = createStore(
-    makeRootReducer(),
+    persistReducer(persistConfig, makeRootReducer(history)),
     initialState,
     // for dev
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
@@ -29,5 +41,6 @@ export default (router, initialState = {}) => {
   sagaMiddleware.run(rootSaga)
 
   window.store = store;
-  return store;
+  let persistor = persistStore(store)
+  return { store, persistor} ;
 };

@@ -4,7 +4,7 @@ const initialState = {
   isTest: true,
   isQR: false,
   isBroadsheet: false,
-  isLoading: true,
+  isLoading: false,
   venueurl: '',
   venue: '',
   sections: [],
@@ -21,9 +21,15 @@ const initialState = {
 
 function menuReducer(state = initialState, action) {
   switch (action.type) {
+    case actionTypes.GET_MENU_DATA_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      }
     case actionTypes.GET_MENU_DATA_SUCCESS:
       return {
         ...state,
+        venue: action.venue,
         bffRes: action.res,
         isLoading: false,
       }

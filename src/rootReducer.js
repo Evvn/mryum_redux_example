@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import { router5Reducer } from 'redux-router5';
+import { connectRouter } from 'connected-react-router';
+//import { router5Reducer } from 'redux-router5';
 import menuReducer from './components/Menu/menuReducer.js';
 
-export const makeRootReducer = () => combineReducers({
+export const makeRootReducer = (history) => combineReducers({
   // Add sync reducers here
-  router: router5Reducer,
+  router: connectRouter(history),
   menu: menuReducer,
 });
 

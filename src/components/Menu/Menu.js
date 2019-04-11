@@ -1,4 +1,5 @@
 // Menu component - main dude,  gets called in App.js with url path to select correct venue in airtable
+import { createRouteNodeSelector } from 'redux-router5';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import React, {Component} from 'react';
@@ -14,23 +15,28 @@ import Footer from './Footer.js'
 import ItemDetail from './ItemDetail.js'
 
 class Menu extends Component {
-  // constructor(props) {
-  //   super(props)
-  //
-  //   this.routeItemDetails = this.routeItemDetails.bind(this)
-  // }
+  constructor(props) {
+     super(props)
+  
+     const { router } = this.props;
+     const paramArray = window.location.href.split('/');
+     this.params = {
+        requestedVenue: paramArray[3],
+        item: paramArray.length === 5 ? paramArray[4] : false,
+     }
+   }
 
   componentWillMount() {
-    const {getMenuData, bffRes} = this.props
-    if (!bffRes) {
-      getMenuData('Holla')
+    const {getMenuData, bffRes, venue} = this.props;
+    if (!bffRes || this.params.requestedVenue !== venue) {
+      getMenuData(this.params.requestedVenue);
     }
   }
 
   componentWillUpdate() {
-    const {getMenuData, bffRes} = this.props
-    if (!bffRes) {
-      getMenuData('Holla')
+    const {getMenuData, bffRes, venue} = this.props;
+    if (!bffRes || this.params.requestedVenue !== venue) {
+      getMenuData(this.params.requestedVenue);
     }
   }
 
@@ -41,7 +47,7 @@ class Menu extends Component {
 
   generateView() {
     const {router, bffRes, filter} = this.props
-    const itemId = router.route.params.item
+    const itemId = this.params.item
 
     if (itemId) {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
@@ -96,7 +102,7 @@ class Menu extends Component {
         // if filter matches, add item and index ++, else next item * TO DO
         itemIndex++;
       })
-      return menu
+      return menu;
     }
 
   }
@@ -115,6 +121,14 @@ class Menu extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
-const mapStateToProps = state => ({router: state.router, bffRes: state.menu.bffRes, isLoading: state.menu.isLoading, filter: false});
+const mapStateToProps = state => ({
+  router: state.router,
+  bffRes: state.menu.bffRes,
+  isLoading: state.menu.isLoading,
+  filter: false,
+  venue: state.menu.venue,
+
+});
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

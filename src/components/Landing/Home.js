@@ -1,8 +1,9 @@
-import React from 'react'
-import Img from 'react-image'
-import HowItWorks from './HowItWorks.js'
-import LandingPageNav from './LandingPageNav.js'
-import LandingPageFooter from './LandingPageFooter.js'
+import React from 'react';
+import Img from 'react-image';
+
+import HowItWorks from './HowItWorks.js';
+import LandingPageNav from './LandingPageNav.js';
+import LandingPageFooter from './LandingPageFooter.js';
 
 class LandingPageHome extends React.Component {
 
@@ -164,4 +165,4 @@ class LandingPageHome extends React.Component {
   }
 }
 
-export default LandingPageHome
+export default LandingPageHome;

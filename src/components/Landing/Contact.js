@@ -1,3 +1,5 @@
+import { createRouteNodeSelector } from 'redux-router5';
+import {connect} from 'react-redux'
 import React from 'react'
 import LandingPageNav from './LandingPageNav.js'
 import LandingPageFooter from './LandingPageFooter.js'
@@ -34,4 +36,4 @@ class LandingPageContact extends React.Component {
   }
 }
 
-export default LandingPageContact
+export default connect(createRouteNodeSelector('faq') )(LandingPageContact);
