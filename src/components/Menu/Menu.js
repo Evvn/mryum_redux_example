@@ -53,7 +53,7 @@ class Menu extends Component {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
     } else {
       return (<div className="Menu">
-        <Header venueName={'LM&O'}/>
+        <Header venueName={Object.values(bffRes)[0].fields.Venue}/>
 
         <div className="menu">
           {this.printMenu(bffRes, filter)}
@@ -78,26 +78,50 @@ class Menu extends Component {
           // push the section in here
           sections.push(menuSections[section].fields['Sections'])
           // and push the SECTION COMPONENT in here
-          menu.push(<Section key={menuSections[section].fields['Sections']} name={menuSections[section].fields['Sections']}/>)
+          menu.push(
+            <Section
+              itemIndex={itemIndex}
+              key={menuSections[section].fields['Sections']}
+              name={menuSections[section].fields['Sections']}
+            />
+          )
         }
 
         // add ITEMS to menu under each SECTION
         // check if menu item is list item
-        const hasTag = menuSections[section].fields.Tags
-          ? true
-          : false;
+        const hasTag = menuSections[section].fields.Tags ? true : false;
         const tags = menuSections[section].fields.Tags;
         // if it is not a list, else (if it is)
         if (hasTag) {
           if (tags[0] !== 'LIST') {
-            menu.push(<MenuItem key={menuSections[section].id} onClick={(e) => {
-                this.routeItemDetails(e, menuSections[section].id)
-              }} item={menuSections[section].fields} itemIndex={itemIndex}/>);
+            menu.push(
+              <MenuItem
+                key={menuSections[section].id}
+                onClick={(e) => {
+                    this.routeItemDetails(e, menuSections[section].id)
+                  }}
+                item={menuSections[section].fields}
+                itemIndex={itemIndex}
+              />
+            );
+          } else {
+            menu.push(
+              <MenuList
+                key={menuSections[section].id}
+                onClick={(e) => {
+                    this.routeItemDetails(e, menuSections[section].id)
+                  }}
+                item={menuSections[section].fields}
+                itemIndex={itemIndex}
+              />
+            );
           }
         } else {
-          menu.push(
-            // <MenuList />
-          )
+          menu.push(<MenuItem key={menuSections[section].id} onClick={(e) => {
+            this.routeItemDetails(e, menuSections[section].id)
+            }}
+            item={menuSections[section].fields} itemIndex={itemIndex} />
+          );
         }
         // if filter matches, add item and index ++, else next item * TO DO
         itemIndex++;

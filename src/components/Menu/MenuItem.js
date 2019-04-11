@@ -24,7 +24,7 @@ class MenuItem extends React.Component {
         <div className="bodyText">{clampedDesc}</div>
         <div className="info">
           <span className="price">{item['Price']}</span>
-          <span className="tags">{ item.Tags ? item.Tags.join(' ') : null}</span>
+          <span className="tags">{ !!item.Tags ? item.Tags.join(' ') : null }</span>
         </div>
       </div>
     )
