@@ -632,7 +632,9 @@ header .filter .filterList p:nth-of-type(1) {
 }
 header .filter .open {
   opacity: 1;
-  height: 101px;
+  height: 156px;
+  position: absolute;
+  top: 70px;
 }
 header .filter .open p {
   width: 90%;
@@ -670,6 +672,13 @@ header .filter .hamburger.is-active .hamburger-inner::after {
   right: 0;
 }
 header .cartIcon {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 21px;
+  height: 19px;
+}
+header .cartBadge {
   height: 8px;
   width: 8px;
   border-radius: 8px;
@@ -680,11 +689,11 @@ header .cartIcon {
 }
 
 .selectLanguage {
-  position: relative;
-  color: #373737;
+  position: absolute;
+  color: white;
   font-size: 15px;
-  right: 50px;
-  top: 0px;
+  right: 85px;
+  top: 20px;
 }
 .selectLanguage .langCode {
   text-transform: uppercase;
@@ -693,8 +702,8 @@ header .cartIcon {
 }
 .selectLanguage .langArrow {
   display: inline-block;
-  border-top: 2px solid #373737;
-  border-left: 2px solid #373737;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
   border-radius: 0px;
   width: 10px;
   height: 10px;
@@ -712,7 +721,7 @@ header .cartIcon {
 .languageList {
   position: absolute;
   top: 50px;
-  right: 60px;
+  right: 85px;
   border: 1px solid #aaa;
   border-radius: 3px;
   background-color: white;
@@ -749,22 +758,25 @@ header .cartIcon {
   transition: 0.2s ease all;
 }
 .languageList .radioSelected {
-  background-color: #fc4250;
-  border-color: #fc4250;
+  background-color: #70d3c7;
+  border-color: #70d3c7;
 }
 
 .langOpen {
   height: 287px;
   height: auto;
   opacity: 1;
+  position: absolute;
+  right: -10px;
 }
 .langOpen p {
+  color: #373737;
   display: block;
   width: 90%;
 }
 
 .selectSection {
-  height: 52px;
+  height: 62px;
   width: 100vw;
   max-width: 500px;
   overflow-y: scroll;
@@ -777,6 +789,7 @@ header .cartIcon {
   color: #373737;
   z-index: 4;
   padding: 5px;
+  padding-top: 20px;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
 }
@@ -800,7 +813,7 @@ header .cartIcon {
 }
 .selectSection .red {
   color: white;
-  background-color: #fc4250;
+  background-color: #70d3c7;
   border-radius: 15px;
   margin-left: 10px;
 }

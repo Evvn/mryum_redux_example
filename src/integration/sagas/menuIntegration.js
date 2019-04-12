@@ -1,5 +1,5 @@
 import * as actionTypes from '../../components/Menu/actions/actionTypes/actionTypes.js';
-import { takeLatest, put, select } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 import callBff from '../callBff.js'
 
 export function* getMenuData(action) {

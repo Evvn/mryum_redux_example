@@ -18,7 +18,7 @@ export default (initialState = {}) => {
     key: 'root',
     storage,
     stateReconciler: autoMergeLevel1,
-    blacklist: ['router']
+    blacklist: ['router', 'menu']
   }
 
   const middleware = [

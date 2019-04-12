@@ -28,7 +28,7 @@ class ItemDetail extends React.Component {
 
         <div className="previewItem">
 
-          { details.Tags[0] === 'LIST' ? null :
+          { !!details.Tags && details.Tags[0] === 'LIST' ? null :
             <div className="previewImage" style={ backgroundImage }></div>
           }
 
@@ -40,7 +40,7 @@ class ItemDetail extends React.Component {
             </div>
 
             {/* No image credit? Don't show this section */}
-            { !!details['image credit'] && details.Tags[0] !== 'LIST' ?
+            { !!details['image credit'] && !!details.Tags && details.Tags[0] !== 'LIST' ?
               <div className="imageCredit">
                 <div className="imageCreditLabel">photo by
                   <a className="imageCreditLink" href={creditUrl}>{details['image credit']}</a>
@@ -56,7 +56,7 @@ class ItemDetail extends React.Component {
               <div className="previewPrice">{details['Price']}</div>
 
               {/* Tags are LIST? Don't show */}
-              { details.Tags[0] === 'LIST' ? null :
+              { !!details.Tags && details.Tags[0] === 'LIST' ? null :
                 <div className="previewTags">{ !!details.Tags ? details.Tags.join(', ') : null }</div>
               }
             </div>

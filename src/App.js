@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router' // react-router v4
 import PropTypes from 'prop-types';
 import React from 'react';
-import _ from 'lodash';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Landing/Home.js';
@@ -14,10 +13,6 @@ import Menu from './components/Menu/Menu.js';
 class App extends React.Component {
 
   render() {
-    const { routes } = this.props;
-    
-  
-
     return (
       <Switch>
           <Route path="/home" component={Home} />

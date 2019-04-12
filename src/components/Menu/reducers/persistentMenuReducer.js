@@ -1,22 +1,9 @@
-import * as actionTypes from './actions/actionTypes/actionTypes.js'
+import * as actionTypes from '../actions/actionTypes/actionTypes.js'
 
 const initialState = {
-  isTest: true,
-  isQR: false,
-  isBroadsheet: false,
-  isLoading: false,
-  venueurl: '',
   venue: '',
-  sections: [],
-  definitions: [],
-  lang: 'en', // can use common reducer for this to access it from all pages
-  showModal: false,
-  showMenuLink: false,
-  showBroadsheetLink: false,
-  menuUrl: '',
-  broadsheetLink: '',
   bffRes: false,
-  filter: false,
+  isLoading: true,
 }
 
 function menuReducer(state = initialState, action) {

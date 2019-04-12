@@ -1,5 +1,4 @@
 // Menu component - main dude,  gets called in App.js with url path to select correct venue in airtable
-import { createRouteNodeSelector } from 'redux-router5';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import React, {Component} from 'react';
@@ -17,8 +16,7 @@ import ItemDetail from './ItemDetail.js'
 class Menu extends Component {
   constructor(props) {
      super(props)
-  
-     const { router } = this.props;
+
      const paramArray = window.location.href.split('/');
      this.params = {
         requestedVenue: paramArray[3],
@@ -46,17 +44,21 @@ class Menu extends Component {
   }
 
   generateView() {
-    const {router, bffRes, filter} = this.props
+    const { bffRes, filter, updateFilter } = this.props
     const itemId = this.params.item
+    const venueName = Object.values(bffRes)[0].fields.Venue
+
+    // add 'Menu' to the end of the doc title - shows in tab
+    document.title = venueName + " Menu";
 
     if (itemId) {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
     } else {
       return (<div className="Menu">
-        <Header venueName={Object.values(bffRes)[0].fields.Venue}/>
+        <Header venueName={venueName} showLanguageSelect showFilter filter={filter} updateFilter={updateFilter}/>
 
         <div className="menu">
-          {this.printMenu(bffRes, filter)}
+          {this.printMenu(bffRes)}
 
           <Footer/>
         </div>
@@ -65,7 +67,15 @@ class Menu extends Component {
     }
   }
 
-  printMenu(menuSections, filter) {
+  printMenu(menuSections) {
+    const { filter } = this.props
+    let tagsInUse = []
+    Object.keys(filter).forEach(tag => {
+      if (filter[tag]) {
+        tagsInUse.push(tag)
+      }
+    })
+
     if (menuSections.length === 0) {
       return <NotFound/>
     } else {
@@ -93,18 +103,37 @@ class Menu extends Component {
         const tags = menuSections[section].fields.Tags;
         // if it is not a list, else (if it is)
         if (hasTag) {
+          // IF MENU ITEM HAS TAGS BUT IS NOT A LIST ITEM
           if (tags[0] !== 'LIST') {
-            menu.push(
-              <MenuItem
-                key={menuSections[section].id}
-                onClick={(e) => {
-                    this.routeItemDetails(e, menuSections[section].id)
-                  }}
-                item={menuSections[section].fields}
-                itemIndex={itemIndex}
-              />
-            );
-          } else {
+            if (tagsInUse.length > 0 && tagsInUse.some(tag => tags.includes(tag))) {
+              // if menu item tags match any tags in filter
+              menu.push(
+                <MenuItem
+                  key={menuSections[section].id}
+                  onClick={(e) => {
+                      this.routeItemDetails(e, menuSections[section].id)
+                    }}
+                  item={menuSections[section].fields}
+                  itemIndex={itemIndex}
+                />
+              );
+              itemIndex++;
+            } else if (tagsInUse.length === 0) {
+              // if no tags are in use, push non list item with tags
+              menu.push(
+                <MenuItem
+                  key={menuSections[section].id}
+                  onClick={(e) => {
+                      this.routeItemDetails(e, menuSections[section].id)
+                    }}
+                  item={menuSections[section].fields}
+                  itemIndex={itemIndex}
+                />
+              );
+              itemIndex++;
+            }
+          } else if (tagsInUse.length === 0) {
+            // IF MENU ITEM IS A LIST ITEM & no tags are in use
             menu.push(
               <MenuList
                 key={menuSections[section].id}
@@ -115,18 +144,40 @@ class Menu extends Component {
                 itemIndex={itemIndex}
               />
             );
+            itemIndex++;
           }
         } else {
-          menu.push(<MenuItem key={menuSections[section].id} onClick={(e) => {
-            this.routeItemDetails(e, menuSections[section].id)
-            }}
-            item={menuSections[section].fields} itemIndex={itemIndex} />
-          );
+          if (tagsInUse.length === 0) {
+            // IF MENU ITEM HAS NO TAGS -- always hide when filter is in use
+            menu.push(<MenuItem key={menuSections[section].id} onClick={(e) => {
+              this.routeItemDetails(e, menuSections[section].id)
+              }}
+              item={menuSections[section].fields} itemIndex={itemIndex} />
+            );
+            itemIndex++;
+          }
         }
-        // if filter matches, add item and index ++, else next item * TO DO
-        itemIndex++;
       })
-      return menu;
+
+      // eslint-disable-next-line
+      const noEmptySections = menu.map((element, index) => {
+        // if menu object is type Section
+        if (element.type.name === 'Section') {
+          // if next object after Section is not undefined, RETURN IT
+          if (typeof menu[index + 1] !== 'undefined') {
+            // if next object after Section is a MenuItem or a MenuList, RETURN IT
+            if (menu[index + 1].type.name === 'MenuItem' ||
+                menu[index + 1].type.name === 'MenuList')
+            {
+              return element
+            }
+          }
+        } else {
+          return element
+        }
+      })
+
+      return noEmptySections;
     }
 
   }
@@ -146,12 +197,10 @@ class Menu extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
 const mapStateToProps = state => ({
-  router: state.router,
-  bffRes: state.menu.bffRes,
-  isLoading: state.menu.isLoading,
-  filter: false,
-  venue: state.menu.venue,
-
+  bffRes: state.persistentMenu.bffRes,
+  isLoading: state.persistentMenu.isLoading,
+  venue: state.persistentMenu.venue,
+  filter: state.menu.filter,
 });
 
 

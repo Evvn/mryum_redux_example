@@ -751,7 +751,9 @@ header {
 
     .open {
       opacity: 1;
-      height: 101px;
+      height: 156px;
+      position: absolute;
+      top: 70px;
 
       p {
         width: 90%;
@@ -796,6 +798,14 @@ header {
   }
 
   .cartIcon {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 21px;
+    height: 19px;
+  }
+
+  .cartBadge {
     height: 8px;
     width: 8px;
     border-radius: 8px;
@@ -807,11 +817,11 @@ header {
 }
 
 .selectLanguage {
-  position: relative;
-  color: $sectionColor;
+  position: absolute;
+  color: white;
   font-size: 15px;
-  right: 50px;
-  top: 0px;
+  right: 85px;
+  top: 20px;
 
   .langCode {
     text-transform: uppercase;
@@ -821,8 +831,8 @@ header {
 
   .langArrow {
     display: inline-block;
-    border-top: 2px solid $sectionColor;
-    border-left: 2px solid $sectionColor;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
     border-radius: 0px;
     width: 10px;
     height: 10px;
@@ -842,7 +852,7 @@ header {
 .languageList {
   position: absolute;
   top: 50px;
-  right: 60px;
+  right: 85px;
   border: 1px solid #aaa;
   border-radius: 3px;
   background-color: white;
@@ -882,8 +892,8 @@ header {
   }
 
   .radioSelected {
-    background-color: $red;
-    border-color: $red;
+    background-color: $hopscotch;
+    border-color: $hopscotch;
   }
 }
 
@@ -891,15 +901,18 @@ header {
   height: 287px;
   height: auto;
   opacity: 1;
+  position: absolute;
+  right: -10px;
 
   p {
+    color: $sectionColor;
     display: block;
     width: 90%;
   }
 }
 
 .selectSection {
-  height: 52px;
+  height: 62px;
   width: 100vw;
   max-width: $maxWidth;
   overflow-y: scroll;
@@ -913,6 +926,7 @@ header {
   // background-color: #000;
   z-index: 4;
   padding: 5px;
+  padding-top: 20px;
 
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
@@ -939,7 +953,7 @@ header {
 
   .red {
     color: white;
-    background-color: $red;
+    background-color: $hopscotch;
     border-radius: 15px;
     margin-left: 10px;
   }
