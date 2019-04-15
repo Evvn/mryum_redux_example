@@ -5,6 +5,9 @@ class Filter extends React.Component {
   openFilterMenu(e) {
     document.querySelector('.filterList').classList.toggle('open')
     document.querySelector('.hamburger').classList.toggle('is-active')
+    // on filter menu click, close language menu if it's currently open
+    document.querySelector('.languageList').classList.remove('langOpen')
+    document.querySelector('.langArrow').classList.remove('rotate')
   }
 
   render() {
@@ -14,7 +17,7 @@ class Filter extends React.Component {
     const { updateFilter, filter } = this.props
 
     return(
-      <div className="filter" onClick={ this.openFilterMenu }>
+      <div className="filter" onClick={this.openFilterMenu}>
           <div className={Object.values(filter).indexOf(true) !== -1 ? "filterIcon" : "filterIcon hidden"}></div>
           <div className="hamburger hamburger--spin">
             <div className="hamburger-box">

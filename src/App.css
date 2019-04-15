@@ -127,12 +127,11 @@ body {
 .menu {
   min-height: 100vh;
   position: relative;
-  padding-bottom: 475px;
   background-color: white;
 }
 
 .pdfLinkSpace {
-  padding-bottom: 545px;
+  padding-bottom: 55px;
 }
 
 .hidden {
@@ -775,8 +774,8 @@ header .cartBadge {
 
 .languageList {
   position: absolute;
-  top: 50px;
-  right: 85px;
+  top: 30px;
+  right: -10px;
   border: 1px solid #aaa;
   border-radius: 3px;
   background-color: white;
@@ -819,6 +818,7 @@ header .cartBadge {
 
 .langOpen {
   height: 287px;
+  top: 50px;
   height: auto;
   opacity: 1;
   position: absolute;
@@ -1606,7 +1606,6 @@ footer a:focus {
 }
 
 .footerCont {
-  position: absolute;
   bottom: 0;
 }
 .footerCont .linkToMenu {

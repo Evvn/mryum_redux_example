@@ -44,8 +44,9 @@ class Menu extends Component {
   }
 
   generateView() {
-    const {bffRes, filter, updateFilter} = this.props;
-    const itemId = this.params.item;
+    const { bffRes, filter, updateFilter, updateLang, } = this.props
+    const itemId = this.params.item
+
     const venueName = Object.values(bffRes)[0].fields.Venue
     const { menu, sectionNames } = this.printMenu(bffRes, filter);
 
@@ -63,6 +64,7 @@ class Menu extends Component {
             showFilter
             filter={filter}
             updateFilter={updateFilter}
+            updateLang={updateLang}
             sectionNames={sectionNames}
           />
           <div className="menu">
@@ -206,6 +208,7 @@ const mapStateToProps = state => ({
   isLoading: state.persistentMenu.isLoading,
   venue: state.persistentMenu.venue,
   filter: state.menu.filter,
+  lang: state.menu.lang,
 });
 
 
