@@ -1,5 +1,5 @@
 import React from 'react';
-import HorizontalScroll from 'react-scroll-horizontal';
+import DragScroll from 'react-dragscroll';
 import classNames from 'classnames';
 
 
@@ -9,13 +9,13 @@ const HorizontalScrollNav = (props) => {
     console.log(sections)
     return (
         <div className="selectSection">
-            <HorizontalScroll>
+            <DragScroll>
                 {sections.map(section => (
                     <span className="red">
                         {section}
                     </span>
                 ))}
-            </HorizontalScroll>
+            </DragScroll>
         </div>
     )
 
