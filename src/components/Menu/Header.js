@@ -6,7 +6,14 @@ import LanguageSelect from './LanguageSelect.js';
 class Header extends React.Component {
   render() {
     // eslint-disable-next-line
-    const { venueName, showBackArrow, showFilter, showLanguageSelect, filter, updateFilter } = this.props
+    const { venueName,
+            showBackArrow,
+            showFilter,
+            showLanguageSelect,
+            filter,
+            updateFilter,
+            updateLang,
+          } = this.props
 
     return (
       <header className="header">
@@ -18,7 +25,7 @@ class Header extends React.Component {
 
         { showFilter && <Filter filter={filter} updateFilter={updateFilter} /> }
 
-        {/* { showLanguageSelect && <LanguageSelect /> } */}
+        { showLanguageSelect && <LanguageSelect updateLang={updateLang} /> }
 
         {/* <img className="cartIcon" src="/icons/cart_icon.svg" alt="cart"/> */}
         {/* need check to see when to display cart badge */}

@@ -44,7 +44,7 @@ class Menu extends Component {
   }
 
   generateView() {
-    const { bffRes, filter, updateFilter } = this.props
+    const { bffRes, filter, updateFilter, updateLang, } = this.props
     const itemId = this.params.item
 
     const venueName = Object.values(bffRes)[0].fields.Venue
@@ -56,7 +56,14 @@ class Menu extends Component {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
     } else {
       return (<div className="Menu">
-        <Header venueName={venueName} showLanguageSelect showFilter filter={filter} updateFilter={updateFilter}/>
+        <Header
+          venueName={venueName}
+          showLanguageSelect
+          showFilter
+          filter={filter}
+          updateFilter={updateFilter}
+          updateLang={updateLang}
+        />
 
         <div className="menu">
           {this.printMenu(bffRes)}
@@ -196,6 +203,7 @@ const mapStateToProps = state => ({
   isLoading: state.persistentMenu.isLoading,
   venue: state.persistentMenu.venue,
   filter: state.menu.filter,
+  lang: state.menu.lang,
 });
 
 

@@ -19,6 +19,11 @@ const initialState = {
 
 function menuReducer(state = initialState, action) {
   switch (action.type) {
+    case actionTypes.UPDATE_LANG:
+      return {
+        ...state,
+        lang: action.lang,
+      }
     case actionTypes.UPDATE_FILTER:
       return {
         ...state,

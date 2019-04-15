@@ -20,3 +20,10 @@ export function updateFilter(filter) {
     filter,
   }
 }
+
+export function updateLang(lang) {
+  return {
+    type: actionTypes.UPDATE_LANG,
+    lang,
+  }
+}

@@ -9,6 +9,7 @@
     "react": "^16.7.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.7.0",
+    "react-easy-swipe": "0.0.17",
     "react-image": "^2.1.1",
     "react-jsx-parser": "^1.16.1",
     "react-lines-ellipsis": "^0.14.1",
