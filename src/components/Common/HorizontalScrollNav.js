@@ -1,17 +1,19 @@
 import React from 'react';
 import HorizontalScroll from 'react-scroll-horizontal';
+import classNames from 'classnames';
+
 
 const HorizontalScrollNav = (props) => {
 
     const { sections } = props;
-
+    console.log(sections)
     return (
-        <div>
+        <div className="selectSection">
             <HorizontalScroll>
                 {sections.map(section => (
-                    <div>
+                    <span className="red">
                         {section}
-                    </div>
+                    </span>
                 ))}
             </HorizontalScroll>
         </div>

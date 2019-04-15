@@ -14,8 +14,8 @@ class Header extends React.Component {
         {/* back arrow for routing, control this and venuename via props */}
         { showBackArrow ? <img src="/icons/arrow-left-solid-white.svg" className="headerBackArrow" alt="back arrow"/> : null }
         { !!venueName ? <h1 className="venue">{venueName}</h1> : null }
-        <HorizontalScrollNav sections={sectionNames} />
         { showFilter && <Filter filter={filter} updateFilter={updateFilter} /> }
+        <HorizontalScrollNav sections={sectionNames} />
 
         {/* { showLanguageSelect && <LanguageSelect /> } */}
 

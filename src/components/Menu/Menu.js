@@ -49,8 +49,6 @@ class Menu extends Component {
     const venueName = Object.values(bffRes)[0].fields.Venue
     const { menu, sectionNames } = this.printMenu(bffRes, filter);
 
-    const venueName = Object.values(bffRes)[0].fields.Venue
-
     // add 'Menu' to the end of the doc title - shows in tab
     document.title = venueName + " Menu";
 
@@ -91,7 +89,7 @@ class Menu extends Component {
       let menu = []
       let sections = []
       let itemIndex = 0;
-      const sectionNames = [];
+      let sectionNames = [];
       Object.keys(menuSections).forEach(section => {
         // if item section name does not exist in sections
         sectionNames.push(menuSections[section].fields['Sections']);
@@ -182,7 +180,7 @@ class Menu extends Component {
         }
       })
       sectionNames = [...new Set(sectionNames)];
-      return { noEmptySections, sectionNames };
+      return { menu: noEmptySections, sectionNames };
     }
 
   }

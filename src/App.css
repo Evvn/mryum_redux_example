@@ -420,8 +420,8 @@ body {
 }
 
 .venue {
-  color: white;
-  background-color: #282828;
+  color: #282828;
+  background-color: #fff;
   font-weight: bold;
   font-size: 20px;
 }
@@ -511,6 +511,51 @@ body {
     transform: scale(1);
   }
 }
+.selectSection {
+  height: 52px;
+  width: 100vw;
+  max-width: 500px;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 62px;
+  background-color: white;
+  color: #373737;
+  z-index: 4;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-left: -15px;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+.selectSection a {
+  text-decoration: none;
+  color: inherit;
+}
+.selectSection span {
+  white-space: nowrap;
+  margin-right: 15px;
+  font-size: 14px;
+  padding: 7px 12px;
+  border-radius: 15px;
+  transition: 0.2s ease all;
+  /* Enable hardware acceleration to fix laggy transitions */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  font-family: "Helvetica";
+}
+.selectSection .red {
+  color: white;
+  background-color: #fc4250;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
 header {
   height: 62px;
   width: 100vw;
@@ -519,8 +564,8 @@ header {
   align-items: center;
   position: fixed;
   top: 0;
-  color: #373737;
-  background-color: #282828;
+  color: black;
+  background-color: #fff;
   z-index: 5;
   padding: 15px;
   transition: 0.4s ease-in-out all;
@@ -588,10 +633,10 @@ header .filter {
 header .filter .filterIcon {
   width: 8px;
   height: 8px;
-  background-color: #70d3c7;
+  background-color: black;
   border-radius: 10px;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   top: 20px;
   right: 47px;
 }
@@ -643,7 +688,8 @@ header .filter .open {
   opacity: 1;
   height: 156px;
   position: absolute;
-  top: 70px;
+  top: 65px;
+  z-index: 10;
 }
 header .filter .open p {
   width: 90%;
@@ -655,27 +701,27 @@ header .filter .open p .checkBox {
 header .filter .hamburger-inner {
   width: 30%;
   top: 26px;
-  background-color: white;
+  background-color: black;
 }
 header .filter .hamburger-inner::before {
   top: -6px;
   right: -4px;
-  background-color: white;
+  background-color: black;
 }
 header .filter .hamburger-inner::after {
   top: 6px;
   right: 3px;
   width: 50%;
-  background-color: white;
+  background-color: black;
 }
 header .filter .hamburger.is-active .hamburger-inner {
   width: 20px;
   left: -5px;
-  background-color: white;
+  background-color: black;
 }
 header .filter .hamburger.is-active .hamburger-inner::after,
 header .filter .hamburger.is-active .hamburger-inner::before {
-  background-color: white;
+  background-color: black;
   width: 20px;
   top: 0;
   right: 0;
@@ -784,7 +830,7 @@ header .cartBadge {
   width: 90%;
 }
 
-.selectSection {
+.selectSectionHS {
   height: 62px;
   width: 100vw;
   max-width: 500px;
@@ -801,11 +847,11 @@ header .cartBadge {
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
 }
-.selectSection a {
+.selectSectionHS a {
   text-decoration: none;
   color: inherit;
 }
-.selectSection span {
+.selectSectionHS span {
   white-space: nowrap;
   margin-right: 15px;
   font-size: 14px;
@@ -818,8 +864,9 @@ header .cartBadge {
   -ms-transform: translateZ(0);
   -o-transform: translateZ(0);
   transform: translateZ(0);
+  font-family: "Helvetica";
 }
-.selectSection .red {
+.selectSectionHS .red {
   color: white;
   background-color: #70d3c7;
   border-radius: 15px;
@@ -2069,7 +2116,7 @@ body {
   flex-direction: column;
 }
 .landingPage .logos .venuesHeader {
-  color: #4a4a4a;
+  color: #fff;
   font-weight: 500;
   font-size: 18px;
   margin-top: 20px;
