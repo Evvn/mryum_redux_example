@@ -1,7 +1,5 @@
 import React from 'react';
 import HorizontalScroll from 'react-scroll-horizontal';
-import classNames from 'classnames';
-
 
 const HorizontalScrollNav = (props) => {
 
