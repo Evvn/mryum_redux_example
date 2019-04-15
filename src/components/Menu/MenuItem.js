@@ -6,7 +6,7 @@ class MenuItem extends React.Component {
   itemDetails(item) {
     const clampedDesc = (
       <LinesEllipsis
-        text={item['Item Description']}
+        text={item['Item Description Raw']}
         maxLine={3}
         ellipsis='...'
         basedOn='words'

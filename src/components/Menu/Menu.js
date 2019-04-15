@@ -46,6 +46,7 @@ class Menu extends Component {
   generateView() {
     const { bffRes, filter, updateFilter } = this.props
     const itemId = this.params.item
+
     const venueName = Object.values(bffRes)[0].fields.Venue
 
     // add 'Menu' to the end of the doc title - shows in tab
@@ -101,6 +102,16 @@ class Menu extends Component {
         // check if menu item is list item
         const hasTag = menuSections[section].fields.Tags ? true : false;
         const tags = menuSections[section].fields.Tags;
+        const menuItem = (
+          <MenuItem
+            key={menuSections[section].id}
+            onClick={(e) => {
+                this.routeItemDetails(e, menuSections[section].id)
+              }}
+            item={menuSections[section].fields}
+            itemIndex={itemIndex}
+          />
+        )
         // if it is not a list, else (if it is)
         if (hasTag) {
           // IF MENU ITEM HAS TAGS BUT IS NOT A LIST ITEM
@@ -108,27 +119,13 @@ class Menu extends Component {
             if (tagsInUse.length > 0 && tagsInUse.some(tag => tags.includes(tag))) {
               // if menu item tags match any tags in filter
               menu.push(
-                <MenuItem
-                  key={menuSections[section].id}
-                  onClick={(e) => {
-                      this.routeItemDetails(e, menuSections[section].id)
-                    }}
-                  item={menuSections[section].fields}
-                  itemIndex={itemIndex}
-                />
+                menuItem
               );
               itemIndex++;
             } else if (tagsInUse.length === 0) {
               // if no tags are in use, push non list item with tags
               menu.push(
-                <MenuItem
-                  key={menuSections[section].id}
-                  onClick={(e) => {
-                      this.routeItemDetails(e, menuSections[section].id)
-                    }}
-                  item={menuSections[section].fields}
-                  itemIndex={itemIndex}
-                />
+                menuItem
               );
               itemIndex++;
             }
@@ -149,10 +146,8 @@ class Menu extends Component {
         } else {
           if (tagsInUse.length === 0) {
             // IF MENU ITEM HAS NO TAGS -- always hide when filter is in use
-            menu.push(<MenuItem key={menuSections[section].id} onClick={(e) => {
-              this.routeItemDetails(e, menuSections[section].id)
-              }}
-              item={menuSections[section].fields} itemIndex={itemIndex} />
+            menu.push(
+              menuItem
             );
             itemIndex++;
           }

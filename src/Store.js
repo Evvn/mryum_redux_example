@@ -30,11 +30,11 @@ export default (initialState = {}) => {
     persistReducer(persistConfig, makeRootReducer(history)),
     initialState,
     // for dev
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      trace: true,
-    })(applyMiddleware(...middleware), ...enhancers),
+    // window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    //   trace: true,
+    // })(applyMiddleware(...middleware), ...enhancers),
     // for prod
-    // compose(applyMiddleware(...middleware), ...enhancers),
+    compose(applyMiddleware(...middleware), ...enhancers),
   );
 
   store.asyncReducers = {};

@@ -1,11 +1,13 @@
 import React from 'react'
 import Header from './Header.js'
+import JsxParser from 'react-jsx-parser'
 
 class ItemDetail extends React.Component {
 
   render() {
     const {details} = this.props
     let creditUrl
+
     if (details['image credit']) {
       creditUrl = 'https://www.instagram.com/' + details['image credit'].substr(1) + '/'
     }
@@ -34,6 +36,12 @@ class ItemDetail extends React.Component {
 
           <div className="previewWrapper">
 
+            {/* hidden definition modal */}
+            <div className="prevDefinition hidden">
+              <div className="prevDefinedWord" />
+              <div className="prevDefinitionText" />
+            </div>
+
             <div className="prevDefinition hidden">
               <div className="prevDefinedWord"></div>
               <div className="prevDefinitionText"></div>
@@ -50,7 +58,13 @@ class ItemDetail extends React.Component {
 
             <div className="previewName">{details['Item Name']}</div>
 
-            <div className="previewDescription">{details['Item Description']}</div>
+            <div className="previewDescription">
+              <JsxParser
+                jsx={
+                  `${details['Item Description']}`
+                }
+              />
+            </div>
 
             <div className="previewDetails">
               <div className="previewPrice">{details['Price']}</div>
