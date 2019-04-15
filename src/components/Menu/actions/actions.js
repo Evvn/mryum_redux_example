@@ -13,3 +13,10 @@ export function getMenuData(venue) {
     venue,
   }
 }
+
+export function updateFilter(filter) {
+  return {
+    type: actionTypes.UPDATE_FILTER,
+    filter,
+  }
+}

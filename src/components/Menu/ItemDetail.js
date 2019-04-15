@@ -1,11 +1,13 @@
 import React from 'react'
 import Header from './Header.js'
+import JsxParser from 'react-jsx-parser'
 
 class ItemDetail extends React.Component {
 
   render() {
     const {details} = this.props
     let creditUrl
+
     if (details['image credit']) {
       creditUrl = 'https://www.instagram.com/' + details['image credit'].substr(1) + '/'
     }
@@ -28,11 +30,17 @@ class ItemDetail extends React.Component {
 
         <div className="previewItem">
 
-          { details.Tags[0] === 'LIST' ? null :
+          { !!details.Tags && details.Tags[0] === 'LIST' ? null :
             <div className="previewImage" style={ backgroundImage }></div>
           }
 
           <div className="previewWrapper">
+
+            {/* hidden definition modal */}
+            <div className="prevDefinition hidden">
+              <div className="prevDefinedWord" />
+              <div className="prevDefinitionText" />
+            </div>
 
             <div className="prevDefinition hidden">
               <div className="prevDefinedWord"></div>
@@ -40,7 +48,7 @@ class ItemDetail extends React.Component {
             </div>
 
             {/* No image credit? Don't show this section */}
-            { !!details['image credit'] && details.Tags[0] !== 'LIST' ?
+            { !!details['image credit'] && !!details.Tags && details.Tags[0] !== 'LIST' ?
               <div className="imageCredit">
                 <div className="imageCreditLabel">photo by
                   <a className="imageCreditLink" href={creditUrl}>{details['image credit']}</a>
@@ -50,13 +58,19 @@ class ItemDetail extends React.Component {
 
             <div className="previewName">{details['Item Name']}</div>
 
-            <div className="previewDescription">{details['Item Description']}</div>
+            <div className="previewDescription">
+              <JsxParser
+                jsx={
+                  `${details['Item Description']}`
+                }
+              />
+            </div>
 
             <div className="previewDetails">
               <div className="previewPrice">{details['Price']}</div>
 
               {/* Tags are LIST? Don't show */}
-              { details.Tags[0] === 'LIST' ? null :
+              { !!details.Tags && details.Tags[0] === 'LIST' ? null :
                 <div className="previewTags">{ !!details.Tags ? details.Tags.join(', ') : null }</div>
               }
             </div>

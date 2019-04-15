@@ -1,99 +1,75 @@
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-MediumOblique.woff2') format('woff2'),
-        url('/fonts/Avenir-MediumOblique.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-MediumOblique.woff2") format('woff2'), url("/fonts/Avenir-MediumOblique.woff") format('woff');
+  font-weight: 500;
+  font-style: italic;
 }
-
 @font-face {
-    font-family: 'Avenir Book';
-    src: url('/fonts/Avenir-Book.woff2') format('woff2'),
-        url('/fonts/Avenir-Book.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Avenir Book';
+  src: url("/fonts/Avenir-Book.woff2") format('woff2'), url("/fonts/Avenir-Book.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-Medium.woff2') format('woff2'),
-        url('/fonts/Avenir-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-Medium.woff2") format('woff2'), url("/fonts/Avenir-Medium.woff") format('woff');
+  font-weight: 500;
+  font-style: normal;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-HeavyOblique.woff2') format('woff2'),
-        url('/fonts/Avenir-HeavyOblique.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-HeavyOblique.woff2") format('woff2'), url("/fonts/Avenir-HeavyOblique.woff") format('woff');
+  font-weight: 900;
+  font-style: italic;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-LightOblique.woff2') format('woff2'),
-        url('/fonts/Avenir-LightOblique.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-LightOblique.woff2") format('woff2'), url("/fonts/Avenir-LightOblique.woff") format('woff');
+  font-weight: 300;
+  font-style: italic;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-Oblique.woff2') format('woff2'),
-        url('/fonts/Avenir-Oblique.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-Oblique.woff2") format('woff2'), url("/fonts/Avenir-Oblique.woff") format('woff');
+  font-weight: normal;
+  font-style: italic;
 }
-
 @font-face {
-    font-family: 'Avenir Book';
-    src: url('/fonts/Avenir-BookOblique.woff2') format('woff2'),
-        url('/fonts/Avenir-BookOblique.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-family: 'Avenir Book';
+  src: url("/fonts/Avenir-BookOblique.woff2") format('woff2'), url("/fonts/Avenir-BookOblique.woff") format('woff');
+  font-weight: normal;
+  font-style: italic;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-Light.woff2') format('woff2'),
-        url('/fonts/Avenir-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-Light.woff2") format('woff2'), url("/fonts/Avenir-Light.woff") format('woff');
+  font-weight: 300;
+  font-style: normal;
 }
-
 @font-face {
-    font-family: 'Avenir Black Oblique';
-    src: url('/fonts/Avenir-BlackOblique.woff2') format('woff2'),
-        url('/fonts/Avenir-BlackOblique.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
+  font-family: 'Avenir Black Oblique';
+  src: url("/fonts/Avenir-BlackOblique.woff2") format('woff2'), url("/fonts/Avenir-BlackOblique.woff") format('woff');
+  font-weight: 900;
+  font-style: italic;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-Roman.woff2') format('woff2'),
-        url('/fonts/Avenir-Roman.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-Roman.woff2") format('woff2'), url("/fonts/Avenir-Roman.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-
 @font-face {
-    font-family: 'Avenir';
-    src: url('/fonts/Avenir-Black.woff2') format('woff2'),
-        url('/fonts/Avenir-Black.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
+  font-family: 'Avenir';
+  src: url("/fonts/Avenir-Black.woff2") format('woff2'), url("/fonts/Avenir-Black.woff") format('woff');
+  font-weight: 900;
+  font-style: normal;
 }
-
 @font-face {
-    font-family: 'Avenir-Heavy';
-    src: url('/fonts/Avenir-Heavy.woff2') format('woff2'),
-        url('/fonts/Avenir-Heavy.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
+  font-family: 'Avenir-Heavy';
+  src: url("/fonts/Avenir-Heavy.woff2") format('woff2'), url("/fonts/Avenir-Heavy.woff") format('woff');
+  font-weight: 900;
+  font-style: normal;
 }
-
 // sass variables
 $red: #fc4250;
 $black: #000;
@@ -170,6 +146,7 @@ body {
   min-height: 100vh;
   position: relative;
   padding-bottom: 475px;
+  background-color: white;
 }
 
 .pdfLinkSpace {
@@ -233,7 +210,7 @@ body {
   }
 }
 
-.feedbackCont{
+.feedbackCont {
   // height: 200px;
   // background-color: $grey;
   // padding-top: 60px;
@@ -319,7 +296,6 @@ body {
     }
 
     .fbSet2 {
-
       h3 {
         margin-bottom: 20px;
       }
@@ -330,13 +306,11 @@ body {
 
       p {
         display: inline-block;
-        margin: 10px;
-        margin-left: 15px;
+        margin: 10px 10px 10px 15px;
         height: 90px;
         padding-left: 15px;
         padding-right: 15px;
       }
-
       // p:nth-of-type(2) {
       //   position: relative;
       //   top: 20px;
@@ -379,7 +353,8 @@ body {
       color: #aaa;
     }
 
-    button:focus, textarea:focus {
+    button:focus,
+    textarea:focus {
       outline: none;
     }
 
@@ -393,10 +368,9 @@ body {
     }
 
     .fbThankyouCopy {
-
       p {
         border: none;
-        border-radius: 0px;
+        border-radius: 0;
         width: 100%;
         background-color: inherit;
       }
@@ -418,7 +392,6 @@ body {
         padding-left: 10px;
       }
     }
-
   }
 }
 
@@ -438,8 +411,7 @@ body {
     font-size: 18px;
     line-height: 1.3;
     text-align: center;
-    padding: 25px 15px;
-    padding-top: 10px;
+    padding: 10px 15px 25px;
   }
 
   p:first-of-type {
@@ -448,7 +420,12 @@ body {
     // padding-bottom: 0;
   }
 
-  a, a:visited, a:link, a:hover, a:active, a:focus {
+  a,
+  a:active,
+  a:focus,
+  a:hover,
+  a:link,
+  a:visited {
     // color: $red;
     color: white;
     background-color: $red;
@@ -482,8 +459,7 @@ body {
     font-size: 18px;
     line-height: 1.3;
     text-align: center;
-    padding: 25px 15px;
-    padding-top: 10px;
+    padding: 10px 15px 25px;
   }
 
   p:first-of-type {
@@ -492,7 +468,12 @@ body {
     // padding-bottom: 0;
   }
 
-  a, a:visited, a:link, a:hover, a:active, a:focus {
+  a,
+  a:active,
+  a:focus,
+  a:hover,
+  a:link,
+  a:visited {
     color: $red;
     border-bottom: 2px solid $red;
     // color: white;
@@ -576,7 +557,6 @@ body {
   width: 18px;
   height: 18px;
   background-color: white;
-
   border-radius: 150%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -592,17 +572,26 @@ body {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
-
 @-webkit-keyframes sk-bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0) }
-  40% { -webkit-transform: scale(1.0) }
-}
+  0%,
+  100%,
+  80% {
+    -webkit-transform: scale(0);
+  }
 
+  40% {
+    -webkit-transform: scale(1.0);
+  }
+}
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 40% {
+  }
+
+  40% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
@@ -613,7 +602,7 @@ header {
   width: 100vw;
   max-width: $maxWidth;
   display: flex;
-  justify-content: flex-end;
+  // justify-content: flex-end;
   align-items: center;
   position: fixed;
   top: 0;
@@ -623,7 +612,8 @@ header {
   padding: 15px;
   transition: 0.4s ease-in-out all;
 
-  .headerBackArrow, .previewBackArrow {
+  .headerBackArrow,
+  .previewBackArrow {
     height: 20px;
     position: absolute;
     left: 20px;
@@ -663,7 +653,7 @@ header {
 
       h3 {
         text-align: center;
-        padding: 25px 25px;
+        padding: 25px;
         font-size: 150%;
       }
 
@@ -708,20 +698,19 @@ header {
       right: 45px;
       border-radius: 4px;
       font-size: 14px;
-      transition: .2s ease all;
-      height: 0px;
+      transition: 0.2s ease all;
+      height: 0;
       width: 190px;
       opacity: 0;
 
       p {
         padding: 15px 20px;
         border-top: 1px solid #eee;
-        width: 0px;
+        width: 0;
         margin: 0 auto;
         white-space: nowrap;
         font-weight: 600;
         display: none;
-
 
         .checkBox {
           display: none;
@@ -735,7 +724,7 @@ header {
           box-sizing: content-box;
           padding: 2px;
           background-clip: content-box;
-          transition: .2s ease all;
+          transition: 0.2s ease all;
         }
 
         .checkedBox {
@@ -744,6 +733,7 @@ header {
           background-color: $hopscotch;
         }
       }
+
       p:nth-of-type(1) {
         border-top: none;
       }
@@ -751,7 +741,9 @@ header {
 
     .open {
       opacity: 1;
-      height: 101px;
+      height: 156px;
+      position: absolute;
+      top: 70px;
 
       p {
         width: 90%;
@@ -768,11 +760,13 @@ header {
       top: 26px;
       background-color: white;
     }
+
     .hamburger-inner::before {
       top: -6px;
       right: -4px;
       background-color: white;
     }
+
     .hamburger-inner::after {
       top: 6px;
       right: 3px;
@@ -786,8 +780,8 @@ header {
       background-color: white;
     }
 
-    .hamburger.is-active .hamburger-inner::before,
-    .hamburger.is-active .hamburger-inner::after {
+    .hamburger.is-active .hamburger-inner::after,
+    .hamburger.is-active .hamburger-inner::before {
       background-color: white; // MENU OPEN COLOR HERE
       width: 20px;
       top: 0;
@@ -796,6 +790,14 @@ header {
   }
 
   .cartIcon {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 21px;
+    height: 19px;
+  }
+
+  .cartBadge {
     height: 8px;
     width: 8px;
     border-radius: 8px;
@@ -807,11 +809,11 @@ header {
 }
 
 .selectLanguage {
-  position: relative;
-  color: $sectionColor;
+  position: absolute;
+  color: white;
   font-size: 15px;
-  right: 50px;
-  top: 0px;
+  right: 85px;
+  top: 20px;
 
   .langCode {
     text-transform: uppercase;
@@ -821,41 +823,41 @@ header {
 
   .langArrow {
     display: inline-block;
-    border-top: 2px solid $sectionColor;
-    border-left: 2px solid $sectionColor;
-    border-radius: 0px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-radius: 0;
     width: 10px;
     height: 10px;
     position: relative;
     top: -3px;
     right: -1px;
     transform: rotate(225deg);
-    transition: .2s ease all;
+    transition: 0.2s ease all;
   }
 
   .rotate {
     transform: rotate(45deg);
-    top: 0px;
+    top: 0;
   }
 }
 
 .languageList {
   position: absolute;
   top: 50px;
-  right: 60px;
+  right: 85px;
   border: 1px solid #aaa;
   border-radius: 3px;
   background-color: white;
   width: 150px;
-  height: 0px;
+  height: 0;
   opacity: 0;
-  transition: .2s ease all;
+  transition: 0.2s ease all;
 
   p {
     font-size: 14px;
     padding: 15px 20px;
     border-top: 1px solid #eee;
-    width: 0px;
+    width: 0;
     margin: 0 auto;
     white-space: nowrap;
     font-weight: 600;
@@ -878,12 +880,12 @@ header {
     box-sizing: content-box;
     padding: 2px;
     background-clip: content-box;
-    transition: .2s ease all;
+    transition: 0.2s ease all;
   }
 
   .radioSelected {
-    background-color: $red;
-    border-color: $red;
+    background-color: $hopscotch;
+    border-color: $hopscotch;
   }
 }
 
@@ -891,15 +893,18 @@ header {
   height: 287px;
   height: auto;
   opacity: 1;
+  position: absolute;
+  right: -10px;
 
   p {
+    color: $sectionColor;
     display: block;
     width: 90%;
   }
 }
 
 .selectSection {
-  height: 52px;
+  height: 62px;
   width: 100vw;
   max-width: $maxWidth;
   overflow-y: scroll;
@@ -912,8 +917,7 @@ header {
   color: $sectionColor;
   // background-color: #000;
   z-index: 4;
-  padding: 5px;
-
+  padding: 20px 5px 5px;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
 
@@ -928,7 +932,7 @@ header {
     font-size: 14px;
     padding: 7px 12px;
     border-radius: 15px;
-    transition: .2s ease all;
+    transition: 0.2s ease all;
     /* Enable hardware acceleration to fix laggy transitions */
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
@@ -939,12 +943,11 @@ header {
 
   .red {
     color: white;
-    background-color: $red;
+    background-color: $hopscotch;
     border-radius: 15px;
     margin-left: 10px;
   }
 }
-
 // @supports (-webkit-overflow-scrolling: touch) {
 //   .selectSection{
 //     span {
@@ -957,7 +960,9 @@ header {
   display: none;
 }
 
-.selectSection::-webkit-scrollbar { width: 0 !important }
+.selectSection::-webkit-scrollbar {
+  width: 0 !important;
+}
 
 h1 {
   img {
@@ -984,6 +989,7 @@ h1 {
   z-index: 5;
 }
 // ul
+
 .links {
   @extend %sectionFont;
   // color: white;
@@ -1077,7 +1083,6 @@ h1 {
 .sectionTaller {
   padding-top: 125px;
 }
-
 // hack lol
 .filterSection:first-of-type {
   padding-top: 65px;
@@ -1150,32 +1155,63 @@ h1 {
     align-items: center;
     background-color: rgba(#000,.7);
     font-size: 22px;
-    letter-spacing: .5px;
-    transition: .4s ease all;
+    letter-spacing: 0.5px;
+    transition: 0.4s ease all;
     -webkit-animation: flickerAnimation 2s infinite;
     -moz-animation: flickerAnimation 2s infinite;
     -o-animation: flickerAnimation 2s infinite;
-     animation: flickerAnimation 2s infinite;
-
+    animation: flickerAnimation 2s infinite;
     @keyframes flickerAnimation {
-      0%   { background-color: rgba(#000,0.7); }
-      50%  { background-color: rgba(#000,0.4); }
-      100% { background-color: rgba(#000,0.7); }
+      0% {
+        background-color: rgba(#000,0.7);
+      }
+
+      50% {
+        background-color: rgba(#000,0.4);
+      }
+
+      100% {
+        background-color: rgba(#000,0.7);
+      }
     }
-    @-o-keyframes flickerAnimation{
-      0%   { background-color: rgba(#000,0.7); }
-      50%  { background-color: rgba(#000,0.4); }
-      100% { background-color: rgba(#000,0.7); }
+    @-o-keyframes flickerAnimation {
+      0% {
+        background-color: rgba(#000,0.7);
+      }
+
+      50% {
+        background-color: rgba(#000,0.4);
+      }
+
+      100% {
+        background-color: rgba(#000,0.7);
+      }
     }
-    @-moz-keyframes flickerAnimation{
-      0%   { background-color: rgba(#000,0.7); }
-      50%  { background-color: rgba(#000,0.4); }
-      100% { background-color: rgba(#000,0.7); }
+    @-moz-keyframes flickerAnimation {
+      0% {
+        background-color: rgba(#000,0.7);
+      }
+
+      50% {
+        background-color: rgba(#000,0.4);
+      }
+
+      100% {
+        background-color: rgba(#000,0.7);
+      }
     }
-    @-webkit-keyframes flickerAnimation{
-      0%   { background-color: rgba(#000,0.7); }
-      50%  { background-color: rgba(#000,0.4); }
-      100% { background-color: rgba(#000,0.7); }
+    @-webkit-keyframes flickerAnimation {
+      0% {
+        background-color: rgba(#000,0.7);
+      }
+
+      50% {
+        background-color: rgba(#000,0.4);
+      }
+
+      100% {
+        background-color: rgba(#000,0.7);
+      }
     }
 
     span {
@@ -1185,7 +1221,6 @@ h1 {
 
   .fadeOut {
     -webkit-animation: fadeOut 2s forwards;
-
     @-webkit-keyframes fadeOut {
       0% {
         opacity: 1;
@@ -1210,14 +1245,15 @@ h1 {
   border-bottom: 1px solid #e8e8e8;
   margin: 0 17px;
 
-  .leftBox, .rightBox {
+  .leftBox,
+  .rightBox {
     background-image: none !important;
     grid-area: leftBox;
     width: 100%;
     max-width: $maxWidth;
 
     .title {
-      padding: 15px 10px 5px 10px;
+      padding: 15px 10px 5px;
 
       h3 {
         font-size: 20px;
@@ -1246,7 +1282,7 @@ h1 {
 }
 
 .tiny {
-  height: 0px;
+  height: 0;
   opacity: 0;
 }
 
@@ -1292,8 +1328,7 @@ h1 {
   right: 0;
   margin: auto;
   bottom: 25%;
-  -webkit-animation: fadeIn .2s forwards;
-
+  -webkit-animation: fadeIn 0.2s forwards;
   @-webkit-keyframes fadeIn {
     0% {
       opacity: 0;
@@ -1326,15 +1361,14 @@ h1 {
     font-size: 16px;
     border-radius: 25px;
     padding: 10px;
-    margin: 15px auto 0 auto;
+    margin: 15px auto 0;
     width: 50vw;
     max-width: 250px;
   }
 }
 
 .fadeOut {
-  -webkit-animation: fadeOut .2s forwards;
-
+  -webkit-animation: fadeOut 0.2s forwards;
   @-webkit-keyframes fadeOut {
     0% {
       opacity: 1;
@@ -1375,7 +1409,8 @@ h1 {
     .feedbackForm {
       top: calc(50vh - 70vw);
 
-      textarea, textarea::placeholder {
+      textarea,
+      textarea::placeholder {
         font-family: 'SFUIText-Normal', 'Helvetica', sans-serif;
       }
     }
@@ -1384,10 +1419,9 @@ h1 {
   .previewItem {
     height: 100vh;
     position: relative;
-    top: 0px;
+    top: 0;
     left: 0;
   }
-
 
   .previewImage {
     width: 100vw;
@@ -1415,8 +1449,7 @@ h1 {
       right: 0;
       margin: auto;
       bottom: 25%;
-      -webkit-animation: fadeIn .2s forwards;
-
+      -webkit-animation: fadeIn 0.2s forwards;
       @-webkit-keyframes fadeIn {
         0% {
           opacity: 0;
@@ -1444,8 +1477,7 @@ h1 {
     }
 
     .fadeOut {
-      -webkit-animation: fadeOut .2s forwards;
-
+      -webkit-animation: fadeOut 0.2s forwards;
       @-webkit-keyframes fadeOut {
         0% {
           opacity: 1;
@@ -1468,12 +1500,12 @@ h1 {
     line-height: normal;
     letter-spacing: 0.5px;
     color: $titleColor;
-    padding: 15px 20px;
-    padding-top: 20px;
+    padding: 20px 20px 15px;
     text-transform: capitalize;
   }
 
-  .previewDescription, .imageCredit {
+  .imageCredit,
+  .previewDescription {
     max-width: $maxWidth;
     font-family: 'SFUIText-Regular', 'Helvetica', sans-serif;
     font-size: 16px;
@@ -1490,7 +1522,6 @@ h1 {
       color: $bodyColor;
       border-bottom: 1px solid transparent;
       cursor: pointer;
-
       -webkit-animation: fadeInUnderline 0.2s ease-in-out forwards;
     }
     @-webkit-keyframes fadeInUnderline {
@@ -1506,10 +1537,10 @@ h1 {
 
   .imageCredit {
     font-size: 10px;
-    opacity: .7;
+    opacity: 0.7;
     text-align: right;
     width: 100vw;
-    padding: 5px 10px 0 10px;
+    padding: 5px 10px 0;
     max-width: $maxWidth;
     display: flex;
     justify-content: flex-end;
@@ -1518,7 +1549,8 @@ h1 {
       // text-decoration: underline;
     }
 
-    a, a:focus {
+    a,
+    a:focus {
       color: $bodyColor;
       text-decoration: none;
       border-bottom: 1px solid $bodyColor;
@@ -1531,8 +1563,7 @@ h1 {
     justify-content: space-between;
     // position: fixed;
     width: 100vw;
-    padding: 20px;
-    padding-bottom: 85px;
+    padding: 20px 20px 85px;
   }
 
   .previewPrice {
@@ -1617,7 +1648,8 @@ footer {
   background-color: $hsdark;
   width: 100%;
 
-  a, a:focus {
+  a,
+  a:focus {
     text-decoration: none;
     color: inherit;
   }
@@ -1627,8 +1659,9 @@ footer {
   color: $black;
 }
 // Dribbble related code
+
 .ctaBtn {
-  margin: 25px auto 0 auto;
+  margin: 25px auto 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1652,7 +1685,6 @@ footer {
     margin-top: -2px;
   }
   // I know, I know.
-
   .ctaBtn span {
     opacity: 0;
     width: 100%;
@@ -1770,15 +1802,14 @@ footer {
     letter-spacing: 0.5px;
     text-align: center;
     color: $bodyColor;
-    margin: 55px 0;
-    margin-top: -15px;
+    margin: -15px 0 55px;
+
     a {
       color: $bodyColor;
       text-decoration: none;
       border-bottom: 2px solid $bodyColor;
     }
   }
-
   // .feedbackCont{
   //   height: 150px;
   //   background-color: $grey;
@@ -1920,7 +1951,6 @@ footer {
   //   }
   // }
 }
-
 @media only screen and (min-width: 500px) {
   .slideOutLeft {
     z-index: -1;
@@ -1931,29 +1961,27 @@ footer {
   }
 
   .title {
-    padding: 18px 18px;
-    padding-bottom: 0;
+    padding: 18px 18px 0;
     font-size: 20px;
   }
 
   .bodyText {
     font-size: 16px;
-    padding: 18px 18px;
+    padding: 18px;
   }
 
-  .price, .tags {
+  .price,
+  .tags {
     font-size: 16px;
   }
 
   .info {
     font-size: 16px;
-    padding: 18px 18px;
-    padding-bottom: 16px;
+    padding: 18px 18px 16px;
   }
 
   .previewModal {
     // top: 0;
-
     .previewItem {
       height: 100vh;
     }
@@ -1966,7 +1994,9 @@ footer {
       font-size: 28px;
     }
 
-    .previewDescription, .previewPrice, .previewTags {
+    .previewDescription,
+    .previewPrice,
+    .previewTags {
       font-size: 20px;
     }
   }
@@ -1987,7 +2017,6 @@ footer {
     opacity: 1;
     -webkit-animation: slideOutLeft 0.2s ease-in-out forwards;
   }
-
   @-webkit-keyframes slideOutLeft {
     100% {
       opacity: 1;
@@ -2026,7 +2055,6 @@ footer {
       opacity: 1;
     }
   }
-
 }
 
 .menuList {
@@ -2035,13 +2063,13 @@ footer {
 }
 
 .listSection {
-  padding: 35px 15px 11px 15px;
+  padding: 35px 15px 11px;
   display: block;
   font-family: "SFUIDisplay-Semibold", "Helvetica", sans-serif;
   font-weight: bold;
   font-size: 17px;
   color: #494949;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .listItem {
@@ -2069,10 +2097,10 @@ footer {
     white-space: nowrap;
   }
 }
-
 // menu desktop view
 @media screen and (min-width: 768px) {
-  body, .App {
+  .App,
+  body {
     background-color: white;
     // background-color: #f9dbf8;
     max-width: none;
@@ -2094,9 +2122,9 @@ footer {
       right: 20px;
     }
 
-    .filter{
+    .filter {
       .filterList {
-      right: 45px;
+        right: 45px;
       }
     }
 
@@ -2133,7 +2161,8 @@ footer {
     flex-wrap: wrap;
     justify-content: flex-start;
 
-    footer, .footerCont {
+    .footerCont,
+    footer {
       max-width: none;
       width: 100%;
     }
@@ -2142,7 +2171,6 @@ footer {
       color: $bodyColor;
       border-bottom: 1px solid transparent;
       cursor: pointer;
-
       -webkit-animation: fadeInUnderline 0.2s ease-in-out forwards;
     }
     @-webkit-keyframes fadeInUnderline {
@@ -2165,8 +2193,7 @@ footer {
       right: 0;
       margin: auto;
       top: 50vh;
-      -webkit-animation: fadeIn .2s forwards;
-
+      -webkit-animation: fadeIn 0.2s forwards;
       @-webkit-keyframes fadeIn {
         0% {
           opacity: 0;
@@ -2193,11 +2220,9 @@ footer {
       }
     }
   }
-
   // .menu>* {
   //   flex: 0 0 33.3333%;
   // }
-
   .backArrow {
     width: auto;
     visibility: hidden;
@@ -2218,9 +2243,7 @@ footer {
       grid-template-rows: minmax(0px, 500px);
       grid-template-areas: "previewImage previewWrapper";
       height: auto;
-
       margin: auto;
-
     }
 
     .previewImage {
@@ -2241,7 +2264,8 @@ footer {
       padding: 0 20px;
     }
 
-    .previewWrapper, .imageCredit {
+    .imageCredit,
+    .previewWrapper {
       background-color: $cardColor;
       width: auto;
       padding-top: 5px;
@@ -2264,7 +2288,8 @@ footer {
     margin: 50px 20px 50px 40px;
     line-height: 1.3;
 
-    .leftBox, .rightBox {
+    .leftBox,
+    .rightBox {
       width: 350px;
       height: 350px;
       // height: 500px;
@@ -2276,7 +2301,7 @@ footer {
 
     .rightBox {
       height: 250px;
-      border-radius: 0px 0px 4px 4px;
+      border-radius: 0 0 4px 4px;
     }
 
     .rightBox:nth-of-type(odd) {
@@ -2284,50 +2309,43 @@ footer {
       height: 350px;
       border: none;
       border-radius: 0;
-      border-radius: 4px 4px 0px 0px;
+      border-radius: 4px 4px 0 0;
     }
 
     .leftBox:nth-of-type(odd) {
-      border-radius: 4px 4px 0px 0px;
+      border-radius: 4px 4px 0 0;
     }
 
     .leftBox:nth-of-type(even) {
       grid-area: rightBox;
       height: 250px;
-      border-radius: 0px 0px 4px 4px;
+      border-radius: 0 0 4px 4px;
     }
 
-    .rightBox:nth-of-type(even) {
-
-    }
+    .rightBox:nth-of-type(even) {}
   }
 
   .tiny {
     margin: 0;
     height: 0;
-    width: 0px;
+    width: 0;
   }
 
   .menuList {
     width: 100vw;
-    padding: 0px 40px 40px 40px;
+    padding: 0 40px 40px;
     margin: 50px 40px;
     flex: 0 0 45%;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0 0;
 
-    .listItem {
-
-    }
+    .listItem {}
   }
 }
-
 // landing page css
 .landingPage {
   font-family: "Avenir", "Helvetica", sans-serif;
-
   // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-
   background-color: white;
   width: 100%;
   max-width: none;
@@ -2342,12 +2360,10 @@ footer {
     height: 648px;
     grid-area: 1/1/2/11;
     color: white;
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr .5fr;
+    grid-template-rows: 1fr 1fr 0.5fr;
     flex-direction: column;
-
   }
 
   .nav {
@@ -2359,7 +2375,8 @@ footer {
     align-items: center;
     font-family: "Avenir", "Helvetica", sans-serif;
 
-    p, a {
+    a,
+    p {
       text-decoration: none;
       color: inherit;
       margin: 0 25px;
@@ -2376,11 +2393,9 @@ footer {
     }
 
     a:last-of-type {
-      margin: 0;
-      margin-left: auto;
+      margin: 0 0 0 auto;
       z-index: 1;
     }
-
   }
 
   .navlogo {
@@ -2455,7 +2470,9 @@ footer {
     top: -1px;
   }
 
-  .emailCollect:focus, .emailCollect, .emailBtn {
+  .emailBtn,
+  .emailCollect,
+  .emailCollect:focus {
     outline: none;
     border: none;
     background-color: transparent;
@@ -2468,7 +2485,6 @@ footer {
   .emailCollect:focus::-webkit-input-placeholder {
     color: white;
   }
-
   // Dribbble related code
   // .heroCTA {
   //   background: white;
@@ -2586,7 +2602,6 @@ footer {
   //     transform: scale(1);
   //   }
   // }
-
   .heroGif {
     grid-area: 1 / 6 / 4 / 10;
     display: flex;
@@ -2624,9 +2639,7 @@ footer {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto;
-      margin-top: 35px;
-      margin-bottom: 25px;
+      margin: 35px auto 25px;
       padding: 0 75px;
       text-align: center;
     }
@@ -2639,7 +2652,9 @@ footer {
       flex-wrap: wrap;
       margin-bottom: 30px;
 
-      img, object, a {
+      a,
+      img,
+      object {
         text-align: center;
         flex: 1 0 21%;
         max-height: 70px;
@@ -2659,7 +2674,7 @@ footer {
       font-size: 30px;
       text-align: center;
       margin: 90px auto;
-      padding: 0px 35px;
+      padding: 0 35px;
     }
 
     .changeWords {
@@ -2736,7 +2751,6 @@ footer {
       font-size: 16px;
       line-height: 1.5;
     }
-
   }
 
   .howItWorksCont {
@@ -2750,7 +2764,6 @@ footer {
       font-family: "Avenir", "Helvetica", sans-serif;
       font-weight: 500;
       font-size: 30px;
-
     }
 
     h3 {
@@ -2793,7 +2806,7 @@ footer {
 
   .footerCTA {
     background-image: url("/Oval2.svg");
-    background-position: -450px 0px;
+    background-position: -450px 0;
     background-repeat: no-repeat;
     background-color: $red;
     height: 440px;
@@ -2818,7 +2831,8 @@ footer {
       margin: 0 auto;
     }
 
-    .heroCTA2, a {
+    .heroCTA2,
+    a {
       font-family: "Avenir", "Helvetica", sans-serif;
       font-weight: 500;
       margin: 65px 15px;
@@ -2837,7 +2851,7 @@ footer {
 
       .emailCollect {
         width: 280px;
-        top: 0px;
+        top: 0;
         margin-left: 10px;
       }
 
@@ -2917,7 +2931,8 @@ footer {
     font-size: 15px;
   }
 
-  .faqHero, .contactHero {
+  .contactHero,
+  .faqHero {
     height: 418px;
     display: inline-block;
     width: 100%;
@@ -2942,7 +2957,8 @@ footer {
   .faqSection {
     width: 100%;
 
-    a, p {
+    a,
+    p {
       color: #6189ea;
       display: inline;
       text-decoration: underline;
@@ -2982,9 +2998,10 @@ footer {
       font-size: 16px;
       font-family: "Avenir-Roman", "Avenir", "Helvetica", sans-serif;
       line-height: 1.5;
-      transition: height 0ms 200ms, opacity 200ms 0ms;
+      transition: height 0 200ms, opacity 200ms 0;
 
-      a, p {
+      a,
+      p {
         pointer-events: auto;
       }
     }
@@ -2992,7 +3009,7 @@ footer {
     .show {
       height: auto;
       opacity: 1;
-      transition: height 0ms 0ms, opacity 300ms 0ms;
+      transition: height 0 0ms, opacity 300ms 0;
     }
   }
 
@@ -3002,8 +3019,9 @@ footer {
     position: relative;
     width: 25px;
     display: inline-block;
-    &:before,
-    &:after{
+
+    &:after,
+    &:before {
       background: #fc4250;
       border-radius: 1px;
       content: '';
@@ -3014,13 +3032,16 @@ footer {
       width: 25px;
       transition: transform 200ms ease;
     }
+
     &:after {
       transform-origin: center;
     }
+
     &.collapsed {
       &:after {
         transform: rotate(90deg);
       }
+
       &:before {
         transform: rotate(180deg);
       }
@@ -3036,16 +3057,16 @@ footer {
     ::placeholder {
       color: #999999;
     }
+
     form {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-
       @-webkit-keyframes autofill {
         to {
-            color: $red;
-            background: transparent;
+          color: $red;
+          background: transparent;
         }
       }
 
@@ -3065,7 +3086,8 @@ footer {
         padding: 0 15px;
       }
 
-      input, textarea {
+      input,
+      textarea {
         color: $red;
         border: 1px solid rgba(214,214,214,.73);
         font-family: "Avenir-Roman", "Avenir", "Helvetica", sans-serif;
@@ -3095,11 +3117,11 @@ footer {
       }
     }
   }
-
-} // end landing page non-mobile
-
+}
+// end landing page non-mobile
 @media only screen and (max-width: 768px) {
-  .landingPage, body {
+  .landingPage,
+  body {
     min-width: 0;
 
     .hero {
@@ -3121,12 +3143,13 @@ footer {
         // display: none;
       }
 
-      .hiwLink, .venueLink {
+      .hiwLink,
+      .venueLink {
         display: none;
       }
 
       .heroText {
-        padding: 50px 35px 35px 35px;
+        padding: 50px 35px 35px;
       }
 
       form {
@@ -3147,7 +3170,6 @@ footer {
         span {
           flex: none;
         }
-
         // input {
         //   width: 100%;
         // }
@@ -3159,7 +3181,6 @@ footer {
         //   top: 3.5px;
         //   right: -9px;
         // }
-
         img {
           height: 15px;
         }
@@ -3186,7 +3207,7 @@ footer {
       .logoCarousel {
         flex-direction: row;
         flex-wrap: wrap;
-        margin: 15px 15px 25px 15px;
+        margin: 15px 15px 25px;
 
         a {
           flex: 1 0 25%;
@@ -3211,9 +3232,10 @@ footer {
         margin: 50px auto;
       }
 
-      .cardOdd, .cardEven {
+      .cardEven,
+      .cardOdd {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr .5fr;
+        grid-template-rows: 1fr 0.5fr;
         margin-bottom: 50px;
 
         .cardImage {
@@ -3273,7 +3295,8 @@ footer {
         margin-bottom: 15px;
       }
 
-      .heroCTA2, a {
+      .heroCTA2,
+      a {
         width: 330px;
         margin: 15px auto;
         font-size: 14px;
@@ -3308,7 +3331,7 @@ footer {
 
     .faqSection {
       .questionCont {
-         padding: 25px 15vw;
+        padding: 25px 15vw;
       }
 
       .plus-minus-toggle {
@@ -3317,8 +3340,9 @@ footer {
         position: relative;
         width: 25px;
         display: inline-block;
-        &:before,
-        &:after{
+
+        &:after,
+        &:before {
           background: #fc4250;
           border-radius: 1px;
           content: '';
@@ -3334,8 +3358,8 @@ footer {
 
     .emailForm {
       form {
-
-        input, textarea {
+        input,
+        textarea {
           color: $red;
           border: 1px solid rgba(214,214,214,.73);
           font-family: "Avenir-Roman", "Avenir", "Helvetica", sans-serif;
@@ -3348,6 +3372,7 @@ footer {
         }
       }
     }
-
-  } // landingPage end
-} // mq end
+  }
+  // landingPage end
+}
+// mq end
