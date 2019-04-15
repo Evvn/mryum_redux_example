@@ -44,10 +44,10 @@ class Menu extends Component {
   }
 
   generateView() {
-    const { bffRes, filter, updateFilter } = this.props
-    const itemId = this.params.item
-
+    const {bffRes, filter, updateFilter} = this.props;
+    const itemId = this.params.item;
     const venueName = Object.values(bffRes)[0].fields.Venue
+    const { menu, sectionNames } = this.printMenu(bffRes, filter);
 
     // add 'Menu' to the end of the doc title - shows in tab
     document.title = venueName + " Menu";
@@ -55,16 +55,22 @@ class Menu extends Component {
     if (itemId) {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
     } else {
-      return (<div className="Menu">
-        <Header venueName={venueName} showLanguageSelect showFilter filter={filter} updateFilter={updateFilter}/>
-
-        <div className="menu">
-          {this.printMenu(bffRes)}
-
-          <Footer/>
+      return (
+        <div className="Menu">
+          <Header
+            venueName={venueName}
+            showLanguageSelect
+            showFilter
+            filter={filter}
+            updateFilter={updateFilter}
+            sectionNames={sectionNames}
+          />
+          <div className="menu">
+            {menu}
+            <Footer/>
+          </div>
         </div>
-
-      </div>)
+      );
     }
   }
 
@@ -78,13 +84,15 @@ class Menu extends Component {
     })
 
     if (menuSections.length === 0) {
-      return <NotFound/>
+      return { menu: <NotFound/>, sectionNames: false };
     } else {
       let menu = []
       let sections = []
       let itemIndex = 0;
+      let sectionNames = [];
       Object.keys(menuSections).forEach(section => {
         // if item section name does not exist in sections
+        sectionNames.push(menuSections[section].fields['Sections']);
         if (sections.indexOf(menuSections[section].fields['Sections']) === -1) {
           // push the section in here
           sections.push(menuSections[section].fields['Sections'])
@@ -171,21 +179,23 @@ class Menu extends Component {
           return element
         }
       })
-
-      return noEmptySections;
+      sectionNames = [...new Set(sectionNames)];
+      return { menu: noEmptySections, sectionNames };
     }
 
   }
 
   render() {
     const {isLoading} = this.props
-    return (<div>
-      {
-        isLoading
-          ? <LoadingScreen/>
-          : this.generateView()
-      }
-    </div>)
+    return (
+      <div>
+        {
+          isLoading
+            ? <LoadingScreen/>
+            : this.generateView()
+        }
+      </div>
+    );
   }
 }
 
