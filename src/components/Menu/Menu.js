@@ -46,34 +46,37 @@ class Menu extends Component {
   }
 
   generateView() {
-    const {router, bffRes, filter} = this.props
-    const itemId = this.params.item
+    const {router, bffRes, filter} = this.props;
+    const itemId = this.params.item;
+    const venueName = Object.values(bffRes)[0].fields.Venue
+    const { menu, sectionNames } = this.printMenu(bffRes, filter);
 
     if (itemId) {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
     } else {
-      return (<div className="Menu">
-        <Header venueName={Object.values(bffRes)[0].fields.Venue}/>
-
-        <div className="menu">
-          {this.printMenu(bffRes, filter)}
-
-          <Footer/>
+      return (
+        <div className="Menu">
+          <Header venueName={venueName} sectionNames={sectionNames}/>
+          <div className="menu">
+            {menu}
+            <Footer/>
+          </div>
         </div>
-
-      </div>)
+      );
     }
   }
 
   printMenu(menuSections, filter) {
     if (menuSections.length === 0) {
-      return <NotFound/>
+      return { menu: <NotFound/>, sectionNames: false };
     } else {
       let menu = []
       let sections = []
       let itemIndex = 0;
+      const sectionNames = [];
       Object.keys(menuSections).forEach(section => {
         // if item section name does not exist in sections
+        sectionNames.push(menuSections[section].fields['Sections']);
         if (sections.indexOf(menuSections[section].fields['Sections']) === -1) {
           // push the section in here
           sections.push(menuSections[section].fields['Sections'])
@@ -126,20 +129,23 @@ class Menu extends Component {
         // if filter matches, add item and index ++, else next item * TO DO
         itemIndex++;
       })
-      return menu;
+      sectionNames = [...new Set(sectionNames)];
+      return { menu, sectionNames };
     }
 
   }
 
   render() {
     const {isLoading} = this.props
-    return (<div>
-      {
-        isLoading
-          ? <LoadingScreen/>
-          : this.generateView()
-      }
-    </div>)
+    return (
+      <div>
+        {
+          isLoading
+            ? <LoadingScreen/>
+            : this.generateView()
+        }
+      </div>
+    );
   }
 }
 
