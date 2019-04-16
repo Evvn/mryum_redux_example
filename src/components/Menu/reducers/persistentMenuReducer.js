@@ -3,6 +3,7 @@ import { filter } from '../enums/menuEnums.js';
 
 const initialState = {
   venue: '',
+  item: false,
   bffRes: false,
   isLoading: true,
   lang: 'en',
@@ -22,6 +23,7 @@ function menuReducer(state = initialState, action) {
         venue: action.venue,
         bffRes: action.res,
         isLoading: false,
+        item: action.item,
       }
     case actionTypes.UPDATE_LANG:
       return {
