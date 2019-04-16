@@ -7,10 +7,11 @@ import * as actionTypes from './actionTypes/actionTypes.js';
 //   };
 // }
 
-export function getMenuData(venue) {
+export function getMenuData(venue, item) {
   return {
     type: actionTypes.GET_MENU_DATA_REQUEST,
     venue,
+    item,
   }
 }
 

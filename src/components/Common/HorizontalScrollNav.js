@@ -6,17 +6,24 @@ class HorizontalScrollNav extends React.Component {
         super(props);
         this.state = {
           dragging: false,
+          scrollPosition: 0,
         };
     }
 
     componentDidMount() {
         window.addEventListener('mouseup', this.mouseUpHandle.bind(this));
         window.addEventListener('mousemove', this.mouseMoveHandle.bind(this));
+        window.addEventListener('scroll', this.scrollHandle.bind(this));
     }
     
       componentWillUnmount() {
         window.removeEventListener('mouseup', this.mouseUpHandle.bind(this));
         window.removeEventListener('mousemove', this.mouseMoveHandle.bind(this));
+        window.removeEventListener('scroll', this.scrollHandle.bind(this));
+    }
+
+    scrollHandle(e){
+        this.setState({scrollPosition: window.scrollY});
     }
 
     mouseUpHandle(e) {
@@ -46,9 +53,8 @@ class HorizontalScrollNav extends React.Component {
       }
 
     render() {
-        const { sectionPositions } = this.props;
+        const { sectionPositions, sectionNames } = this.props;
         const sections = Object.keys(sectionPositions);
-        console.log(sectionPositions)
         return (
             <div
                 className="selectSection"
@@ -56,17 +62,17 @@ class HorizontalScrollNav extends React.Component {
                 onMouseMove={this.mouseMoveHandle.bind(this)}
                 ref="container">
                 {sections.map((section,index)  => {
-                    const y = window.scrollY;
+                    const y = this.state.scrollPosition;
                     const sectionPosition = sectionPositions[section];
-                    const nextPosition = sectionPosition[section[index + 1]];
+                    const nextPosition = sectionPositions[sections[index + 1]];
                     const nextValue = nextPosition ? nextPosition : -1;
-                    const className = (y > sectionPosition && y < nextValue) ? "red" : ''; 
+                    const className = (y >= sectionPosition && y < nextValue) ? "red" : ''; 
                     console.log({
                         section, y, sectionPosition, nextPosition, className
                     })
 
                     return (
-                        <span
+                        <span id={`$scroll-nav-${section}`}
                             className={className}>
                             {section}
                         </span>

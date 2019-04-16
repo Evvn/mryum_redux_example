@@ -13,7 +13,7 @@ const initialState = {
   showBroadsheetLink: false,
   menuUrl: '',
   broadsheetLink: '',
-  sectionPositions: {},
+  sectionPositions: false,
 }
 
 function menuReducer(state = initialState, action) {

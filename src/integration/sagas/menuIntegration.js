@@ -9,6 +9,7 @@ export function* getMenuData(action) {
       yield put({
         type: actionTypes.GET_MENU_DATA_SUCCESS,
         venue: action.venue,
+        item: action.item,
         res,
       })
   } catch (error) {
@@ -22,7 +23,8 @@ export function* getMenuData(action) {
 
 export function* setSectionPositions(action) {
     const getCurrentPositions = state => state.menu.sectionPositions;
-    const sectionPositions = yield select(getCurrentPositions);
+    let sectionPositions = yield select(getCurrentPositions);
+    sectionPositions = !sectionPositions ? {} : sectionPositions;
     sectionPositions[action.section] = action.position.y;
     yield put({
       type: actionTypes.SET_SECTION_POSITION_SUCCESS,
