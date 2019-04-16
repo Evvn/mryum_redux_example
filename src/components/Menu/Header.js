@@ -13,6 +13,7 @@ class Header extends React.Component {
       showBackArrow,
       showFilter,
       showLanguageSelect,
+      lang,
       filter,
       updateFilter,
       updateLang,
@@ -26,7 +27,7 @@ class Header extends React.Component {
         { showFilter && <Filter filter={filter} updateFilter={updateFilter} /> }
         <HorizontalScrollNav sections={sectionNames} />
 
-        { showLanguageSelect && <LanguageSelect updateLang={updateLang} /> }
+        { showLanguageSelect && <LanguageSelect lang={lang} updateLang={updateLang} /> }
 
         {/* <img className="cartIcon" src="/icons/cart_icon.svg" alt="cart"/> */}
         {/* need check to see when to display cart badge */}

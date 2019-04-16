@@ -75,8 +75,17 @@ class ItemDetail extends React.Component {
   }
 
   render() {
-    const {details} = this.props
+    const { details, lang } = this.props
+    let name = details['Item Name']
+    let desc = details['Item Description']
+    let translatedName = 'description-' + lang
+    let translatedDesc = 'name-' + lang
     let creditUrl
+
+    if (lang !== 'en') {
+      name = details[translatedName]
+      desc = details[translatedDesc]
+    }
 
     if (details['image credit']) {
       creditUrl = 'https://www.instagram.com/' + details['image credit'].substr(1) + '/'
@@ -128,12 +137,12 @@ class ItemDetail extends React.Component {
                 </div>
                 : null }
 
-              <div className="previewName">{details['Item Name']}</div>
+              <div className="previewName">{name}</div>
 
               <div className="previewDescription">
                 <JsxParser
                   jsx={
-                    `${details['Item Description']}`
+                    `${desc}`
                   }
                 />
               </div>

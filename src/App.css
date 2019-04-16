@@ -612,7 +612,7 @@ header .filterWarningCont .filterWarning h3 {
   font-size: 150%;
 }
 header .filterWarningCont .filterWarning p {
-  background-color: #70d3c7;
+  background-color: #fc4250;
   color: white;
   width: 70%;
   border-radius: 15px;
@@ -632,7 +632,7 @@ header .filter {
 header .filter .filterIcon {
   width: 8px;
   height: 8px;
-  background-color: black;
+  background-color: #fc4250;
   border-radius: 10px;
   position: fixed;
   z-index: 5;
@@ -677,8 +677,8 @@ header .filter .filterList p .checkBox {
 }
 header .filter .filterList p .checkedBox {
   border-radius: 2px;
-  border-color: #70d3c7;
-  background-color: #70d3c7;
+  border-color: #fc4250;
+  background-color: #fc4250;
 }
 header .filter .filterList p:nth-of-type(1) {
   border-top: none;
@@ -700,27 +700,27 @@ header .filter .open p .checkBox {
 header .filter .hamburger-inner {
   width: 30%;
   top: 26px;
-  background-color: black;
+  background-color: #282828;
 }
 header .filter .hamburger-inner::before {
   top: -6px;
   right: -4px;
-  background-color: black;
+  background-color: #282828;
 }
 header .filter .hamburger-inner::after {
   top: 6px;
   right: 3px;
   width: 50%;
-  background-color: black;
+  background-color: #282828;
 }
 header .filter .hamburger.is-active .hamburger-inner {
   width: 20px;
   left: -5px;
-  background-color: black;
+  background-color: #282828;
 }
 header .filter .hamburger.is-active .hamburger-inner::after,
 header .filter .hamburger.is-active .hamburger-inner::before {
-  background-color: black;
+  background-color: #282828;
   width: 20px;
   top: 0;
   right: 0;
@@ -736,7 +736,7 @@ header .cartBadge {
   height: 8px;
   width: 8px;
   border-radius: 8px;
-  background-color: #70d3c7;
+  background-color: #fc4250;
   position: absolute;
   top: 18px;
   right: 10px;
@@ -744,7 +744,7 @@ header .cartBadge {
 
 .selectLanguage {
   position: absolute;
-  color: white;
+  color: #282828;
   font-size: 15px;
   right: 85px;
   top: 20px;
@@ -756,8 +756,8 @@ header .cartBadge {
 }
 .selectLanguage .langArrow {
   display: inline-block;
-  border-top: 2px solid white;
-  border-left: 2px solid white;
+  border-top: 2px solid #282828;
+  border-left: 2px solid #282828;
   border-radius: 0;
   width: 10px;
   height: 10px;
@@ -774,6 +774,7 @@ header .cartBadge {
 
 .languageList {
   position: absolute;
+  z-index: 8;
   top: 30px;
   right: -10px;
   border: 1px solid #aaa;
@@ -812,8 +813,8 @@ header .cartBadge {
   transition: 0.2s ease all;
 }
 .languageList .radioSelected {
-  background-color: #70d3c7;
-  border-color: #70d3c7;
+  background-color: #fc4250;
+  border-color: #fc4250;
 }
 
 .langOpen {
@@ -868,7 +869,7 @@ header .cartBadge {
 }
 .selectSectionHS .red {
   color: white;
-  background-color: #70d3c7;
+  background-color: #fc4250;
   border-radius: 15px;
   margin-left: 10px;
 }
