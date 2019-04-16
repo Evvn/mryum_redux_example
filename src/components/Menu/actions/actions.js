@@ -36,3 +36,10 @@ export function updateLang(lang) {
     lang,
   }
 }
+
+export function setItemId(id) {
+  return {
+    type: actionTypes.SET_ITEM_ID,
+    id,
+  }
+}

@@ -14,24 +14,24 @@ class LandingPageFooter extends React.Component {
             <div className="heroCTA2">
               <form onSubmit={ this.props.saveEmail }>
                 <input className="emailCollect" type="text" placeholder="Enter your email to stay in the loop"/>
-                <button className="emailBtn" type='submit'><Img src="arrow-right-solid.svg" alt="" decode={false} /></button>
+                <button className="emailBtn" type='submit'><Img src="/landing_page/arrow-right-solid.svg" alt="" decode={false} /></button>
               </form>
             </div>
             <a href="https://pitchblak.typeform.com/to/RpSea1">
               <div className="heroCTA2">
                 <span>Venues apply here, it's free!</span>
-                <Img className="venueAppArr" src="arrow-right-solid.svg" alt="" decode={false} />
+                <Img className="venueAppArr" src="/landing_page/arrow-right-solid.svg" alt="" decode={false} />
               </div>
             </a>
           </div>
         </div>
 
         <div className="footer">
-          <Img src="Mr_Yum_logo_red.svg" alt="Mr Yum logo" decode={false} />
+          <Img src="/mryum_assets/Mr_Yum_logo_red.svg" alt="Mr Yum logo" decode={false} />
 
           <ul>
             <li>Contact us</li>
-            <li className="contactLink" onClick={ this.props.handleClick }>Get in touch with us</li>
+            <a href="/contact"><li className="contactLink">Get in touch with us</li></a>
           </ul>
           <ul>
             <li>Follow us</li>

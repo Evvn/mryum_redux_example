@@ -135,7 +135,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .transparent {
@@ -1979,7 +1979,7 @@ body {
   margin: 0;
 }
 .landingPage .hero {
-  background-image: url("/Oval.svg");
+  background-image: url("/landing_page/Oval.svg");
   background-position: right 25vh;
   background-repeat: no-repeat;
   background-color: #fc4250;
@@ -2265,7 +2265,7 @@ body {
   margin: 0 auto;
 }
 .landingPage .footerCTA {
-  background-image: url("/Oval2.svg");
+  background-image: url("/landing_page/Oval2.svg");
   background-position: -450px 0;
   background-repeat: no-repeat;
   background-color: #fc4250;

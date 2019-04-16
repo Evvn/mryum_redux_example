@@ -10,7 +10,7 @@ class LandingPageNav extends React.Component {
         {/* <Link to="/" className="homeLink"><Img src="Mr_Yum_logo_white.svg" alt="Mr Yum" className="navlogo" decode={false} /></Link> */}
 
         <a href="/">
-          <Img src="Mr_Yum_logo_white.svg" alt="Mr Yum" className="navlogo" decode={false} />
+          <Img src="/mryum_assets/Mr_Yum_logo_white.svg" alt="Mr Yum" className="navlogo" decode={false} />
         </a>
 
         { this.props.showHIW ?

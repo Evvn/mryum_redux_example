@@ -4,7 +4,7 @@ class Water extends React.Component {
   render() {
     return(
       <div
-        className="menuItem water hidden"
+        className="menuItem water tiny"
         filters="filters undefined"
         id="999"
       >

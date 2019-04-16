@@ -17,14 +17,13 @@ class Section extends React.Component {
     const {
       tagsInUse,
       routeToItemDetail,
-      menuSection,
       lang,
     } = this.props;
     const tags = item.fields.Tags;
 
     // If menu item tags match any tags in filter
     if ((tagsInUse.length > 0 && tagsInUse.some(tag => tags.includes(tag)))
-      || tagsInUse.length === 0) {      
+      || tagsInUse.length === 0) {
         return (
           <MenuItem
             key={item.id}
@@ -55,8 +54,6 @@ class Section extends React.Component {
 
   getSection(){
     const {
-      tagsInUse,
-      routeToItemDetail,
       menuSection,
       lang,
     } = this.props;
@@ -79,15 +76,15 @@ class Section extends React.Component {
   }
 
   render() {
-
-
-    // key={menuSections[section].fields['Sections']}
-    // name={menuSections[section].fields['Sections']}
-    let { name, index } = this.props
+    let { name, index, tagsInUse } = this.props
     let subSection = ""
     if (name.indexOf("%") !== -1) {
       subSection = name.substring((name.indexOf('%') + 1), name.length)
       name = name.substring(0, name.indexOf('%'))
+    }
+    if (tagsInUse.length > 0) {
+      tagsInUse = tagsInUse.join(', ')
+      name = tagsInUse.replace('V', 'Vegetarian').replace('VE', 'Vegan').replace('GF', 'Gluten Free')
     }
 
     return (
@@ -95,7 +92,7 @@ class Section extends React.Component {
         <h2 className={`section ${ index === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
         {this.getSection()}
       </div>
-      
+
     )
   }
 }

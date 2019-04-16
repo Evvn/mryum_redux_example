@@ -9,8 +9,11 @@ export function* getMenuData(action) {
       yield put({
         type: actionTypes.GET_MENU_DATA_SUCCESS,
         venue: action.venue,
-        item: action.item,
         res,
+      })
+      yield put({
+        type: actionTypes.SET_ITEM_ID,
+        id: action.item,
       })
   } catch (error) {
     console.log(error)

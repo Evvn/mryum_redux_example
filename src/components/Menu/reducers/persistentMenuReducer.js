@@ -3,10 +3,10 @@ import { filter } from '../enums/menuEnums.js';
 
 const initialState = {
   venue: '',
-  item: false,
   bffRes: false,
   isLoading: true,
   lang: 'en',
+  item: false,
   filter
 }
 
@@ -34,6 +34,11 @@ function menuReducer(state = initialState, action) {
       return {
         ...state,
         filter: action.filter,
+      }
+    case actionTypes.SET_ITEM_ID:
+      return {
+        ...state,
+        item: action.id,
       }
     default:
       return state

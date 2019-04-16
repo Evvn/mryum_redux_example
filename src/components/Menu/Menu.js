@@ -1,18 +1,9 @@
 import React, {Component} from 'react';
-import LoadingScreen from '../LoadingScreen/LoadingScreen.js'
 import NotFound from '../NotFound/NotFound.js'
 import Section from './Section.js'
-import Water from './Water.js'
-import MenuItem from './MenuItem.js'
-import MenuList from './MenuList.js'
-import Footer from './Footer.js'
 import ItemDetail from './ItemDetail.js'
-import { persistStore } from 'redux-persist'
 
 class Menu extends Component {
-  constructor(props) {
-     super(props)
-   }
 
   getTags(){
     const { filter } = this.props;
@@ -28,7 +19,6 @@ class Menu extends Component {
 
   getSections(){
     const { menuItems, menuItemKeys } = this.props;
-    const tagsInUse = this.getTags();
     const menuSections = {};
     menuItemKeys.forEach(item => {
       const placedSections = Object.keys(menuSections);
@@ -47,7 +37,6 @@ class Menu extends Component {
 
   getMenu() {
     const {
-      filter,
       setSectionPosition,
       lang,
       routeToItemDetail,
@@ -78,16 +67,11 @@ class Menu extends Component {
 
   render() {
     const {
-      filter,
       lang,
-      updateFilter,
-      updateLang,
-      sectionPositions,
       menuItems,
       itemId,
     } = this.props
-
-    console.log(menuItems)
+    
     return (
       <div>
         {

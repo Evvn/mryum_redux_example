@@ -22,22 +22,26 @@ class MenuContainer extends React.Component {
        item: paramArray.length === 5 ? paramArray[4] : false,
     }
 
-    this.state = {update: false}
+    this.routeToItemDetail = this.routeToItemDetail.bind(this)
   }
 
  componentWillMount() {
-   const { getMenuData, bffRes, venue } = this.props;
-   console.log('mount')
+   const { getMenuData, bffRes, venue, itemId, setItemId } = this.props;
    if (!bffRes || this.params.requestedVenue !== venue) {
      getMenuData(this.params.requestedVenue, this.params.item);
+   }
+   if(this.params.item !== itemId){
+     setItemId(this.params.item)
    }
  }
 
  componentWillUpdate() {
-   const { getMenuData, bffRes, venue } = this.props;
-   console.log('update')
+   const { getMenuData, bffRes, venue, itemId, setItemId } = this.props;
    if (!bffRes || this.params.requestedVenue !== venue) {
      getMenuData(this.params.requestedVenue, this.params.item);
+   }
+   if(this.params.item !== itemId){
+     setItemId(this.params.item)
    }
  }
 
@@ -46,26 +50,26 @@ class MenuContainer extends React.Component {
  }
 
  routeToItemDetail(e, id) {
+   //const { setItemId } = this.props;
    e.stopPropagation();
-   window.location = window.location.href + `/${id}`
+   const newId = id ? id : false;
+   const refSuffix = newId ? `/${id}` : '';
+   window.location = window.location.href + `${refSuffix}`
  }
 
 
   getHeader(){
     const {
-      venue,
       sectionPositions,
-      showBackArrow,
-      showFilter,
-      showLanguageSelect,
       filter,
       updateFilter,
       updateLang,
       lang,
       bffRes,
+      itemId,
     } = this.props;
     const venueName = Object.values(bffRes)[0].fields.Venue;
-    const itemView = this.params.item ? true : false;
+    const itemView = itemId ? true : false;
     document.title = venueName + " Menu";
 
     return (
@@ -89,14 +93,7 @@ class MenuContainer extends React.Component {
     // eslint-disable-next-line
     const {
       venueName,
-      sectionPositions,
-      showBackArrow,
-      showFilter,
-      showLanguageSelect,
       filter,
-      updateFilter,
-      current,
-      updateLang,
       lang,
       bffRes,
       isLoading,
@@ -104,12 +101,10 @@ class MenuContainer extends React.Component {
       itemId,
     } = this.props;
 
-    console.log(this.params.item)
-
     document.title = venueName + " Menu";
 
     return (
-      isLoading ? <LoadingScreen/> : 
+      isLoading ? <LoadingScreen/> :
       (
         <div className="Menu">
           {this.getHeader()}
@@ -127,7 +122,7 @@ class MenuContainer extends React.Component {
             <Footer/>
           </div>
         </div>
-      ) 
+      )
     );
   }
 

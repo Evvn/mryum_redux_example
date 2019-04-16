@@ -153,8 +153,14 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
+
+// .form-group {
+//   .hidden {
+//     display: none;
+//   }
+// }
 
 .transparent {
   opacity: 0;
@@ -2401,7 +2407,7 @@ footer {
   margin: 0;
 
   .hero {
-    background-image: url("/Oval.svg");
+    background-image: url("/landing_page/Oval.svg");
     background-position: right 25vh;
     background-repeat: no-repeat;
     background-color: $red;
@@ -2853,7 +2859,7 @@ footer {
   }
 
   .footerCTA {
-    background-image: url("/Oval2.svg");
+    background-image: url("/landing_page/Oval2.svg");
     background-position: -450px 0;
     background-repeat: no-repeat;
     background-color: $red;

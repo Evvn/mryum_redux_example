@@ -4,8 +4,40 @@ import React from 'react'
 import LandingPageNav from './LandingPageNav.js'
 import LandingPageFooter from './LandingPageFooter.js'
 import SendEmail from './SendEmail.js'
+import Airtable from 'airtable'
 
 class LandingPageContact extends React.Component {
+
+  // function to log email registrations in airtable
+  saveEmail(e) {
+    e.preventDefault()
+    let email = e.target.firstChild.value
+    if (email === '') {
+      return
+    }
+
+    // log emails from landing page
+    let base = Airtable.base(process.env.REACT_APP_AIRTABLE_DB);
+
+    // log timestamp in db here
+    base('Registrations').create({
+      "email": email,
+      "venue": "website registration - post BFF integration"
+    }, function(err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      document.querySelectorAll('.emailCollect').forEach((eC) => {
+        eC.value = "Check out some of our featured menus!"
+        eC.disabled = true
+      })
+      document.querySelectorAll('.emailBtn').forEach((eB) => {
+        eB.disabled = true
+        eB.classList.add('tiny')
+      })
+    });
+  }
 
   render() {
     return(
@@ -29,7 +61,7 @@ class LandingPageContact extends React.Component {
 
         </div>
 
-        <LandingPageFooter handleClick={this.props.handleClick} saveEmail={ this.props.saveEmail } />
+        <LandingPageFooter saveEmail={ this.props.saveEmail } />
 
       </div>
     )
