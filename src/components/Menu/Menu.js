@@ -111,13 +111,26 @@ class Menu extends Component {
           // push the section in here
           sections.push(menuSections[section].fields['Sections'])
           // and push the SECTION COMPONENT in here
-          menu.push(
-            <Section
-              itemIndex={itemIndex}
-              key={menuSections[section].fields['Sections']}
-              name={menuSections[section].fields['Sections']}
-            />
-          )
+          // (if filters are in use, re-use Section component to display current filters)
+          if (tagsInUse.length > 0 && menu.length === 0) {
+            menu.push(
+              <Section
+                tags={tagsInUse}
+                itemIndex={itemIndex}
+                key={menuSections[section].fields['Sections']}
+                name={menuSections[section].fields['Sections']}
+              />
+            )
+          } else if (tagsInUse.length === 0) {
+            menu.push(
+              <Section
+                tags={tagsInUse}
+                itemIndex={itemIndex}
+                key={menuSections[section].fields['Sections']}
+                name={menuSections[section].fields['Sections']}
+              />
+            )
+          }
         }
 
         // add ITEMS to menu under each SECTION

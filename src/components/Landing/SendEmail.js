@@ -135,7 +135,7 @@ class SendEmail extends React.Component {
 
         <Input type='text' name='subject' placeholder='What the subject is' className='form-control hidden' required='required' onChange={this.handleInputChange.bind(this)}
           // value = {this.state.subject}
-          value='Mr Yum Website Contact!' error={this.state.errors.subject}/>
+          value='Mr Yum Website Contact!' error={this.state.errors.subject} style={{display: 'none'}}/>
 
         <TextArea placeholder="Go ahead, we're listening..." name = 'message' id = 'message' required = 'required' className = 'form-control' rows = '8' onChange = {this.handleInputChange.bind(this)}
           value = {this.state.message}

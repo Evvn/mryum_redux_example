@@ -11,17 +11,17 @@ class HowItWorks extends React.Component {
         <div className="steps">
           <div className="step">
             <h3><span className="stepNum">01</span>Head to one of our participating venues.</h3>
-            <img src="/howItWorks/step1.jpg" alt="walking"/>
+            <img src="/landing_page/howItWorks/step1.jpg" alt="walking"/>
           </div>
 
           <div className="step">
             <h3><span className="stepNum">02</span>Scan the QR code or type in the URL on the printed menu to view their Mr Yum mobile menu.</h3>
-            <img src="/howItWorks/step2.jpg" alt="phones"/>
+            <img src="/landing_page/howItWorks/step2.jpg" alt="phones"/>
           </div>
 
           <div className="step">
             <h3><span className="stepNum">03</span>Scroll through a menu with beautiful photos, ingredient definitions, dietary filtering and language translations. Yummineess awaits!</h3>
-            <img src="/howItWorks/step3.jpg" alt="party"/>
+            <img src="/landing_page/howItWorks/step3.jpg" alt="party"/>
           </div>
         </div>
 
