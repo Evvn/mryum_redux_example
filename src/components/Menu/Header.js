@@ -19,6 +19,7 @@ class Header extends React.Component {
       filter,
       updateFilter,
       current,
+      updateLang,
     } = this.props
 
     return (
@@ -29,7 +30,7 @@ class Header extends React.Component {
         { showFilter && <Filter filter={filter} updateFilter={updateFilter} /> }
         <HorizontalScrollNav sectionPositions={sectionPositions}/>
 
-        {/* { showLanguageSelect && <LanguageSelect /> } */}
+        { showLanguageSelect && <LanguageSelect lang={lang} updateLang={updateLang} /> }
 
         {/* <img className="cartIcon" src="/icons/cart_icon.svg" alt="cart"/> */}
         {/* need check to see when to display cart badge */}

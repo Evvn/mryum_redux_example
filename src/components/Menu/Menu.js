@@ -1,17 +1,17 @@
-// Menu component - main dude,  gets called in App.js with url path to select correct venue in airtable
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import React, {Component} from 'react';
-// import './App.css';
 import * as actions from './actions/actions.js'
 import LoadingScreen from '../LoadingScreen/LoadingScreen.js'
 import NotFound from '../NotFound/NotFound.js'
 import Section from './Section.js'
+import Water from './Water.js'
 import MenuItem from './MenuItem.js'
 import MenuList from './MenuList.js'
 import Header from './Header.js'
 import Footer from './Footer.js'
 import ItemDetail from './ItemDetail.js'
+import { persistStore } from 'redux-persist'
 
 class Menu extends Component {
   constructor(props) {
@@ -25,17 +25,21 @@ class Menu extends Component {
    }
 
   componentWillMount() {
-    const {getMenuData, bffRes, venue} = this.props;
+    const { getMenuData, bffRes, venue } = this.props;
     if (!bffRes || this.params.requestedVenue !== venue) {
       getMenuData(this.params.requestedVenue);
     }
   }
 
   componentWillUpdate() {
-    const {getMenuData, bffRes, venue} = this.props;
+    const { getMenuData, bffRes, venue } = this.props;
     if (!bffRes || this.params.requestedVenue !== venue) {
       getMenuData(this.params.requestedVenue);
     }
+  }
+
+  componentWillUnmount() {
+    persistStore(this.props).purge();
   }
 
   routeItemDetails(e, id) {
@@ -44,8 +48,16 @@ class Menu extends Component {
   }
 
   generateView() {
-    const {bffRes, filter, updateFilter, sectionPositions} = this.props;
-    const itemId = this.params.item;
+    const {
+      bffRes,
+      filter,
+      lang,
+      updateFilter,
+      updateLang,
+      sectionPositions,
+    } = this.props
+    const itemId = this.params.item
+
     const venueName = Object.values(bffRes)[0].fields.Venue
     const { menu, sectionNames } = this.printMenu(bffRes, filter);
     
@@ -53,7 +65,7 @@ class Menu extends Component {
     // add 'Menu' to the end of the doc title - shows in tab
     document.title = venueName + " Menu";
     if (itemId) {
-      return (<ItemDetail details={bffRes[itemId].fields}/>)
+      return (<ItemDetail details={bffRes[itemId].fields} lang={lang} />)
     } else {
       return (
         <div className="Menu">
@@ -63,12 +75,15 @@ class Menu extends Component {
             showLanguageSelect
             showFilter
             filter={filter}
+            lang={lang}
             updateFilter={updateFilter}
+            updateLang={updateLang}
             sectionNames={sectionNames}
             sectionPositions={sectionPositions}
           />}
           <div className="menu">
-            {menu}
+            { menu }
+            <Water />
             <Footer/>
           </div>
         </div>
@@ -77,7 +92,7 @@ class Menu extends Component {
   }
 
   printMenu(menuSections) {
-    const { filter, setSectionPosition } = this.props
+    const { filter, setSectionPosition, lang } = this.props
     let tagsInUse = []
     Object.keys(filter).forEach(tag => {
       if (filter[tag]) {
@@ -117,10 +132,11 @@ class Menu extends Component {
           <MenuItem
             key={menuSections[section].id}
             onClick={(e) => {
-                this.routeItemDetails(e, menuSections[section].id)
+                this.routeItemDetails(e, menuSections[section].id, lang)
               }}
             item={menuSections[section].fields}
             itemIndex={itemIndex}
+            lang={lang}
           />
         )
         // if it is not a list, else (if it is)
@@ -208,8 +224,9 @@ const mapStateToProps = state => ({
   bffRes: state.persistentMenu.bffRes,
   isLoading: state.persistentMenu.isLoading,
   venue: state.persistentMenu.venue,
-  filter: state.menu.filter,
   sectionPositions: state.menu.sectionPositions,
+  filter: state.persistentMenu.filter,
+  lang: state.persistentMenu.lang,
 });
 
 

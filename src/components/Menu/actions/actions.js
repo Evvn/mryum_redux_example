@@ -28,3 +28,10 @@ export function setSectionPosition(section, position) {
     position,
   }
 }
+
+export function updateLang(lang) {
+  return {
+    type: actionTypes.UPDATE_LANG,
+    lang,
+  }
+}

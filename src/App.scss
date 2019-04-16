@@ -145,12 +145,11 @@ body {
 .menu {
   min-height: 100vh;
   position: relative;
-  padding-bottom: 475px;
   background-color: white;
 }
 
 .pdfLinkSpace {
-  padding-bottom: 545px;
+  padding-bottom: 55px;
 }
 
 .hidden {
@@ -707,7 +706,7 @@ header {
       }
 
       p {
-        background-color: $hopscotch;
+        background-color: $red;
         color: white;
         width: 70%;
         border-radius: 15px;
@@ -731,7 +730,7 @@ header {
     .filterIcon {
       width: 8px;
       height: 8px;
-      background-color: black;;
+      background-color: $red;
       border-radius: 10px;
       position: fixed;
       z-index: 5;
@@ -778,8 +777,8 @@ header {
 
         .checkedBox {
           border-radius: 2px;
-          border-color: $hopscotch;
-          background-color: $hopscotch;
+          border-color: $red;
+          background-color: $red;
         }
       }
 
@@ -808,31 +807,31 @@ header {
     .hamburger-inner {
       width: 30%;
       top: 26px;
-      background-color: black;
+      background-color: $hsdark;
     }
 
     .hamburger-inner::before {
       top: -6px;
       right: -4px;
-      background-color: black;
+      background-color: $hsdark;
     }
 
     .hamburger-inner::after {
       top: 6px;
       right: 3px;
       width: 50%;
-      background-color: black;
+      background-color: $hsdark;
     }
 
     .hamburger.is-active .hamburger-inner {
       width: 20px;
       left: -5px;
-      background-color: black;
+      background-color: $hsdark;
     }
 
     .hamburger.is-active .hamburger-inner::after,
     .hamburger.is-active .hamburger-inner::before {
-      background-color: black; // MENU OPEN COLOR HERE
+      background-color: $hsdark; // MENU OPEN COLOR HERE
       width: 20px;
       top: 0;
       right: 0;
@@ -851,7 +850,7 @@ header {
     height: 8px;
     width: 8px;
     border-radius: 8px;
-    background-color: $hopscotch;
+    background-color: $red;
     position: absolute;
     top: 18px;
     right: 10px;
@@ -860,7 +859,7 @@ header {
 
 .selectLanguage {
   position: absolute;
-  color: white;
+  color: $hsdark;
   font-size: 15px;
   right: 85px;
   top: 20px;
@@ -873,8 +872,8 @@ header {
 
   .langArrow {
     display: inline-block;
-    border-top: 2px solid white;
-    border-left: 2px solid white;
+    border-top: 2px solid $hsdark;
+    border-left: 2px solid $hsdark;
     border-radius: 0;
     width: 10px;
     height: 10px;
@@ -893,8 +892,9 @@ header {
 
 .languageList {
   position: absolute;
-  top: 50px;
-  right: 85px;
+  z-index: 8;
+  top: 30px;
+  right: -10px;
   border: 1px solid #aaa;
   border-radius: 3px;
   background-color: white;
@@ -934,13 +934,14 @@ header {
   }
 
   .radioSelected {
-    background-color: $hopscotch;
-    border-color: $hopscotch;
+    background-color: $red;
+    border-color: $red;
   }
 }
 
 .langOpen {
   height: 287px;
+  top: 50px;
   height: auto;
   opacity: 1;
   position: absolute;
@@ -994,7 +995,7 @@ header {
 
   .red {
     color: white;
-    background-color: $hopscotch;
+    background-color: $red;
     border-radius: 15px;
     margin-left: 10px;
   }
@@ -1840,7 +1841,6 @@ footer {
 }
 
 .footerCont {
-  position: absolute;
   bottom: 0;
 
   .linkToMenu {
@@ -2205,9 +2205,6 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // justify-content: space-around;
-    // align-items: center;
-    // flex-basis: 33%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;

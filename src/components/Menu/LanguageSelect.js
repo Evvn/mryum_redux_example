@@ -2,31 +2,76 @@ import React from 'react'
 
 class Filter extends React.Component {
 
+  // on language section click
+  langClick(e) {
+    // toggle 'open' classes
+    document.querySelector('.langArrow').classList.toggle('rotate')
+    document.querySelector('.languageList').classList.toggle('langOpen')
+
+    // close filter if it's open
+    if (document.querySelector('.filterList') !== null) {
+      document.querySelector('.filterList').classList.remove('open')
+      document.querySelector('.hamburger').classList.remove('is-active')
+    }
+  }
+
+  printLanguages(languageList) {
+    const { lang, updateLang } = this.props
+    let languageButtons = []
+    languageList.forEach(language => {
+      let className = 'radioBtn'
+      if (language.code === lang) {
+        className = 'radioBtn radioSelected'
+      }
+      languageButtons.push(
+        <p
+          className="language"
+          id={language.name}
+          code={language.code}
+          onClick={(e) => {updateLang(language.code)}}
+        >
+          <span className={className} code={language.code} />{language.name}
+        </p>
+      )
+    })
+    return languageButtons
+  }
+
   render() {
+    const { lang, } = this.props
+    const languageList = [
+      {
+        code: 'en',
+        name: 'English',
+      },
+      {
+        code: 'fr',
+        name: 'Français',
+      },
+      {
+        code: 'el',
+        name: 'ελληνικά',
+      },
+      {
+        code: 'zh-CN',
+        name: '中文',
+      },
+      {
+        code: 'es',
+        name: 'Español',
+      },
+      {
+        code: 'it',
+        name: 'Italiano',
+      },
+    ]
 
     return(
-      <div className="selectLanguage" onClick={ this.langClick }>
-        <span className="langCode">en</span><div className="langArrow"></div>
+      <div className="selectLanguage" onClick={this.langClick}>
+        <span className="langCode">{lang}</span><div className="langArrow"></div>
 
         <div className="languageList">
-          <p className="language" id="english" code="en" onClick={ this.props.setLang }>
-            <span className="radioBtn radioSelected" code="en" />English
-          </p>
-          <p className="language" id="french" code="fr" onClick={ this.props.setLang }>
-            <span className="radioBtn" code="fr" />Français
-          </p>
-          <p className="language" id="greek" code="el" onClick={ this.props.setLang }>
-            <span className="radioBtn" code="el" />ελληνικά
-          </p>
-          <p className="language" id="chinese-simplified" code="zh-CN" onClick={ this.props.setLang }>
-            <span className="radioBtn" code="zh-CN" />中文
-          </p>
-          <p className="language" id="spanish" code="es" onClick={ this.props.setLang }>
-            <span className="radioBtn" code="es" />Español
-          </p>
-          <p className="language" id="italian" code="it" onClick={ this.props.setLang }>
-            <span className="radioBtn" code="it" />Italiano
-          </p>
+          {this.printLanguages(languageList)}
         </div>
       </div>
     )

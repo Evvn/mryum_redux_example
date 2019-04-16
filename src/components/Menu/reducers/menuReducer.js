@@ -1,15 +1,13 @@
+// eslint-disable-next-line
 import * as actionTypes from '../actions/actionTypes/actionTypes.js'
-import { filter } from '../enums/menuEnums.js'
 
 const initialState = {
   isTest: true,
   isQR: false,
   isBroadsheet: false,
-  filter,
   venueurl: '',
   sections: [],
   definitions: [],
-  lang: 'en', // can use common reducer for this to access it from all pages
   showModal: false,
   showMenuLink: false,
   showBroadsheetLink: false,

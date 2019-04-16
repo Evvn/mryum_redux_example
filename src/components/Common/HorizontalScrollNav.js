@@ -1,7 +1,5 @@
 import React from 'react';
 import DragScroll from 'react-dragscroll';
-import classNames from 'classnames';
-
 
 class HorizontalScrollNav extends React.Component {
     constructor(props) {
