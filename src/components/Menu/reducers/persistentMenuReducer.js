@@ -6,6 +6,7 @@ const initialState = {
   bffRes: false,
   isLoading: true,
   lang: 'en',
+  item: false,
   filter
 }
 
@@ -22,6 +23,7 @@ function menuReducer(state = initialState, action) {
         venue: action.venue,
         bffRes: action.res,
         isLoading: false,
+        item: action.item,
       }
     case actionTypes.UPDATE_LANG:
       return {
@@ -32,6 +34,11 @@ function menuReducer(state = initialState, action) {
       return {
         ...state,
         filter: action.filter,
+      }
+    case actionTypes.SET_ITEM_ID:
+      return {
+        ...state,
+        item: action.id,
       }
     default:
       return state

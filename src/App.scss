@@ -617,7 +617,6 @@ body {
   // background-color: #000;
   z-index: 4;
   padding-top: 5px;
-  padding-bottom: 15px;
   margin-left: -15px;
 
   -ms-overflow-style: none;
@@ -632,7 +631,7 @@ body {
     white-space: nowrap;
     margin-right: 15px;
     font-size: 14px;
-    padding: 7px 12px;
+    padding: 4px 12px;
     border-radius: 15px;
     transition: .2s ease all;
     /* Enable hardware acceleration to fix laggy transitions */
@@ -647,7 +646,7 @@ body {
   .red {
     color: white;
     background-color: $red;
-    border-radius: 15px;
+    border-radius: 50px;
     margin-left: 10px;
   }
 }

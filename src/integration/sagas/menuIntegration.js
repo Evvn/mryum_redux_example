@@ -1,5 +1,5 @@
 import * as actionTypes from '../../components/Menu/actions/actionTypes/actionTypes.js';
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, select } from 'redux-saga/effects';
 import callBff from '../callBff.js'
 
 export function* getMenuData(action) {
@@ -11,6 +11,10 @@ export function* getMenuData(action) {
         venue: action.venue,
         res,
       })
+      yield put({
+        type: actionTypes.SET_ITEM_ID,
+        id: action.item,
+      })
   } catch (error) {
     console.log(error)
     yield put({
@@ -20,8 +24,20 @@ export function* getMenuData(action) {
   }
 }
 
+export function* setSectionPositions(action) {
+    const getCurrentPositions = state => state.menu.sectionPositions;
+    let sectionPositions = yield select(getCurrentPositions);
+    sectionPositions = !sectionPositions ? {} : sectionPositions;
+    sectionPositions[action.section] = action.position.y;
+    yield put({
+      type: actionTypes.SET_SECTION_POSITION_SUCCESS,
+      sectionPositions
+    });
+}
+
 export function* actionWatcher() {
   yield [
     takeLatest(actionTypes.GET_MENU_DATA_REQUEST, getMenuData),
+    takeLatest(actionTypes.SET_SECTION_POSITION_REQUEST, setSectionPositions),
   ]
 }

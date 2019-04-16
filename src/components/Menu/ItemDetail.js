@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './Header.js'
 import JsxParser from 'react-jsx-parser'
 import Swipe from "react-easy-swipe";
 
@@ -107,7 +106,7 @@ class ItemDetail extends React.Component {
         onSwipeEnd={this.onSwipeEnd}
       >
         <div className='previewModal' onClick={this.handleClick}>
-          <Header showBackArrow />
+          <header showBackArrow />
 
           <div className="previewItem">
 
