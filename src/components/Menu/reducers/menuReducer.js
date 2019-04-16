@@ -15,6 +15,7 @@ const initialState = {
   showBroadsheetLink: false,
   menuUrl: '',
   broadsheetLink: '',
+  sectionPositions: {},
 }
 
 function menuReducer(state = initialState, action) {
@@ -23,6 +24,11 @@ function menuReducer(state = initialState, action) {
       return {
         ...state,
         filter: action.filter,
+      }
+    case actionTypes.SET_SECTION_POSITION_SUCCESS:
+      return {
+        ...state,
+        sectionPositions: action.sectionPositions,
       }
     default:
       return state

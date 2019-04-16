@@ -20,3 +20,11 @@ export function updateFilter(filter) {
     filter,
   }
 }
+
+export function setSectionPosition(section, position) {
+  return {
+    type: actionTypes.SET_SECTION_POSITION_REQUEST,
+    section,
+    position,
+  }
+}

@@ -44,19 +44,20 @@ class Menu extends Component {
   }
 
   generateView() {
-    const {bffRes, filter, updateFilter} = this.props;
+    const {bffRes, filter, updateFilter, sectionPositions} = this.props;
     const itemId = this.params.item;
     const venueName = Object.values(bffRes)[0].fields.Venue
     const { menu, sectionNames } = this.printMenu(bffRes, filter);
+    
 
     // add 'Menu' to the end of the doc title - shows in tab
     document.title = venueName + " Menu";
-
     if (itemId) {
       return (<ItemDetail details={bffRes[itemId].fields}/>)
     } else {
       return (
         <div className="Menu">
+          {sectionPositions === {} ? (<span>Loading</span>) :
           <Header
             venueName={venueName}
             showLanguageSelect
@@ -64,7 +65,8 @@ class Menu extends Component {
             filter={filter}
             updateFilter={updateFilter}
             sectionNames={sectionNames}
-          />
+            sectionPositions={sectionPositions}
+          />}
           <div className="menu">
             {menu}
             <Footer/>
@@ -75,7 +77,7 @@ class Menu extends Component {
   }
 
   printMenu(menuSections) {
-    const { filter } = this.props
+    const { filter, setSectionPosition } = this.props
     let tagsInUse = []
     Object.keys(filter).forEach(tag => {
       if (filter[tag]) {
@@ -102,6 +104,7 @@ class Menu extends Component {
               itemIndex={itemIndex}
               key={menuSections[section].fields['Sections']}
               name={menuSections[section].fields['Sections']}
+              setSectionPosition={setSectionPosition}
             />
           )
         }
@@ -186,13 +189,13 @@ class Menu extends Component {
   }
 
   render() {
-    const {isLoading} = this.props
+    const {isLoading, sectionPositions} = this.props
     return (
       <div>
         {
           isLoading
             ? <LoadingScreen/>
-            : this.generateView()
+            : this.generateView(sectionPositions)
         }
       </div>
     );
@@ -206,6 +209,7 @@ const mapStateToProps = state => ({
   isLoading: state.persistentMenu.isLoading,
   venue: state.persistentMenu.venue,
   filter: state.menu.filter,
+  sectionPositions: state.menu.sectionPositions,
 });
 
 

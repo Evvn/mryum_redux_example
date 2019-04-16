@@ -1,6 +1,16 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 
 class Section extends React.Component {
+
+  componentDidMount(){
+    const { name, setSectionPosition } = this.props;
+    const position = ReactDOM
+      .findDOMNode(this)
+      .getBoundingClientRect();
+    setSectionPosition(name, position);
+  }
+
   render() {
     let { name, itemIndex } = this.props
     let subSection = ""

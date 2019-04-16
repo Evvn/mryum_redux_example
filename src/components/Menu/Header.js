@@ -5,9 +5,21 @@ import Filter from './Filter.js';
 import LanguageSelect from './LanguageSelect.js';
 
 class Header extends React.Component {
+  componentWillUpdate(){
+    console.log('willrecieve')
+  }
   render() {
     // eslint-disable-next-line
-    const { venueName, sectionNames, showBackArrow, showFilter, showLanguageSelect, filter, updateFilter } = this.props
+    const {
+      venueName,
+      sectionPositions,
+      showBackArrow,
+      showFilter,
+      showLanguageSelect,
+      filter,
+      updateFilter,
+      current,
+    } = this.props
 
     return (
       <header className="header">
@@ -15,7 +27,7 @@ class Header extends React.Component {
         { showBackArrow ? <img src="/icons/arrow-left-solid-white.svg" className="headerBackArrow" alt="back arrow"/> : null }
         { !!venueName ? <h1 className="venue">{venueName}</h1> : null }
         { showFilter && <Filter filter={filter} updateFilter={updateFilter} /> }
-        <HorizontalScrollNav sections={sectionNames} />
+        <HorizontalScrollNav sectionPositions={sectionPositions}/>
 
         {/* { showLanguageSelect && <LanguageSelect /> } */}
 
