@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history'
 import makeRootReducer from './rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './integration/sagas/rootSaga.js'
-import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
+import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 export const history = createBrowserHistory();
 
@@ -17,7 +17,7 @@ export default (initialState = {}) => {
   const persistConfig = {
     key: 'root',
     storage,
-    stateReconciler: autoMergeLevel1,
+    stateReconciler: autoMergeLevel2,
     blacklist: ['router', 'menu']
   }
 

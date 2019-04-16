@@ -1,6 +1,5 @@
 import browserPlugin from 'router5/plugins/browser';
 import createRouter from 'router5';
-import { reduxPlugin } from 'redux-router5';
 
 const initializeRouter = (options) => {
   const {
