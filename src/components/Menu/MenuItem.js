@@ -51,25 +51,26 @@ class MenuItem extends React.Component {
       backgroundRepeat: 'no-repeat'
     }
 
-    return (
-      <div onClick={(e) => onClick(e)}>
-        { itemIndex % 2 === 0 ?
-          <div className="menuItem">
-            <div className="leftBox" style={style}></div>
-            <div className="rightBox">
-              { this.itemDetails(item) }
-            </div>
+    // if even/odd
+    if (itemIndex % 2 === 0) {
+      return (
+        <div className="menuItem" onClick={(e) => onClick(e)}>
+          <div className="leftBox" style={style}></div>
+          <div className="rightBox">
+            { this.itemDetails(item) }
           </div>
-          :
-          <div className="menuItem">
-            <div className="leftBox">
-              { this.itemDetails(item) }
-            </div>
-            <div className="rightBox" style={style}></div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="menuItem" onClick={(e) => onClick(e)}>
+          <div className="leftBox">
+            { this.itemDetails(item) }
           </div>
-        }
-      </div>
-    )
+          <div className="rightBox" style={style}></div>
+        </div>
+      )
+    }
   }
 }
 

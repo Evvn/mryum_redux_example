@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import _ from 'lodash'
 // import DragScroll from 'react-dragscroll';
 
@@ -22,8 +22,8 @@ class HorizontalScrollNav extends React.Component {
         // add event listener on scroll with throttling to prevent excessive events being fired
         window.addEventListener('scroll', _.throttle(this.scrollHandle.bind(this), 300, { trailing: true, leading: true }))
         // window.addEventListener('scroll', this.scrollHandle.bind(this));
-        
-        
+
+
     }
 
       componentWillUnmount() {
@@ -42,12 +42,12 @@ class HorizontalScrollNav extends React.Component {
         const sortable = Object.keys(obj).map((key,index) => [key, obj[key], obj[Object.keys(obj)[index+1]]]);
         sortable.sort((a,b) => a[1] - b[1]);
         sortable.forEach(obj => {
-          newObj[obj[0]] = [obj[1], obj[2] ? obj[2] : Infinity]; 
+          newObj[obj[0]] = [obj[1], obj[2] ? obj[2] : Infinity];
         });
 
-    
+
         return newObj;
-      } 
+      }
 
 
     componentDidUpdate(){
@@ -130,10 +130,11 @@ class HorizontalScrollNav extends React.Component {
                         }
 
                         return (
-                            <span 
-                                onClick={(e) => {this.sectionClickHandle(e, sectionPositions[section], `$scroll-nav-${section}`)}} 
+                            <span
+                                onClick={(e) => {this.sectionClickHandle(e, sectionPositions[section], `$scroll-nav-${section}`)}}
                                 ref={(ref) => this[`$scroll-nav-${section}`]=ref}
                                 id={`$scroll-nav-${section}`}
+                                key={index}
                             >
                                 {section}
                             </span>

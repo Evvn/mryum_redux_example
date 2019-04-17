@@ -25,6 +25,7 @@ class Filter extends React.Component {
       }
       languageButtons.push(
         <p
+          key={language.name}
           className="language"
           id={language.name}
           code={language.code}

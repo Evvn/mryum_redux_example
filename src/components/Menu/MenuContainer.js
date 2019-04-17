@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import HorizontalScrollNav from '../Common/HorizontalScrollNav';
 import Filter from './Filter.js';
-// eslint-disable-next-line
 import LanguageSelect from './LanguageSelect.js';
 import Menu from './Menu';
 import { persistStore } from 'redux-persist'
@@ -80,10 +79,10 @@ class MenuContainer extends React.Component {
       <div>
         <header className="header">
           {/* back arrow for routing, control this and venuename via props */}
-          { itemView ? <img style ={{background: 'black'}} src="/icons/arrow-left-solid-white.svg" className="headerBackArrow" alt="back arrow"/> : null }
+          { itemView ? <img onClick={() => {window.history.back()}} src="/icons/arrow-left-solid-grey.svg" className="headerBackArrow" alt="back arrow"/> : null }
           { !!venueName && !itemView? <h1 className="venue">{venueName}</h1> : null }
           { !itemView && <Filter filter={filter} updateFilter={updateFilter} /> }
-            { !itemView ? <HorizontalScrollNav sectionPositions={sectionPositions}/> : ''}
+          { !itemView ? <HorizontalScrollNav sectionPositions={sectionPositions}/> : ''}
           { !itemView && <LanguageSelect lang={lang} updateLang={updateLang} /> }
           {/* <img className="cartIcon" src="/icons/cart_icon.svg" alt="cart"/> */}
           {/* need check to see when to display cart badge */}

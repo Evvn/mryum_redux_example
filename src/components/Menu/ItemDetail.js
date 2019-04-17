@@ -106,7 +106,6 @@ class ItemDetail extends React.Component {
         onSwipeEnd={this.onSwipeEnd}
       >
         <div className='previewModal' onClick={this.handleClick}>
-          <header showBackArrow />
 
           <div className="previewItem">
 

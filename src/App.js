@@ -28,7 +28,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  moduleMappings: PropTypes.objectOf(PropTypes.object).isRequired,
+  // I removed the .isRequired from the end of the last line, could cause problems? Fixes an error that was being thrown
+  moduleMappings: PropTypes.objectOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({
