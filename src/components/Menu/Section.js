@@ -57,6 +57,7 @@ class Section extends React.Component {
     const {
       menuSection,
       lang,
+      routeToItemDetail,
     } = this.props;
 
     return menuSection.map((item, index) => {
@@ -68,7 +69,7 @@ class Section extends React.Component {
           item={item.fields}
           itemIndex={index}
           lang={lang}
-          onClick={(e) => {this.routeToItemDetails(e, item.id, lang)}}
+          onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
         />
       );
 
