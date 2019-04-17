@@ -1973,9 +1973,7 @@ body {
   }
 
   .tiny {
-    margin: 0;
-    height: 0;
-    width: 0;
+    display: none !important;
   }
 
   .menuList {

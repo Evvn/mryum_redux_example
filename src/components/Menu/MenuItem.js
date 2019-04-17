@@ -44,8 +44,9 @@ class MenuItem extends React.Component {
 
   render() {
     const { item, itemIndex, onClick } = this.props;
+    let img = item['Image'] ? item['Image'][0].url : '/mryum_assets/missing_photo.jpg'
     const style = {
-      backgroundImage: 'url(' + item['Image'][0].url + ')',
+      backgroundImage: 'url(' + img + ')',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'
