@@ -43,3 +43,10 @@ export function setItemId(id) {
     id,
   }
 }
+
+export function clearSectionPositions(){
+  return{
+    type: actionTypes.SET_SECTION_POSITION_SUCCESS,
+    sectionPositions: false,
+  }
+}

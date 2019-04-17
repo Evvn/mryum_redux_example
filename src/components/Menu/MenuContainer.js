@@ -25,9 +25,10 @@ class MenuContainer extends React.Component {
   }
 
  componentWillMount() {
-   const { getMenuData, bffRes, venue, itemId, setItemId } = this.props;
+   const { getMenuData, bffRes, venue, itemId, setItemId, clearSectionPositions } = this.props;
    if (!bffRes || this.params.requestedVenue !== venue) {
      getMenuData(this.params.requestedVenue, this.params.item);
+     clearSectionPositions();
    }
    if(this.params.item !== itemId){
      setItemId(this.params.item)
@@ -35,9 +36,10 @@ class MenuContainer extends React.Component {
  }
 
  componentWillUpdate() {
-   const { getMenuData, bffRes, venue, itemId, setItemId } = this.props;
+   const { getMenuData, bffRes, venue, itemId, setItemId, clearSectionPositions } = this.props;
    if (!bffRes || this.params.requestedVenue !== venue) {
      getMenuData(this.params.requestedVenue, this.params.item);
+     clearSectionPositions();
    }
    if(this.params.item !== itemId){
      setItemId(this.params.item)
@@ -45,6 +47,8 @@ class MenuContainer extends React.Component {
  }
 
  componentWillUnmount() {
+   const { clearSectionPositions } = this.props;
+   clearSectionPositions();
    persistStore(this.props).purge();
  }
 

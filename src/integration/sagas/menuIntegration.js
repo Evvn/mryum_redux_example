@@ -25,13 +25,23 @@ export function* getMenuData(action) {
 }
 
 export function* setSectionPositions(action) {
+  const sortByValue = (obj) => {
+    const newObj = {};
+    const sortable = Object.keys(obj).map(key => [key, obj[key]]);
+    sortable.sort((a,b) => a[1] - b[1]);
+    sortable.forEach(obj => {
+      newObj[obj[0]] = obj[1]
+    });
+
+    return newObj;
+  } 
     const getCurrentPositions = state => state.menu.sectionPositions;
     let sectionPositions = yield select(getCurrentPositions);
     sectionPositions = !sectionPositions ? {} : sectionPositions;
     sectionPositions[action.section] = action.position.y;
     yield put({
       type: actionTypes.SET_SECTION_POSITION_SUCCESS,
-      sectionPositions
+      sectionPositions: sortByValue(sectionPositions),
     });
 }
 
