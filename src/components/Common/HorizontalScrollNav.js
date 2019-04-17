@@ -53,8 +53,7 @@ class HorizontalScrollNav extends React.Component {
       }
 
     render() {
-        // eslint-disable-next-line
-        const { sectionPositions, sectionNames } = this.props;
+        const { sectionPositions } = this.props;
         const sections = Object.keys(sectionPositions);
         return (
             <div
@@ -68,14 +67,13 @@ class HorizontalScrollNav extends React.Component {
                     const nextPosition = sectionPositions[sections[index + 1]];
                     const nextValue = nextPosition ? nextPosition : -1;
                     const className = (y >= sectionPosition && y < nextValue) ? "red" : '';
-                    // console.log({
-                    //     section, y, sectionPosition, nextPosition, className
-                    // })
 
                     return (
-                        <span id={`$scroll-nav-${section}`}
-                            className={className}>
-                            {section}
+                        <span
+                          key={index}
+                          id={`$scroll-nav-${section}`}
+                          className={className}>
+                          {section}
                         </span>
                     );
                 })}

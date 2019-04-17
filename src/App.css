@@ -564,7 +564,7 @@ header {
   top: 0;
   color: black;
   background-color: #fff;
-  z-index: 5;
+  z-index: 999;
   padding: 15px;
   transition: 0.4s ease-in-out all;
 }
@@ -1031,7 +1031,7 @@ h1 img {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "leftBox rightBox";
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 .menuItem .forDummies {
   color: white;
@@ -1116,6 +1116,7 @@ h1 img {
 }
 
 .menuListItem {
+  background-color: white;
   grid-template-columns: 1fr;
   min-height: 80px;
   height: 100%;
@@ -1249,7 +1250,7 @@ h1 img {
 }
 
 .previewModal {
-  background-color: #FAFAFA;
+  background-color: white;
   height: 100vh;
   overflow: auto;
   max-width: 500px;
@@ -1809,20 +1810,18 @@ body {
     padding-top: 145px;
   }
 
-  .menu {
+  .menu > div > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start;
   }
-  .menu .footerCont,
-.menu footer {
+  .menu > div > div .footerCont,
+.menu > div > div footer {
     max-width: none;
     width: 100%;
   }
-  .menu .define {
+  .menu > div > div .define {
     color: #6f6f6f;
     border-bottom: 1px solid transparent;
     cursor: pointer;
@@ -1833,7 +1832,7 @@ body {
       border-bottom: 1px solid #6f6f6f;
     }
   }
-  .menu .definition {
+  .menu > div > div .definition {
     width: 85vw;
     max-width: 400px;
     height: auto;
@@ -1857,13 +1856,13 @@ body {
       opacity: 1;
     }
   }
-  .menu .definition .definedWord {
+  .menu > div > div .definition .definedWord {
     text-transform: capitalize;
     font-size: 26px;
     letter-spacing: 1px;
     padding-bottom: 15px;
   }
-  .menu .definition .definitionText {
+  .menu > div > div .definition .definitionText {
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: 0.3px;
@@ -1879,9 +1878,9 @@ body {
     width: 100%;
     max-width: none;
     max-height: none;
-    background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     top: 0;
+    background-color: #fafafa;
   }
   .previewModal .previewItem {
     display: grid;
@@ -1890,6 +1889,9 @@ body {
     grid-template-areas: "previewImage previewWrapper";
     height: auto;
     margin: auto;
+    padding: 1px;
+    border: 1px solid #ececec;
+    background-color: white;
   }
   .previewModal .previewImage {
     grid-area: previewImage;
@@ -1899,6 +1901,7 @@ body {
     padding-top: 50px;
   }
   .previewModal .previewDescription {
+    padding-top: 15px;
     min-height: 250px;
   }
   .previewModal .previewWrapper {
@@ -1907,9 +1910,14 @@ body {
   }
   .previewModal .imageCredit,
 .previewModal .previewWrapper {
-    background-color: #FAFAFA;
+    background-color: white;
     width: auto;
     padding-top: 5px;
+  }
+  .previewModal .imageCredit {
+    position: absolute;
+    bottom: 15px;
+    padding-left: 20px;
   }
   .previewModal .previewDetails {
     padding-bottom: 0;
@@ -1935,26 +1943,35 @@ body {
     max-width: none;
     background-size: contain;
     background-position: center center;
+    border-radius: 4px 4px 0px 0px;
   }
   .menuItem .rightBox {
     height: 250px;
     border-radius: 0 0 4px 4px;
   }
-  .menuItem .rightBox:nth-of-type(odd) {
-    grid-area: leftBox;
+
+  .menuItem:nth-of-type(even) {
+    grid-template-areas: "rightBox" "leftBox";
+  }
+  .menuItem:nth-of-type(even) .rightBox {
     height: 350px;
     border: none;
     border-radius: 0;
     border-radius: 4px 4px 0 0;
   }
-  .menuItem .leftBox:nth-of-type(odd) {
-    border-radius: 4px 4px 0 0;
-  }
-  .menuItem .leftBox:nth-of-type(even) {
-    grid-area: rightBox;
+  .menuItem:nth-of-type(even) .leftBox {
     height: 250px;
     border-radius: 0 0 4px 4px;
   }
+
+  .menuListItem {
+    height: 200px;
+  }
+
+  .menuListItem:nth-of-type(even) {
+    grid-template-areas: "leftBox" "rightBox";
+  }
+
   .tiny {
     margin: 0;
     height: 0;

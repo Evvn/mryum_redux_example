@@ -51,6 +51,7 @@ class Menu extends Component {
       Object.keys(menuSections).forEach((section,index) => {
           sections.push(
             <Section
+              key={index}
               index={index}
               menuSection={menuSections[section]}
               name={section}
@@ -71,7 +72,7 @@ class Menu extends Component {
       menuItems,
       itemId,
     } = this.props
-    
+
     return (
       <div>
         {
