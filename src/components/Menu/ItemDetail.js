@@ -77,8 +77,8 @@ class ItemDetail extends React.Component {
     const { details, lang } = this.props
     let name = details['Item Name']
     let desc = details['Item Description']
-    let translatedName = 'description-' + lang
-    let translatedDesc = 'name-' + lang
+    let translatedName = 'name-' + lang
+    let translatedDesc = 'description-' + lang
     let creditUrl
 
     if (lang !== 'en') {

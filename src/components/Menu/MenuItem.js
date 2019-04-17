@@ -7,8 +7,8 @@ class MenuItem extends React.Component {
     const { lang } = this.props
     let name = item['Item Name']
     let desc = item['Item Description Raw']
-    let translatedName = 'description-' + lang
-    let translatedDesc = 'name-' + lang
+    let translatedName = 'name-' + lang
+    let translatedDesc = 'description-' + lang
 
     if (lang !== 'en') {
       name = item[translatedName]
