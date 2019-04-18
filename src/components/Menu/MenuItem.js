@@ -7,8 +7,8 @@ class MenuItem extends React.Component {
     const { lang } = this.props
     let name = item['Item Name']
     let desc = item['Item Description Raw']
-    let translatedName = 'description-' + lang
-    let translatedDesc = 'name-' + lang
+    let translatedName = 'name-' + lang
+    let translatedDesc = 'description-' + lang
 
     if (lang !== 'en') {
       name = item[translatedName]
@@ -44,8 +44,9 @@ class MenuItem extends React.Component {
 
   render() {
     const { item, itemIndex, onClick } = this.props;
+    let img = item['Image'] ? item['Image'][0].url : '/mryum_assets/missing_photo.jpg'
     const style = {
-      backgroundImage: 'url(' + item['Image'][0].url + ')',
+      backgroundImage: 'url(' + img + ')',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'

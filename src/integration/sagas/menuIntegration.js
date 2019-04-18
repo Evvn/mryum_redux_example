@@ -17,6 +17,7 @@ export function* getMenuData(action) {
       })
   } catch (error) {
     console.log(error)
+    window.location = '/notfound'
     yield put({
       type: actionTypes.GET_MENU_DATA_FAILURE,
       error,
@@ -34,7 +35,7 @@ export function* setSectionPositions(action) {
     });
 
     return newObj;
-  } 
+  }
     const getCurrentPositions = state => state.menu.sectionPositions;
     let sectionPositions = yield select(getCurrentPositions);
     sectionPositions = !sectionPositions ? {} : sectionPositions;

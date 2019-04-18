@@ -10,7 +10,7 @@ class Section extends React.Component {
     const position = ReactDOM
       .findDOMNode(this)
       .getBoundingClientRect();
-    setSectionPosition(name, position);
+    setSectionPosition(name.split('%')[0], position);
   }
 
   processItem(item, index){
@@ -39,13 +39,14 @@ class Section extends React.Component {
   }
 
   getList(item, index){
-    const { routeToItemDetail } = this.props;
+    // const { routeToItemDetail } = this.props;
     return (
       <MenuList
         key={item.id}
-        onClick={(e) => {
-            routeToItemDetail(e, item.id)
-          }}
+        // disable menu list item click until ordering
+        // onClick={(e) => {
+        //     routeToItemDetail(e, item.id)
+        //   }}
         item={item.fields}
         itemIndex={index}
       />
@@ -56,6 +57,7 @@ class Section extends React.Component {
     const {
       menuSection,
       lang,
+      routeToItemDetail,
     } = this.props;
 
     return menuSection.map((item, index) => {
@@ -67,7 +69,7 @@ class Section extends React.Component {
           item={item.fields}
           itemIndex={index}
           lang={lang}
-          onClick={(e) => {this.routeToItemDetails(e, item.id, lang)}}
+          onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
         />
       );
 

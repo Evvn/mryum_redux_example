@@ -29,7 +29,7 @@ export default (initialState = {}) => {
   let store = '';
 
   // for dev
-  if (process.env.REACT_APP_DEV) {
+  if (process.env.REACT_APP_REDUX_DEV_TOOLS === 'true') {
     store = createStore(
       persistReducer(persistConfig, makeRootReducer(history)),
       initialState,
@@ -37,10 +37,8 @@ export default (initialState = {}) => {
         trace: true,
       })(applyMiddleware(...middleware), ...enhancers),
     );
-  }
-
-  // for prod
-  if (!process.env.REACT_APP_DEV) {
+  } // for prod
+  else {
     store = createStore(
       persistReducer(persistConfig, makeRootReducer(history)),
       initialState,
