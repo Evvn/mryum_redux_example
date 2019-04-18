@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import MenuItem from './MenuItem';
 import MenuList from './MenuList';
+import MenuInfo from './MenuInfo';
 
 class Section extends React.Component {
 
@@ -39,14 +40,12 @@ class Section extends React.Component {
   }
 
   getList(item, index){
-    // const { routeToItemDetail } = this.props;
+    const { routeToItemDetail } = this.props;
     return (
       <MenuList
         key={item.id}
         // disable menu list item click until ordering
-        // onClick={(e) => {
-        //     routeToItemDetail(e, item.id)
-        //   }}
+        onClick={(e) => {routeToItemDetail(e, item.id)}}
         item={item.fields}
         itemIndex={index}
       />
@@ -60,7 +59,9 @@ class Section extends React.Component {
       routeToItemDetail,
     } = this.props;
 
-    return menuSection.map((item, index) => {
+    let infoList = []
+
+    let section = menuSection.map((item, index) => {
       const hasTag = item.fields.Tags ? true : false;
       const tags = item.fields.Tags;
       const menuItemTemplate = (
@@ -73,8 +74,19 @@ class Section extends React.Component {
         />
       );
 
+      if (item.fields.itemType === 'info') {
+        infoList.push(item.fields)
+        // eslint-disable-next-line
+        return
+      }
+
       return hasTag ? tags[0] !== 'LIST' ? this.processItem(item, index) : this.getList(item, index) : menuItemTemplate
     });
+
+    // TODO: find a better unique key for this lol (lazy ass)
+    section.push(<MenuInfo key={Math.random(999)} infoList={infoList} />)
+
+    return section
   }
 
   render() {
