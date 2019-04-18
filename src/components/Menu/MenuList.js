@@ -38,7 +38,7 @@ class MenuList extends React.Component {
     const { item, itemIndex, onClick } = this.props;
 
     return(
-      // TODO: If menu is not accepting orders, make these list items non-clickable (? needs clarification)
+      // TODO: If order at table or pickup 'on', make these list items clickable (? needs clarification)
       <div className="menuItem menuListItem" key={ itemIndex } onClick={(e) => onClick(e)} >
         <div className="leftBox"></div>
         <div className="rightBox">
