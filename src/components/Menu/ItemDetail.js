@@ -80,6 +80,7 @@ class ItemDetail extends React.Component {
     let translatedName = 'name-' + lang
     let translatedDesc = 'description-' + lang
     let creditUrl
+    let img = details['Image'] ? details['Image'][0].url : '/mryum_assets/missing_photo.jpg'
 
     if (lang !== 'en') {
       name = details[translatedName]
@@ -93,12 +94,14 @@ class ItemDetail extends React.Component {
     let backgroundImage
     if (details.Tags !== 'LIST' && !!details.Image) {
       backgroundImage = {
-        backgroundImage: 'url(' + details['Image'][0].url + ')',
+        backgroundImage: 'url(' + img + ')',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }
     }
+
+    console.log(desc);
 
     return (
       <Swipe
