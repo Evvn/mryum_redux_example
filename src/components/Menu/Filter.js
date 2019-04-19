@@ -5,9 +5,9 @@ class Filter extends React.Component {
   toggleFilterMenu(e) {
     document.querySelector('.filterList').classList.toggle('open')
     if (document.querySelector('.filterList').classList.contains('open')) {
-      document.querySelector('.filterText').textContent = 'Close'
+      document.querySelector('.filterText').textContent = 'close'
     } else {
-      document.querySelector('.filterText').textContent = 'Filter'      
+      document.querySelector('.filterText').textContent = 'filter'
     }
     // document.querySelector('.hamburger').classList.toggle('is-active')
     // on filter menu click, close language menu if it's currently open
@@ -29,7 +29,7 @@ class Filter extends React.Component {
               <div className="hamburger-inner"></div>
             </div>
           </div> */}
-          <span className="filterText">Filter</span>
+          <span className="filterText">filter</span>
 
           {/* TODO: there's a lot of repetition going on here, would be nice to not hard code all the filters */}
           <div className="filterList">

@@ -57,9 +57,11 @@ class Section extends React.Component {
       menuSection,
       lang,
       routeToItemDetail,
+      tagsInUse,
     } = this.props;
 
-    let infoList = []
+    let infoList = [];
+    let updatedIndex = -1;
 
     let section = menuSection.map((item, index) => {
       const hasTag = item.fields.Tags ? true : false;
@@ -83,8 +85,27 @@ class Section extends React.Component {
       return hasTag ? tags[0] !== 'LIST' ? this.processItem(item, index) : this.getList(item, index) : menuItemTemplate
     });
 
-    // TODO: find a better unique key for this lol (lazy ass)
-    section.push(<MenuInfo key={Math.random(999)} infoList={infoList} />)
+    if (tagsInUse.length === 0) {
+      // TODO: find a better unique key for this lol (lazy ass)
+      section.push(<MenuInfo key={Math.random(999)} infoList={infoList} />)
+    }
+
+    section = section.map(item => {
+      if (item && item !== '' && item.type.name === 'MenuItem') {
+        updatedIndex ++
+        return (
+          <MenuItem
+            key={item.key}
+            item={item.props.item}
+            itemIndex={updatedIndex}
+            lang={lang}
+            onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
+          />
+        )
+      } else {
+        return item
+      }
+    })
 
     return section
   }
@@ -98,16 +119,25 @@ class Section extends React.Component {
     }
     if (tagsInUse.length > 0) {
       tagsInUse = tagsInUse.join(', ')
-      name = tagsInUse.replace('V', 'Vegetarian').replace('VE', 'Vegan').replace('GF', 'Gluten Free')
+      name = tagsInUse
+      .replace(new RegExp("\\bV\\b"), 'Vegetarian')
+      .replace(new RegExp("\\bVE\\b"), 'Vegan')
+      .replace(new RegExp("\\bGF\\b"), 'Gluten Free')
+    };
+
+    let section = this.getSection()
+
+    if (section.slice(-1)[0] === undefined) {
+      return <div></div>
+    } else {
+      return (
+        <div>
+          <h2 className={`section ${ index === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
+          { section }
+        </div>
+
+      )
     }
-
-    return (
-      <div>
-        <h2 className={`section ${ index === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
-        {this.getSection()}
-      </div>
-
-    )
   }
 }
 

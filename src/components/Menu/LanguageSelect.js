@@ -12,9 +12,9 @@ class Filter extends React.Component {
     if (document.querySelector('.filterList') !== null) {
       document.querySelector('.filterList').classList.remove('open')
       if (document.querySelector('.filterList').classList.contains('open')) {
-        document.querySelector('.filterText').textContent = 'Close'
+        document.querySelector('.filterText').textContent = 'close'
       } else {
-        document.querySelector('.filterText').textContent = 'Filter'
+        document.querySelector('.filterText').textContent = 'filter'
       }
     }
   }
