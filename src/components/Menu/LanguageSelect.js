@@ -1,13 +1,14 @@
 import React from 'react'
+import _ from 'lodash'
 
 class Filter extends React.Component {
 
-  // on language section click
-  langClick(e) {
-    // toggle 'open' classes
-    document.querySelector('.langArrow').classList.toggle('rotate')
-    document.querySelector('.languageList').classList.toggle('langOpen')
+  componentDidMount() {
+    window.addEventListener('scroll', _.throttle(this.closeFilterMenu, 300, { trailing: true, leading: true }))
+  }
 
+
+  closeFilterMenu() {
     // close filter if it's open
     if (document.querySelector('.filterList') !== null) {
       document.querySelector('.filterList').classList.remove('open')
@@ -17,6 +18,14 @@ class Filter extends React.Component {
         document.querySelector('.filterText').textContent = 'filter'
       }
     }
+  }
+
+  // on language section click
+  langClick = (e) => {
+    // toggle 'open' classes
+    document.querySelector('.langArrow').classList.toggle('rotate')
+    document.querySelector('.languageList').classList.toggle('langOpen')
+    this.closeFilterMenu()
   }
 
   printLanguages(languageList) {

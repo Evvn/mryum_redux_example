@@ -1,8 +1,19 @@
 import React from 'react'
+import _ from 'lodash'
 
 class Filter extends React.Component {
+  componentDidMount() {
+    window.addEventListener('scroll', _.throttle(this.closeLangMenu, 300, { trailing: true, leading: true }))
+  }
 
-  toggleFilterMenu(e) {
+
+  closeLangMenu() {
+    // on filter menu click, close language menu if it's currently open
+    document.querySelector('.languageList').classList.remove('langOpen')
+    document.querySelector('.langArrow').classList.remove('rotate')
+  }
+
+  toggleFilterMenu = (e) => {
     document.querySelector('.filterList').classList.toggle('open')
     if (document.querySelector('.filterList').classList.contains('open')) {
       document.querySelector('.filterText').textContent = 'close'
@@ -10,9 +21,7 @@ class Filter extends React.Component {
       document.querySelector('.filterText').textContent = 'filter'
     }
     // document.querySelector('.hamburger').classList.toggle('is-active')
-    // on filter menu click, close language menu if it's currently open
-    document.querySelector('.languageList').classList.remove('langOpen')
-    document.querySelector('.langArrow').classList.remove('rotate')
+    this.closeLangMenu()
   }
 
   render() {
