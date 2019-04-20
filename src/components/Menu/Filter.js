@@ -2,9 +2,14 @@ import React from 'react'
 
 class Filter extends React.Component {
 
-  openFilterMenu(e) {
+  toggleFilterMenu(e) {
     document.querySelector('.filterList').classList.toggle('open')
-    document.querySelector('.hamburger').classList.toggle('is-active')
+    if (document.querySelector('.filterList').classList.contains('open')) {
+      document.querySelector('.filterText').textContent = 'close'
+    } else {
+      document.querySelector('.filterText').textContent = 'filter'
+    }
+    // document.querySelector('.hamburger').classList.toggle('is-active')
     // on filter menu click, close language menu if it's currently open
     document.querySelector('.languageList').classList.remove('langOpen')
     document.querySelector('.langArrow').classList.remove('rotate')
@@ -17,13 +22,14 @@ class Filter extends React.Component {
     const { updateFilter, filter } = this.props
 
     return(
-      <div className="filter" onClick={this.openFilterMenu}>
+      <div className="filter" onClick={this.toggleFilterMenu}>
           <div className={Object.values(filter).indexOf(true) !== -1 ? "filterIcon" : "filterIcon hidden"}></div>
-          <div className="hamburger hamburger--spin">
+          {/* <div className="hamburger hamburger--spin">
             <div className="hamburger-box">
               <div className="hamburger-inner"></div>
             </div>
-          </div>
+          </div> */}
+          <span className="filterText">filter</span>
 
           {/* TODO: there's a lot of repetition going on here, would be nice to not hard code all the filters */}
           <div className="filterList">

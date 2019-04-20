@@ -101,8 +101,6 @@ class ItemDetail extends React.Component {
       }
     }
 
-    console.log(desc);
-
     return (
       <Swipe
         onSwipeMove={this.onSwipeMove}

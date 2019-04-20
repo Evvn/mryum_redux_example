@@ -423,6 +423,7 @@ body {
   background-color: #fff;
   font-weight: bold;
   font-size: 20px;
+  padding-top: 4px;
 }
 
 .loading {
@@ -628,6 +629,13 @@ header .filter {
   height: 25px;
   margin-right: 5px;
 }
+header .filter .filterText {
+  position: absolute;
+  top: 19px;
+  right: 23px;
+  font-weight: 600;
+  font-variant: small-caps;
+}
 header .filter .filterIcon {
   width: 8px;
   height: 8px;
@@ -636,7 +644,7 @@ header .filter .filterIcon {
   position: fixed;
   z-index: 5;
   top: 20px;
-  right: 47px;
+  right: 16px;
 }
 header .filter .filterList {
   background-color: white;

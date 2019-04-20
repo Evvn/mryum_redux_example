@@ -11,7 +11,11 @@ class Filter extends React.Component {
     // close filter if it's open
     if (document.querySelector('.filterList') !== null) {
       document.querySelector('.filterList').classList.remove('open')
-      document.querySelector('.hamburger').classList.remove('is-active')
+      if (document.querySelector('.filterList').classList.contains('open')) {
+        document.querySelector('.filterText').textContent = 'close'
+      } else {
+        document.querySelector('.filterText').textContent = 'filter'
+      }
     }
   }
 
