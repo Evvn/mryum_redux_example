@@ -1,6 +1,7 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import _ from 'lodash'
+import NavBadge from './NavBadge';
 // import DragScroll from 'react-dragscroll';
 
 class HorizontalScrollNav extends React.Component {
@@ -8,11 +9,14 @@ class HorizontalScrollNav extends React.Component {
         super(props);
         this.state = {
           dragging: false,
-          scrollPosition: 0,
-          current: false,
+          currentPosition: 0,
+          offset: 0,
         };
         this.current = false;
-        this.scrollPosition = 0;
+        this.currentPosition = 0;
+
+        this.handleSelection = this.handleSelection.bind(this);
+        this.sectionUpdateHandle = this.sectionUpdateHandle.bind(this);
     }
 
 
@@ -20,9 +24,7 @@ class HorizontalScrollNav extends React.Component {
         window.addEventListener('mouseup', this.mouseUpHandle.bind(this));
         window.addEventListener('mousemove', this.mouseMoveHandle.bind(this));
         // add event listener on scroll with throttling to prevent excessive events being fired
-        window.addEventListener('scroll', _.throttle(this.scrollHandle.bind(this), 300, { trailing: true, leading: true }))
-        // window.addEventListener('scroll', this.scrollHandle.bind(this));
-
+        window.addEventListener('scroll', _.throttle(this.scrollHandle.bind(this), 500, { trailing: true, leading: true }));
 
     }
 
@@ -50,38 +52,30 @@ class HorizontalScrollNav extends React.Component {
       }
 
 
-    componentDidUpdate(){
-        if (this.current){
-            document.getElementById(this.current).classList.add("red")
-        }
-    }
-
     scrollHandle(e){
-        this.scrollPosition= window.scrollY;
-    }
-
-    autoChangeSection(ref){
-        const { current } = this;
-        if (!current){
-            this.current = ref;
-        } else if(current !== ref && this[ref]){
-                this.refs.container.scrollLeft = this[ref].offsetLeft
-                this.current = ref;
-        }
-    }
-
-    sectionClickHandle(e, offset, ref){
-        document.getElementById(ref).classList.add("red")
-        document.getElementById(this.current).classList.remove("red")
-        this.refs.container.scrollLeft = this[ref].offsetLeft;
-        window.removeEventListener('scroll', this.scrollHandle.bind(this));
-        window.scrollTo({
-            top: offset,
-            behavior: 'smooth',
-        });
-        window.addEventListener('scroll', this.scrollHandle.bind(this));
-        this.current = ref;
         e.preventDefault();
+        this.setState({currentPosition: window.scrollY});
+    }
+
+
+    handleSelection(e, id, section){
+        const { sectionPositions } = this.props;
+        document.getElementById(id).classList.add('red');
+
+        const moveTo = () => {
+            const offset = sectionPositions[section] < 50 ? 0 : sectionPositions[section] - 35;
+            this.refs.container.scrollLeft = this.state.offset;
+            window.scrollTo({ top: offset, behavior: 'smooth',});
+        }
+
+        this.setState({offset: document.getElementById(id).offsetLeft}, moveTo);
+        e.stopPropagation();
+    }
+
+    
+    sectionUpdateHandle(offset){
+        this.refs.container.scrollLeft = offset;
+        this.setState({offset});
     }
 
     mouseUpHandle(e) {
@@ -112,7 +106,8 @@ class HorizontalScrollNav extends React.Component {
 
     render() {
         // eslint-disable-next-line
-        const { sectionPositions} = this.props;
+        const { sectionPositions } = this.props;
+        const { currentPosition } = this.state;
         const sectionNames = Object.keys(sectionPositions);
         const sortedPositions = this.sortByValue(sectionPositions);
         return (
@@ -122,24 +117,17 @@ class HorizontalScrollNav extends React.Component {
                 onMouseMove={this.mouseMoveHandle.bind(this)}
                 ref="container"
             >
-                    {sectionNames.map((section,index)  => {
-                        const y = this.scrollPosition;
-                        const sectionInterval = sortedPositions[section];
-                        if (y >= sectionInterval[0] && y < sectionInterval[1]){
-                            this.autoChangeSection(`$scroll-nav-${section}`);
-                        }
-
-                        return (
-                            <span
-                                onClick={(e) => {this.sectionClickHandle(e, sectionPositions[section], `$scroll-nav-${section}`)}}
-                                ref={(ref) => this[`$scroll-nav-${section}`]=ref}
-                                id={`$scroll-nav-${section}`}
-                                key={index}
-                            >
-                                {section}
-                            </span>
-                        );
-                    })}
+                {sectionNames.map((section,index)  => (
+                    <NavBadge
+                        section={section}
+                        onSelect={(e) => {this.handleSelection(e, `$scroll-nav-${section}`, section)}}
+                        ref={`$scroll-nav-${section}`}
+                        currentPosition={currentPosition}
+                        interval={sortedPositions[section]}
+                        updateSection={this.sectionUpdateHandle}
+                    />
+                    ))
+                }
             </div>
         );
     }

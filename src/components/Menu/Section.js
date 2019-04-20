@@ -8,10 +8,11 @@ class Section extends React.Component {
   componentDidMount(){
     const { name, setSectionPosition } = this.props;
     const position = ReactDOM
-      .findDOMNode(this)
-      .getBoundingClientRect();
+      .findDOMNode(this).offsetTop;
     setSectionPosition(name.split('%')[0], position);
   }
+
+  
 
   processItem(item, index){
     const {
