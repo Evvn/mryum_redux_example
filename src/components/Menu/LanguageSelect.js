@@ -1,7 +1,17 @@
 import React from 'react'
 import _ from 'lodash'
+import Modal from '../Common/Modal.js';
+import { languageWarnings } from './enums/languageEnums.js'
 
 class Filter extends React.Component {
+  constructor(props) {
+    super(props)
+
+    // TODO: handle this with redux / local storage later
+    this.state = {
+      showModal: false,
+    }
+  }
 
   componentDidMount() {
     window.addEventListener('scroll', _.throttle(this.closeFilterMenu, 300, { trailing: true, leading: true }))
@@ -42,13 +52,35 @@ class Filter extends React.Component {
           className="language"
           id={language.name}
           code={language.code}
-          onClick={(e) => {updateLang(language.code)}}
+          onClick={ (e) => {
+            updateLang(language.code)
+            this.setState({
+              showModal: true,
+            })
+          } }
         >
           <span className={className} code={language.code} />{language.name}
         </p>
       )
     })
     return languageButtons
+  }
+
+  renderModal(lang) {
+    const warning = languageWarnings[lang.replace('-','')]
+
+    return(
+      <Modal
+        heading={warning.greeting}
+        body={warning.instructions}
+        cta={warning.confirmation}
+        onClick={() => {
+          this.setState({
+            showModal: false,
+          })
+        }
+      }/>
+    )
   }
 
   render() {
@@ -81,8 +113,14 @@ class Filter extends React.Component {
     ]
 
     return(
-      <div className="selectLanguage" onClick={this.langClick}>
-        <span className="langCode">{lang}</span><div className="langArrow"></div>
+      <div className="selectLanguage">
+
+        { this.state.showModal && lang !== 'en' ?
+          this.renderModal(lang)
+          : '' }
+
+        <span className="langCode" onClick={this.langClick}>{lang}</span>
+        <div className="langArrow" onClick={this.langClick}></div>
 
         <div className="languageList">
           {this.printLanguages(languageList)}
