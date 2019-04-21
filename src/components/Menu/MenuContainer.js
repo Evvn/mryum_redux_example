@@ -49,7 +49,8 @@ class MenuContainer extends React.Component {
  componentWillUnmount() {
    const { clearSectionPositions } = this.props;
    clearSectionPositions();
-   persistStore(this.props).purge();
+   window.scrollTo(0,0)
+   //persistStore(this.props).purge();
  }
 
  routeToItemDetail(e, id) {

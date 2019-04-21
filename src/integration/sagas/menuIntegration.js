@@ -39,7 +39,7 @@ export function* setSectionPositions(action) {
     const getCurrentPositions = state => state.menu.sectionPositions;
     let sectionPositions = yield select(getCurrentPositions);
     sectionPositions = !sectionPositions ? {} : sectionPositions;
-    sectionPositions[action.section] = action.position.y;
+    sectionPositions[action.section] = action.position;
     yield put({
       type: actionTypes.SET_SECTION_POSITION_SUCCESS,
       sectionPositions: sortByValue(sectionPositions),
