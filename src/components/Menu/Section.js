@@ -133,7 +133,7 @@ class Section extends React.Component {
     } else {
       return (
         <div>
-          <h2 className={`section ${ index === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
+          <h2 className={`section ${ index === 0 && tagsInUse.length === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
           { section }
         </div>
 

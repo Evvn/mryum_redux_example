@@ -75,6 +75,7 @@ class MenuContainer extends React.Component {
     const venueName = Object.values(bffRes)[0].fields.Venue;
     const itemView = itemId ? true : false;
     document.title = venueName + " Menu";
+    const filtersInUse = Object.values(filter).includes(true)
 
     return (
       <div>
@@ -82,8 +83,8 @@ class MenuContainer extends React.Component {
           {/* back arrow for routing, control this and venuename via props */}
           { itemView ? <img onClick={() => {window.history.back()}} src="/icons/arrow-left-solid-grey.svg" className="headerBackArrow" alt="back arrow"/> : null }
           { !!venueName && !itemView? <h1 className="venue">{venueName}</h1> : null }
-          { !itemView && <Filter filter={filter} updateFilter={updateFilter} /> }
-          { !itemView ? <HorizontalScrollNav sectionPositions={sectionPositions}/> : ''}
+          { !itemView && <Filter filter={filter} updateFilter={updateFilter} lang={lang} /> }
+          { !itemView && !filtersInUse ? <HorizontalScrollNav sectionPositions={sectionPositions}/> : ''}
           { !itemView && <LanguageSelect lang={lang} updateLang={updateLang} /> }
           {/* <img className="cartIcon" src="/icons/cart_icon.svg" alt="cart"/> */}
           {/* need check to see when to display cart badge */}
