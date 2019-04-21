@@ -74,7 +74,9 @@ class HorizontalScrollNav extends React.Component {
 
 
     sectionUpdateHandle(offset){
-        this.refs.container.scrollLeft = offset;
+        if (this.refs.container) {
+          this.refs.container.scrollLeft = offset;
+        }
         this.setState({offset});
     }
 
@@ -110,7 +112,7 @@ class HorizontalScrollNav extends React.Component {
         const { currentPosition } = this.state;
         const sectionNames = Object.keys(sectionPositions);
         const sortedPositions = this.sortByValue(sectionPositions);
-        
+
         return (
             <div
                 className="selectSection"
