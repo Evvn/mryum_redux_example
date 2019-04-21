@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash'
 import uuid from 'uuid/v4';
 
 class NavBadge extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
     componentDidMount(){
         if(this.className === 'red'){
             const { updateSection } = this.props;

@@ -72,7 +72,7 @@ class HorizontalScrollNav extends React.Component {
         e.stopPropagation();
     }
 
-    
+
     sectionUpdateHandle(offset){
         this.refs.container.scrollLeft = offset;
         this.setState({offset});
@@ -110,6 +110,7 @@ class HorizontalScrollNav extends React.Component {
         const { currentPosition } = this.state;
         const sectionNames = Object.keys(sectionPositions);
         const sortedPositions = this.sortByValue(sectionPositions);
+        
         return (
             <div
                 className="selectSection"
@@ -119,12 +120,13 @@ class HorizontalScrollNav extends React.Component {
             >
                 {sectionNames.map((section,index)  => (
                     <NavBadge
-                        section={section}
-                        onSelect={(e) => {this.handleSelection(e, `$scroll-nav-${section}`, section)}}
-                        ref={`$scroll-nav-${section}`}
-                        currentPosition={currentPosition}
-                        interval={sortedPositions[section]}
-                        updateSection={this.sectionUpdateHandle}
+                      key={sectionPositions[section]}
+                      section={section}
+                      onSelect={(e) => {this.handleSelection(e, `$scroll-nav-${section}`, section)}}
+                      ref={`$scroll-nav-${section}`}
+                      currentPosition={currentPosition}
+                      interval={sortedPositions[section]}
+                      updateSection={this.sectionUpdateHandle}
                     />
                     ))
                 }

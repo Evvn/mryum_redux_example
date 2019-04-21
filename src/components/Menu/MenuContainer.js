@@ -5,7 +5,7 @@ import HorizontalScrollNav from '../Common/HorizontalScrollNav';
 import Filter from './Filter.js';
 import LanguageSelect from './LanguageSelect.js';
 import Menu from './Menu';
-import { persistStore } from 'redux-persist'
+// import { persistStore } from 'redux-persist'
 import Footer from './Footer';
 import Water from './Water';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
