@@ -19,7 +19,21 @@ class Section extends React.Component {
       routeToItemDetail,
       lang,
     } = this.props;
-    const tags = item.fields.Tags;
+    let tags = item.fields['Tags Filtering']
+    tags.forEach((tag, index) => {
+      if (tag === 'vegetarian') {
+        tags[index] = 'V'
+      }
+      if (tag === 'vegan') {
+        tags[index] = 'VE'
+      }
+      if (tag === 'gluten-free') {
+        tags[index] = 'GF'
+      }
+    })
+
+    console.log(tags);
+
 
     // If menu item tags match any tags in filter -> should match ALL filter tags -> done
     // changed .some method to .every
