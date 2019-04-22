@@ -15,6 +15,12 @@ export function getMenuData(venue, item) {
   }
 }
 
+export function getVenues() {
+  return {
+    type: actionTypes.GET_VENUES_REQUEST,
+  }
+}
+
 export function updateFilter(filter) {
   return {
     type: actionTypes.UPDATE_FILTER,

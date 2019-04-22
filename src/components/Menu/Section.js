@@ -32,9 +32,6 @@ class Section extends React.Component {
       }
     })
 
-    console.log(tags);
-
-
     // If menu item tags match any tags in filter -> should match ALL filter tags -> done
     // changed .some method to .every
     if ((tagsInUse.length > 0 && tagsInUse.every(tag => tags.includes(tag)))

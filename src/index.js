@@ -13,6 +13,7 @@ const routes = [
   { name: 'home', path: '/' },
   { name: 'contact', path: '/contact' },
   { name: 'faq', path: '/faq' },
+  { name: 'brunch', path: '/brunch' },
   { name: 'menu', path: '/:venueId/:itemId'},
 ];
 

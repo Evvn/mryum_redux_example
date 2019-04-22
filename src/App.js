@@ -9,6 +9,7 @@ import Contact from './components/Landing/Contact.js';
 import FAQ from './components/Landing/FAQ.js';
 import MenuContainer from './components/Menu/MenuContainer.js';
 import NotFound from './components/NotFound/NotFound.js';
+import Brunch from './components/CategorySelection/Brunch.js'
 
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/faq" component={FAQ} />
+          <Route path="/brunch" component={Brunch} />
           <Route path="/:venue" component={MenuContainer} />
           <Route path="/:venue/:item" component={MenuContainer} />
           <Route component={NotFound} />
