@@ -48,6 +48,7 @@ class Menu extends Component {
       return <NotFound/>;
     } else {
       let sections = []
+
       Object.keys(menuSections).forEach((section,index) => {
           sections.push(
             <Section
