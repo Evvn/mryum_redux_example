@@ -2605,6 +2605,8 @@ body {
 
 .categorySelection {
   padding-top: 52px;
+  min-height: 100vh;
+  background-color: white;
 }
 .categorySelection header, .categorySelection h1 {
   background-color: #282828;

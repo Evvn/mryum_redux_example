@@ -2966,6 +2966,8 @@ footer {
 
 .categorySelection {
   padding-top: 52px;
+  min-height: 100vh;
+  background-color: white;
 
   header, h1 {
     background-color: $hsdark;
