@@ -48,6 +48,7 @@ class Menu extends Component {
       return <NotFound/>;
     } else {
       let sections = []
+
       Object.keys(menuSections).forEach((section,index) => {
           sections.push(
             <Section
@@ -75,10 +76,11 @@ class Menu extends Component {
 
     return (
       <div>
+        {this.getMenu()}
         {
           itemId
             ? <ItemDetail details={menuItems[itemId].fields} lang={lang} />
-            : this.getMenu()
+            : ''
         }
       </div>
     );

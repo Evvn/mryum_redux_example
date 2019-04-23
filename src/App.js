@@ -1,4 +1,6 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as actions from './components/Common/actions/actions.js';
 import { Route, Switch } from 'react-router' // react-router v4
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,17 +11,27 @@ import Contact from './components/Landing/Contact.js';
 import FAQ from './components/Landing/FAQ.js';
 import MenuContainer from './components/Menu/MenuContainer.js';
 import NotFound from './components/NotFound/NotFound.js';
+import Brunch from './components/CategorySelection/Brunch.js';
 
 
 class App extends React.Component {
+  componentWillMount() {
+    const { getVenueNames, venueNames } = this.props
+    if (!venueNames) {
+      getVenueNames();
+    }
+  }
 
   render() {
+    const { router, venueNames } = this.props
+    const path = router.location.pathname.replace('/','')
     return (
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/faq" component={FAQ} />
-          <Route path="/:venue" component={MenuContainer} />
+          <Route path="/brunch" component={Brunch} />
+          <Route path="/:venue" component={ venueNames.includes(path) ? MenuContainer : NotFound } />
           <Route path="/:venue/:item" component={MenuContainer} />
           <Route component={NotFound} />
       </Switch>
@@ -32,8 +44,11 @@ App.propTypes = {
   moduleMappings: PropTypes.objectOf(PropTypes.object),
 };
 
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
+
 const mapStateToProps = state => ({
   router: state.router,
+  venueNames: state.persistentCommon.venueNames
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

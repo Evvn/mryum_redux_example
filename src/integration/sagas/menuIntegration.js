@@ -25,6 +25,24 @@ export function* getMenuData(action) {
   }
 }
 
+export function* getVenues(action) {
+  try {
+    const res = yield callBff(`venues`, 'POST', {category: 'brunch'})
+      .then(response => response)
+      yield put({
+        type: actionTypes.GET_VENUES_SUCCESS,
+        res,
+      })
+  } catch (error) {
+    console.log(error)
+    window.location = '/notfound'
+    yield put({
+      type: actionTypes.GET_VENUES_FAILURE,
+      error,
+    })
+  }
+}
+
 export function* setSectionPositions(action) {
   const sortByValue = (obj) => {
     const newObj = {};
@@ -49,6 +67,7 @@ export function* setSectionPositions(action) {
 export function* actionWatcher() {
   yield [
     takeLatest(actionTypes.GET_MENU_DATA_REQUEST, getMenuData),
+    takeLatest(actionTypes.GET_VENUES_REQUEST, getVenues),
     takeLatest(actionTypes.SET_SECTION_POSITION_REQUEST, setSectionPositions),
   ]
 }

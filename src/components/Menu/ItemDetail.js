@@ -62,6 +62,9 @@ class ItemDetail extends React.Component {
   }
 
   handleClick(e) {
+    if (e.target.className === 'previewModal') {
+      window.history.back()
+    }
     if (e.target.className === "define") {
       return
     }

@@ -5,11 +5,12 @@ import HorizontalScrollNav from '../Common/HorizontalScrollNav';
 import Filter from './Filter.js';
 import LanguageSelect from './LanguageSelect.js';
 import Menu from './Menu';
-import { persistStore } from 'redux-persist'
+// import { persistStore } from 'redux-persist'
 import Footer from './Footer';
 import Water from './Water';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import * as actions from './actions/actions.js';
+import classNames from 'classnames'
 
 class MenuContainer extends React.Component {
   constructor(props) {
@@ -53,9 +54,9 @@ class MenuContainer extends React.Component {
    //persistStore(this.props).purge();
  }
 
- routeToItemDetail(e, id) {
+ routeToItemDetail(e, id, lang) {
    //const { setItemId } = this.props;
-   e.stopPropagation();
+   console.log(id, lang)
    const newId = id ? id : false;
    const refSuffix = newId ? `/${id}` : '';
    window.location = window.location.href + `${refSuffix}`
@@ -79,7 +80,7 @@ class MenuContainer extends React.Component {
 
     return (
       <div>
-        <header className="header">
+        <header className={ classNames('header', itemView ? 'previewHeader' : '') }>
           {/* back arrow for routing, control this and venuename via props */}
           { itemView ? <img onClick={() => {window.history.back()}} src="/icons/arrow-left-solid-grey.svg" className="headerBackArrow" alt="back arrow"/> : null }
           { !!venueName && !itemView? <h1 className="venue">{venueName}</h1> : null }

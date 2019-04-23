@@ -520,7 +520,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   position: fixed;
-  top: 62px;
+  top: 61px;
   background-color: white;
   color: #373737;
   z-index: 4;
@@ -1919,6 +1919,10 @@ body {
     visibility: hidden;
   }
 
+  .previewHeader {
+    display: none;
+  }
+
   .previewModal {
     z-index: 5;
     width: 100%;
@@ -1926,7 +1930,7 @@ body {
     max-height: none;
     position: fixed;
     top: 0;
-    background-color: #fafafa;
+    background-color: rgba(0, 0, 0, 0.6);
   }
   .previewModal .previewItem {
     display: grid;
@@ -2601,6 +2605,60 @@ body {
 }
 .landingPage .emailForm form button:focus {
   outline: none;
+}
+
+.categorySelection {
+  padding-top: 52px;
+  min-height: 100vh;
+  background-color: white;
+}
+.categorySelection header, .categorySelection h1 {
+  background-color: #282828;
+  color: white;
+}
+.categorySelection header img, .categorySelection h1 img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 45px;
+  height: 45px;
+}
+.categorySelection h2 {
+  padding-top: 30px;
+  margin: 15px 17px;
+}
+.categorySelection .venueCard {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 175px;
+  width: auto;
+  margin: 15px 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.categorySelection .venueCard a, .categorySelection .venueCard a:hover, .categorySelection .venueCard a:visited, .categorySelection .venueCard a:focus {
+  text-decoration: none;
+  color: white;
+}
+.categorySelection .venueName {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 175px;
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 52px;
+  text-align: center;
+  font-weight: 600;
+  padding: 0 20px;
+  line-height: 1;
 }
 
 @media only screen and (max-width: 768px) {

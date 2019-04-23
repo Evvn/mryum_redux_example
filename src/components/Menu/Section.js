@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MenuItem from './MenuItem';
 import MenuList from './MenuList';
 import MenuInfo from './MenuInfo';
+import uuid from 'uuid/v4';
 
 class Section extends React.Component {
 
@@ -13,18 +14,28 @@ class Section extends React.Component {
     setSectionPosition(name.split('%')[0], position);
   }
 
-  
-
   processItem(item, index){
     const {
       tagsInUse,
       routeToItemDetail,
       lang,
     } = this.props;
-    const tags = item.fields.Tags;
+    let tags = item.fields['Tags Filtering']
+    tags.forEach((tag, index) => {
+      if (tag === 'vegetarian') {
+        tags[index] = 'V'
+      }
+      if (tag === 'vegan') {
+        tags[index] = 'VE'
+      }
+      if (tag === 'gluten-free') {
+        tags[index] = 'GF'
+      }
+    })
 
-    // If menu item tags match any tags in filter
-    if ((tagsInUse.length > 0 && tagsInUse.some(tag => tags.includes(tag)))
+    // If menu item tags match any tags in filter -> should match ALL filter tags -> done
+    // changed .some method to .every
+    if ((tagsInUse.length > 0 && tagsInUse.every(tag => tags.includes(tag)))
       || tagsInUse.length === 0) {
         return (
           <MenuItem
@@ -83,12 +94,15 @@ class Section extends React.Component {
         return
       }
 
+      if (tagsInUse.length > 0 && !hasTag) {
+        return ''
+      }
+
       return hasTag ? tags[0] !== 'LIST' ? this.processItem(item, index) : this.getList(item, index) : menuItemTemplate
     });
 
-    if (tagsInUse.length === 0) {
-      // TODO: find a better unique key for this lol (lazy ass)
-      section.push(<MenuInfo key={Math.random(999)} infoList={infoList} />)
+    if (tagsInUse.length === 0 && infoList.length > 0) {
+      section.push(<MenuInfo key={uuid()} infoList={infoList} />)
     }
 
     section = section.map(item => {
@@ -100,7 +114,7 @@ class Section extends React.Component {
             item={item.props.item}
             itemIndex={updatedIndex}
             lang={lang}
-            onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
+            onClick={(e) => {routeToItemDetail(e, item.key, lang)}}
           />
         )
       } else {
@@ -133,7 +147,9 @@ class Section extends React.Component {
     } else {
       return (
         <div>
-          <h2 className={`section ${ index === 0 && tagsInUse.length === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
+          {tagsInUse.length > 0 && index > 1 ? '' :
+            <h2 className={`section ${ index === 0 && tagsInUse.length === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
+          }
           { section }
         </div>
 

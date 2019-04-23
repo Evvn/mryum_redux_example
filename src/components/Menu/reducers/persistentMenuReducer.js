@@ -7,6 +7,7 @@ const initialState = {
   isLoading: true,
   lang: 'en',
   item: false,
+  categoryRes: false,
   filter
 }
 
@@ -24,6 +25,17 @@ function menuReducer(state = initialState, action) {
         bffRes: action.res,
         isLoading: false,
         item: action.item,
+      }
+    case actionTypes.GET_VENUES_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      }
+    case actionTypes.GET_VENUES_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        categoryRes: action.res,
       }
     case actionTypes.UPDATE_LANG:
       return {
