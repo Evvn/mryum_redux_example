@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render() {
     const { router, venueNames, isLoading } = this.props
-    const path = router.location.pathname.replace('/','');
+    const path = router.location.pathname.split('/')[1];
     const showMenu = venueNames ? venueNames.includes(path) ? true : false : false;
     return isLoading ? <LoadingScreen/> :
     (

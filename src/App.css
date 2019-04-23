@@ -97,7 +97,7 @@
 }
 
 .price, .tags {
-  font-family: "SFUIDisplay-Bold", "Helvetica", sans-serif;
+  font-family: "SFUIDisplay-Bold", "Helvetica Bold", sans-serif;
   font-size: 13px;
   color: #494949;
 }
@@ -113,7 +113,6 @@
 }
 
 body {
-  font-family: "Helvetica", sans-serif;
   background-color: #e3e3e3;
   max-width: 500px;
   margin: 0 auto;
@@ -1352,7 +1351,7 @@ h1 img {
 }
 .previewModal .previewName {
   max-width: 500px;
-  font-family: "SFUIDisplay-Semibold", "Helvetica Bold", sans-serif;
+  font-family: "SFUIDisplay-Semibold", "Helvetica", sans-serif;
   font-size: 22px;
   font-weight: 600;
   font-style: normal;
@@ -1417,7 +1416,7 @@ h1 img {
 }
 .previewModal .previewPrice {
   max-width: 500px;
-  font-family: "SFUIDisplay-Bold", "Helvetica", sans-serif;
+  font-family: "SFUIDisplay-Bold", "Helvetica Bold", sans-serif;
   font-size: 16px;
   font-weight: bold;
   font-style: normal;

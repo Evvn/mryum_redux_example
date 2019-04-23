@@ -113,7 +113,7 @@ $hsdark: #282828;
 }
 
 %priceFont {
-  font-family: 'SFUIDisplay-Bold', 'Helvetica', sans-serif;
+  font-family: 'SFUIDisplay-Bold', 'Helvetica Bold', sans-serif;
   font-size: 13px;
   color: $titleColor;
 }
@@ -130,7 +130,7 @@ $hsdark: #282828;
 }
 
 body {
-  font-family: 'Helvetica', sans-serif;
+  // font-family: 'Helvetica', sans-serif;
   // background-color: $black;
   background-color: #e3e3e3;
   max-width: $maxWidth;
@@ -1545,7 +1545,7 @@ h1 {
 
   .previewName {
     max-width: $maxWidth;
-    font-family: 'SFUIDisplay-Semibold', 'Helvetica Bold', sans-serif;
+    font-family: 'SFUIDisplay-Semibold', 'Helvetica', sans-serif;
     font-size: 22px;
     font-weight: 600;
     font-style: normal;
@@ -1621,7 +1621,7 @@ h1 {
 
   .previewPrice {
     max-width: $maxWidth;
-    font-family: 'SFUIDisplay-Bold', 'Helvetica', sans-serif;
+    font-family: 'SFUIDisplay-Bold', 'Helvetica Bold', sans-serif;
     font-size: 16px;
     font-weight: bold;
     font-style: normal;
