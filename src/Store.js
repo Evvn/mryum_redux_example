@@ -18,7 +18,7 @@ export default (initialState = {}) => {
     key: 'root',
     storage,
     stateReconciler: autoMergeLevel2,
-    blacklist: ['router', 'menu']
+    blacklist: ['router', 'menu', 'common']
   }
 
   const middleware = [
@@ -29,7 +29,7 @@ export default (initialState = {}) => {
   let store = '';
 
   // for dev
-  if (process.env.REACT_APP_REDUX_DEV_TOOLS === 'true') {
+  if (process.env.REACT_APP_REDUX_DEV_TOOLS === 'false') {
     store = createStore(
       persistReducer(persistConfig, makeRootReducer(history)),
       initialState,

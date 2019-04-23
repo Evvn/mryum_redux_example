@@ -4,7 +4,6 @@ import { filter } from '../enums/menuEnums.js';
 const initialState = {
   venue: '',
   bffRes: false,
-  isLoading: true,
   lang: 'en',
   item: false,
   categoryRes: false,
@@ -13,17 +12,11 @@ const initialState = {
 
 function menuReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.GET_MENU_DATA_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-      }
     case actionTypes.GET_MENU_DATA_SUCCESS:
       return {
         ...state,
         venue: action.venue,
         bffRes: action.res,
-        isLoading: false,
         item: action.item,
       }
     case actionTypes.GET_VENUES_REQUEST:
@@ -34,7 +27,6 @@ function menuReducer(state = initialState, action) {
     case actionTypes.GET_VENUES_SUCCESS:
       return {
         ...state,
-        isLoading: false,
         categoryRes: action.res,
       }
     case actionTypes.UPDATE_LANG:

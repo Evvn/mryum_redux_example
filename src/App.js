@@ -12,6 +12,7 @@ import FAQ from './components/Landing/FAQ.js';
 import MenuContainer from './components/Menu/MenuContainer.js';
 import NotFound from './components/NotFound/NotFound.js';
 import Brunch from './components/CategorySelection/Brunch.js';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen.js';
 
 
 class App extends React.Component {
@@ -23,15 +24,17 @@ class App extends React.Component {
   }
 
   render() {
-    const { router, venueNames } = this.props
-    const path = router.location.pathname.replace('/','')
-    return (
+    const { router, venueNames, isLoading } = this.props
+    const path = router.location.pathname.split('/')[1];
+    const showMenu = venueNames ? venueNames.includes(path) ? true : false : false;
+    return isLoading ? <LoadingScreen/> :
+    (
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/faq" component={FAQ} />
           <Route path="/brunch" component={Brunch} />
-          <Route path="/:venue" component={ venueNames.includes(path) ? MenuContainer : NotFound } />
+          <Route path="/:venue" component={ showMenu  ? MenuContainer : NotFound } />
           <Route path="/:venue/:item" component={MenuContainer} />
           <Route component={NotFound} />
       </Switch>
@@ -48,7 +51,8 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
 const mapStateToProps = state => ({
   router: state.router,
-  venueNames: state.persistentCommon.venueNames
+  venueNames: state.persistentCommon.venueNames,
+  isLoading: state.common.isLoading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -82,7 +82,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
 const mapStateToProps = state => ({
   categoryRes: state.persistentMenu.categoryRes,
-  isLoading: state.persistentMenu.isLoading,
+  isLoading: state.common.isLoading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Brunch)
