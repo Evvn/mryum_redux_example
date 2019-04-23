@@ -25,7 +25,8 @@ class App extends React.Component {
 
   render() {
     const { router, venueNames, isLoading } = this.props
-    const path = router.location.pathname.replace('/','')
+    const path = router.location.pathname.replace('/','');
+    const showMenu = venueNames ? venueNames.includes(path) ? true : false : false;
     return isLoading ? <LoadingScreen/> :
     (
       <Switch>
@@ -33,7 +34,7 @@ class App extends React.Component {
           <Route path="/contact" component={Contact} />
           <Route path="/faq" component={FAQ} />
           <Route path="/brunch" component={Brunch} />
-          <Route path="/:venue" component={ venueNames.includes(path) ? MenuContainer : NotFound } />
+          <Route path="/:venue" component={ showMenu  ? MenuContainer : NotFound } />
           <Route path="/:venue/:item" component={MenuContainer} />
           <Route component={NotFound} />
       </Switch>

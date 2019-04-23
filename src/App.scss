@@ -100,7 +100,7 @@ $hsdark: #282828;
 }
 
 %titleFont {
-  font-family: 'SFUIDisplay-Semibold', 'Helvetica ', sans-serif;
+  font-family: 'SFUIDisplay-Semibold', 'Helvetica Bold', sans-serif;
   font-size: 17px;
   color: $titleColor;
   letter-spacing: 0.5px;
@@ -1545,7 +1545,7 @@ h1 {
 
   .previewName {
     max-width: $maxWidth;
-    font-family: 'SFUIDisplay-Semibold', 'Helvetica', sans-serif;
+    font-family: 'SFUIDisplay-Semibold', 'Helvetica Bold', sans-serif;
     font-size: 22px;
     font-weight: 600;
     font-style: normal;
