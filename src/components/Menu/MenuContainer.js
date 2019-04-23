@@ -78,7 +78,7 @@ class MenuContainer extends React.Component {
       bffRes,
       itemId,
     } = this.props;
-    const venueName = Object.values(bffRes)[0].fields.Venue;
+    const venueName = bffRes ? Object.values(bffRes)[0].fields.Venue : false;
     const itemView = itemId ? true : false;
     const filtersInUse = Object.values(filter).includes(true)
 
