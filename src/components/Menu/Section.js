@@ -145,7 +145,7 @@ class Section extends React.Component {
 
     let section = this.getSection()
 
-    if (section.slice(-1)[0] === undefined && index > 0) {
+    if ((section.slice(-1)[0] === undefined && index > 0) || !section || !tagsInUse) {
       return <div></div>
     } else {
       return (
