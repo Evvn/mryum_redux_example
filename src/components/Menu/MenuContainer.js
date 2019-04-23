@@ -138,7 +138,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
 const mapStateToProps = state => ({
   bffRes: state.persistentMenu.bffRes,
-  isLoading: state.persistentMenu.isLoading,
+  isLoading: state.common.isLoading,
   venue: state.persistentMenu.venue,
   itemId: state.persistentMenu.item,
   sectionPositions: state.menu.sectionPositions,

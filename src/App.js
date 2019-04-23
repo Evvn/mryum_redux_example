@@ -12,6 +12,7 @@ import FAQ from './components/Landing/FAQ.js';
 import MenuContainer from './components/Menu/MenuContainer.js';
 import NotFound from './components/NotFound/NotFound.js';
 import Brunch from './components/CategorySelection/Brunch.js';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen.js';
 
 
 class App extends React.Component {
@@ -23,9 +24,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { router, venueNames } = this.props
+    const { router, venueNames, isLoading } = this.props
     const path = router.location.pathname.replace('/','')
-    return (
+    return isLoading ? <LoadingScreen/> :
+    (
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/contact" component={Contact} />
@@ -48,7 +50,8 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
 const mapStateToProps = state => ({
   router: state.router,
-  venueNames: state.persistentCommon.venueNames
+  venueNames: state.persistentCommon.venueNames,
+  isLoading: state.common.isLoading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
