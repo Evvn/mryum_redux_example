@@ -47,6 +47,31 @@ class MenuContainer extends React.Component {
    }
  }
 
+ componentDidUpdate() {
+   let index = 0
+   document.querySelectorAll('.menuItem').forEach(item => {
+     if (item.classList.contains('water')) {
+       return
+     }
+     if (index % 2 === 0) {
+       console.log('even');
+       if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
+         console.log('item photo on right, swap sides');
+         item.querySelector('.leftBox').className = 'rightBox'
+         item.querySelector('.rightBox').className = 'leftBox'
+       }
+     } else {
+       console.log('odd');
+       if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
+         console.log('item photo on left, swap sides');
+         item.querySelector('.leftBox').className = 'rightBox'
+         item.querySelector('.rightBox').className = 'leftBox'
+       }
+     }
+     index++
+   })
+ }
+
  componentWillUnmount() {
    const { clearSectionPositions } = this.props;
    clearSectionPositions();
@@ -56,7 +81,6 @@ class MenuContainer extends React.Component {
 
  routeToItemDetail(e, id, lang) {
    //const { setItemId } = this.props;
-   console.log(id, lang)
    const newId = id ? id : false;
    const refSuffix = newId ? `/${id}` : '';
    window.location = window.location.href + `${refSuffix}`

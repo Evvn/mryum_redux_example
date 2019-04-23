@@ -1,109 +1,55 @@
 @font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-MediumOblique.woff2") format("woff2"), url("/fonts/Avenir-MediumOblique.woff") format("woff");
+  font-family: "SF-UI-Text-Regular";
+  src: url("/fonts/SF-UI-Text-Regular.woff2") format("woff2"), url("/fonts/SF-UI-Text-Regular.woff") format("woff");
   font-weight: 500;
   font-style: italic;
 }
 @font-face {
-  font-family: "Avenir Book";
-  src: url("/fonts/Avenir-Book.woff2") format("woff2"), url("/fonts/Avenir-Book.woff") format("woff");
+  font-family: "SF-UI-Text-Semibold";
+  src: url("/fonts/SF-UI-Text-Semibold.woff2") format("woff2"), url("/fonts/SF-UI-Text-Semibold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Medium.woff2") format("woff2"), url("/fonts/Avenir-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-HeavyOblique.woff2") format("woff2"), url("/fonts/Avenir-HeavyOblique.woff") format("woff");
-  font-weight: 900;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-LightOblique.woff2") format("woff2"), url("/fonts/Avenir-LightOblique.woff") format("woff");
-  font-weight: 300;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Oblique.woff2") format("woff2"), url("/fonts/Avenir-Oblique.woff") format("woff");
+  font-family: "SF-UI-Text-Bold";
+  src: url("/fonts/SF-UI-Text-Bold.woff2") format("woff2"), url("/fonts/SF-UI-Text-Bold.woff") format("woff");
   font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Avenir Book";
-  src: url("/fonts/Avenir-BookOblique.woff2") format("woff2"), url("/fonts/Avenir-BookOblique.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Light.woff2") format("woff2"), url("/fonts/Avenir-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Avenir Black Oblique";
-  src: url("/fonts/Avenir-BlackOblique.woff2") format("woff2"), url("/fonts/Avenir-BlackOblique.woff") format("woff");
-  font-weight: 900;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Roman.woff2") format("woff2"), url("/fonts/Avenir-Roman.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Black.woff2") format("woff2"), url("/fonts/Avenir-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Avenir-Heavy";
-  src: url("/fonts/Avenir-Heavy.woff2") format("woff2"), url("/fonts/Avenir-Heavy.woff") format("woff");
-  font-weight: 900;
   font-style: normal;
 }
 .venue {
-  font-family: "SFUIDisplay-Semibold", "Helvetica Bold", sans-serif;
+  font-family: "SF-UI-Text-Semibold", "Helvetica Bold", sans-serif;
   font-weight: normal;
   font-size: 22px;
   color: white;
 }
 
 .section, .links {
-  font-family: "SFUIDisplay-Semibold", "Helvetica Bold", sans-serif;
+  font-family: "SF-UI-Text-Semibold", "Helvetica Bold", sans-serif;
   font-size: 30px;
   color: #373737;
 }
 
 .previewModal .previewWrapper .prevDefinition .prevDefinedWord, .firstVisit .welcome, .title {
-  font-family: "SFUIDisplay-Semibold", "Helvetica Bold", sans-serif;
+  font-family: "SF-UI-Text-Semibold", "Helvetica Bold", sans-serif;
   font-size: 17px;
   color: #494949;
   letter-spacing: 0.5px;
 }
 
 .previewModal .previewWrapper .prevDefinition .prevDefinitionText, .firstVisit .closeInstructions, .firstVisit .instructions, .bodyText {
-  font-family: "SFUIText-Normal", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 13px;
   color: #6f6f6f;
 }
 
 .price, .tags {
-  font-family: "SFUIDisplay-Bold", "Helvetica Bold", sans-serif;
+  font-family: "SF-UI-Text-Bold", "Helvetica Bold", sans-serif;
   font-size: 13px;
   color: #494949;
 }
 
 .tags {
-  font-family: "SFUIDisplay-Regular", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
 }
 
 * {
@@ -524,6 +470,7 @@ body {
   color: #373737;
   z-index: 4;
   padding-top: 5px;
+  padding-left: 10px;
   margin-left: -15px;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
@@ -970,7 +917,10 @@ h1 img {
 
 .section {
   padding: 85px 15px 15px;
+  margin-bottom: 0;
   background-color: white;
+  display: flex;
+  align-items: flex-end;
 }
 .section span {
   display: block;
@@ -1000,7 +950,8 @@ h1 img {
 .title {
   padding: 21px 14px;
   height: auto;
-  padding-bottom: 15px;
+  margin-bottom: 0;
+  padding-bottom: 6px;
 }
 
 .title::first-letter {
@@ -1285,7 +1236,7 @@ h1 img {
 }
 .previewModal .feedbackLightbox .feedbackForm textarea,
 .previewModal .feedbackLightbox .feedbackForm textarea::placeholder {
-  font-family: "SFUIText-Normal", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
 }
 .previewModal .previewItem {
   height: 100vh;
@@ -1351,7 +1302,7 @@ h1 img {
 }
 .previewModal .previewName {
   max-width: 500px;
-  font-family: "SFUIDisplay-Semibold", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Semibold", "Helvetica", sans-serif;
   font-size: 22px;
   font-weight: 600;
   font-style: normal;
@@ -1365,7 +1316,7 @@ h1 img {
 .previewModal .imageCredit,
 .previewModal .previewDescription {
   max-width: 500px;
-  font-family: "SFUIText-Regular", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
@@ -1416,7 +1367,7 @@ h1 img {
 }
 .previewModal .previewPrice {
   max-width: 500px;
-  font-family: "SFUIDisplay-Bold", "Helvetica Bold", sans-serif;
+  font-family: "SF-UI-Text-Bold", "Helvetica Bold", sans-serif;
   font-size: 16px;
   font-weight: bold;
   font-style: normal;
@@ -1427,7 +1378,7 @@ h1 img {
 }
 .previewModal .previewTags {
   max-width: 500px;
-  font-family: "SFUIText-Regular", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
@@ -1460,13 +1411,13 @@ h1 img {
 }
 .cta p {
   color: #6f6f6f;
-  font-family: "SFUIText-Medium", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 14px;
   line-height: 20px;
   margin: 10px 0;
 }
 .cta .preRegister {
-  font-family: "SFUIText-Semibold", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Semibold", "Helvetica", sans-serif;
   font-weight: bold;
   color: #494949;
   font-size: 14px;
@@ -1478,7 +1429,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 57px;
-  font-family: "SFUIText", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-style: normal;
@@ -1507,7 +1458,7 @@ footer a:focus {
   align-items: center;
   background: #fc4250;
   color: white;
-  font-family: "SFUIText", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   border-radius: 25px;
   line-height: 48px;
   height: 40px;
@@ -1538,7 +1489,7 @@ footer a:focus {
   text-align: left;
 }
 .ctaBtn .ctaBtn .input .ctaBtn input {
-  font-family: "SFUIText-Medium", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 16px;
   border: 0;
   width: 240px;
@@ -1617,7 +1568,7 @@ footer a:focus {
   bottom: 0;
 }
 .footerCont .linkToMenu {
-  font-family: "SFUIText", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-style: normal;
@@ -1742,7 +1693,7 @@ footer a:focus {
 .listSection {
   padding: 35px 15px 11px;
   display: block;
-  font-family: "SFUIDisplay-Semibold", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Semibold", "Helvetica", sans-serif;
   font-weight: bold;
   font-size: 17px;
   color: #494949;
@@ -1756,7 +1707,7 @@ footer a:focus {
 }
 .listItem .itemDesc {
   white-space: pre-wrap;
-  font-family: "SFUIText-Normal", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   font-size: 13px;
   color: #6f6f6f;
 }
@@ -1764,7 +1715,7 @@ footer a:focus {
   text-transform: uppercase;
 }
 .listItem .itemPrice {
-  font-family: "SFUIDisplay-Bold", "Helvetica", sans-serif;
+  font-family: "SF-UI-Text-Bold", "Helvetica", sans-serif;
   font-weight: bold;
   font-size: 13px;
   color: #494949;

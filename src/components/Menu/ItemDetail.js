@@ -39,7 +39,7 @@ class ItemDetail extends React.Component {
   // defines swipe right event if swipe is greater than 75px long to prevent accidental swipes when scrolling
   onSwipeMove(position, event) {
     let swipeRight = false;
-    if (position.x > 175) {
+    if (position.x > 115) {
       swipeRight = true;
     }
     if (swipeRight) {
