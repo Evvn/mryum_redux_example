@@ -28,16 +28,6 @@ function commonReducer(state = initialState, action) {
         venueNames: action.res,
         isLoading: false,
       }
-    case actionTypes.GET_VENUE_NAMES_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-      }
-    case actionTypes.GET_VENUE_NAMES_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-      }
     default:
       return state
   }

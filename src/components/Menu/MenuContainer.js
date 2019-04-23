@@ -59,14 +59,12 @@ class MenuContainer extends React.Component {
        return
      }
      if (index % 2 === 0) {
-       console.log('even');
        if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
          console.log('item photo on right, swap sides');
          item.querySelector('.leftBox').className = 'rightBox'
          item.querySelector('.rightBox').className = 'leftBox'
        }
      } else {
-       console.log('odd');
        if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
          console.log('item photo on left, swap sides');
          item.querySelector('.leftBox').className = 'rightBox'
