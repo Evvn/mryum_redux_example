@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as actions from '../Menu/actions/actions.js';
+import * as actions from '../Common/actions/actions.js';
 import LoadingScreen from '../LoadingScreen/LoadingScreen.js'
 
 class Brunch extends React.Component{
@@ -81,7 +81,7 @@ class Brunch extends React.Component{
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
 
 const mapStateToProps = state => ({
-  categoryRes: state.persistentMenu.categoryRes,
+  categoryRes: state.persistentCommon.categoryRes,
   isLoading: state.common.isLoading,
 });
 

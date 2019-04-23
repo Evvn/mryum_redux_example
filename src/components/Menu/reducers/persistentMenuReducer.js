@@ -6,7 +6,6 @@ const initialState = {
   bffRes: false,
   lang: 'en',
   item: false,
-  categoryRes: false,
   filter
 }
 
@@ -18,16 +17,6 @@ function menuReducer(state = initialState, action) {
         venue: action.venue,
         bffRes: action.res,
         item: action.item,
-      }
-    case actionTypes.GET_VENUES_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-      }
-    case actionTypes.GET_VENUES_SUCCESS:
-      return {
-        ...state,
-        categoryRes: action.res,
       }
     case actionTypes.UPDATE_LANG:
       return {
@@ -44,6 +33,10 @@ function menuReducer(state = initialState, action) {
         ...state,
         item: action.id,
       }
+    case action.type === 'CLEAR_STATE':
+      return {
+        ...initialState,
+      };
     default:
       return state
   }
