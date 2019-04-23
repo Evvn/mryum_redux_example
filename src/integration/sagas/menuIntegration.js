@@ -1,4 +1,5 @@
 import * as actionTypes from '../../components/Menu/actions/actionTypes/actionTypes.js';
+import * as commonActionTypes from '../../components/Common/actions/actionTypes/actionTypes.js';
 import { takeLatest, put, select } from 'redux-saga/effects';
 import callBff from '../callBff.js'
 
@@ -20,24 +21,6 @@ export function* getMenuData(action) {
     window.location = '/notfound'
     yield put({
       type: actionTypes.GET_MENU_DATA_FAILURE,
-      error,
-    })
-  }
-}
-
-export function* getVenues(action) {
-  try {
-    const res = yield callBff(`venues`, 'POST', {category: 'brunch'})
-      .then(response => response)
-      yield put({
-        type: actionTypes.GET_VENUES_SUCCESS,
-        res,
-      })
-  } catch (error) {
-    console.log(error)
-    window.location = '/notfound'
-    yield put({
-      type: actionTypes.GET_VENUES_FAILURE,
       error,
     })
   }
@@ -67,7 +50,6 @@ export function* setSectionPositions(action) {
 export function* actionWatcher() {
   yield [
     takeLatest(actionTypes.GET_MENU_DATA_REQUEST, getMenuData),
-    takeLatest(actionTypes.GET_VENUES_REQUEST, getVenues),
     takeLatest(actionTypes.SET_SECTION_POSITION_REQUEST, setSectionPositions),
   ]
 }

@@ -16,6 +16,7 @@ import LoadingScreen from './components/LoadingScreen/LoadingScreen.js';
 
 
 class App extends React.Component {
+  
   componentWillMount() {
     const { getVenueNames, venueNames } = this.props
     if (!venueNames) {

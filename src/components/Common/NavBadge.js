@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uuid from 'uuid/v4';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 class NavBadge extends React.Component{
     componentDidMount(){
@@ -18,15 +19,16 @@ class NavBadge extends React.Component{
         this.className = currentPosition >= interval[0]-50 && currentPosition < interval[1]-50 ? 'red' : '';
 
         return (
-            <span
-                style={{cursor: 'pointer'}}
-                onClick={(e) => {onSelect(e)}}
-                id={`$scroll-nav-${section}`}
-                key={uuid()}
-                className={this.className}
-            >
-                {section}
-            </span>
+            <AnchorLink href={`#$scroll-nav-${section}`} onClick={(e) => {onSelect(e)}} key={uuid()}>
+                <span
+                    style={{cursor: 'pointer'}}
+                    id={`$scroll-nav-${section}`}
+                    key={uuid()}
+                    className={this.className}
+                >
+                    {section}
+                </span>
+            </AnchorLink>
         );
     }
 }

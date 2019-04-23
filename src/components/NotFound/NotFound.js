@@ -8,7 +8,7 @@ class NotFound extends React.Component {
       <div className="loading">
         <img className="pnf" src="/mryum_assets/Mr_Yum_logo_white.svg" alt="Mr Yum"/>
         <div>
-          <h2 className="pnf">404<br/>Page not found</h2>
+          <h2 className="pnf">We can't find what you're looking for!</h2>
         </div>
         <img className="lost" src="/mryum_assets/lost.gif" alt="404"/>
       </div>

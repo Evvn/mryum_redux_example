@@ -28,8 +28,13 @@ class MenuContainer extends React.Component {
  componentWillMount() {
    const { getMenuData, bffRes, venue, itemId, setItemId, clearSectionPositions } = this.props;
    if (!bffRes || this.params.requestedVenue !== venue) {
+    document.title = "Mr Yum";
      getMenuData(this.params.requestedVenue, this.params.item);
      clearSectionPositions();
+   }
+   else{
+    const venueName = Object.values(bffRes)[0].fields.Venue;
+    document.title = venueName + " Menu";
    }
    if(this.params.item !== itemId){
      setItemId(this.params.item)
@@ -75,7 +80,6 @@ class MenuContainer extends React.Component {
     } = this.props;
     const venueName = Object.values(bffRes)[0].fields.Venue;
     const itemView = itemId ? true : false;
-    document.title = venueName + " Menu";
     const filtersInUse = Object.values(filter).includes(true)
 
     return (
@@ -107,7 +111,6 @@ class MenuContainer extends React.Component {
       itemId,
     } = this.props;
 
-    document.title = venueName + " Menu";
 
     return (
       isLoading ? <LoadingScreen/> :

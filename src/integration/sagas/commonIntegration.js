@@ -21,8 +21,27 @@ export function* getVenueNames(action) {
   }
 }
 
+export function* getVenues(action) {
+  try {
+    const res = yield callBff(`venues`, 'POST', {category: 'brunch'})
+      .then(response => response)
+      yield put({
+        type: actionTypes.GET_VENUES_SUCCESS,
+        res,
+      })
+  } catch (error) {
+    console.log(error)
+    window.location = '/notfound'
+    yield put({
+      type: actionTypes.GET_VENUES_FAILURE,
+      error,
+    })
+  }
+}
+
 export function* actionWatcher() {
   yield [
     takeLatest(actionTypes.GET_VENUE_NAMES_REQUEST, getVenueNames),
+    takeLatest(actionTypes.GET_VENUES_REQUEST, getVenues),
   ]
 }
