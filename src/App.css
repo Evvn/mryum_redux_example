@@ -1919,6 +1919,10 @@ body {
     visibility: hidden;
   }
 
+  .previewHeader {
+    display: none;
+  }
+
   .previewModal {
     z-index: 5;
     width: 100%;
@@ -1926,7 +1930,7 @@ body {
     max-height: none;
     position: fixed;
     top: 0;
-    background-color: #fafafa;
+    background-color: rgba(0, 0, 0, 0.6);
   }
   .previewModal .previewItem {
     display: grid;

@@ -2177,6 +2177,10 @@ footer {
     visibility: hidden;
   }
 
+  .previewHeader {
+    display: none;
+  }
+
   .previewModal {
     z-index: 5;
     width: 100%;
@@ -2184,7 +2188,7 @@ footer {
     max-height: none;
     position: fixed;
     top: 0;
-    background-color: $cardColor;
+    background-color: rgba(#000,.6);
 
     .previewItem {
       display: grid;

@@ -76,10 +76,11 @@ class Menu extends Component {
 
     return (
       <div>
+        {this.getMenu()}
         {
           itemId
             ? <ItemDetail details={menuItems[itemId].fields} lang={lang} />
-            : this.getMenu()
+            : ''
         }
       </div>
     );

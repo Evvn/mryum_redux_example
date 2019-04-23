@@ -27,7 +27,7 @@ export function* getMenuData(action) {
 
 export function* getVenues(action) {
   try {
-    const res = yield callBff(`venues`, 'GET')
+    const res = yield callBff(`venues`, 'POST', {category: 'brunch'})
       .then(response => response)
       yield put({
         type: actionTypes.GET_VENUES_SUCCESS,

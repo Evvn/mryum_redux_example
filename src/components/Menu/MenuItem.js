@@ -1,5 +1,6 @@
 import React from 'react'
 import LinesEllipsis from 'react-lines-ellipsis'
+// import JsxParser from 'react-jsx-parser'
 
 class MenuItem extends React.Component {
 
@@ -20,6 +21,12 @@ class MenuItem extends React.Component {
       trimmedName = trimmedName.substring(0,31).trim() + '...'
     }
 
+    // <JsxParser
+    //   jsx={
+    //     `${desc}`
+    //   }
+    // />
+
     const clampedDesc = (
       <LinesEllipsis
         text={desc}
@@ -32,8 +39,8 @@ class MenuItem extends React.Component {
 
     return (
       <div>
-        <h3 className="title">{trimmedName}</h3>
-        <div className="bodyText">{clampedDesc}</div>
+        <h3 className="title">{ trimmedName }</h3>
+        <div className="bodyText">{ clampedDesc }</div>
         <div className="info">
           <span className="price">{item['Price']}</span>
           <span className="tags">{ !!item.Tags ? item.Tags.join(' ') : null }</span>

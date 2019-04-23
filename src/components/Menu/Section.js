@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MenuItem from './MenuItem';
 import MenuList from './MenuList';
 import MenuInfo from './MenuInfo';
+import uuid from 'uuid/v4';
 
 class Section extends React.Component {
 
@@ -100,9 +101,8 @@ class Section extends React.Component {
       return hasTag ? tags[0] !== 'LIST' ? this.processItem(item, index) : this.getList(item, index) : menuItemTemplate
     });
 
-    if (tagsInUse.length === 0) {
-      // TODO: find a better unique key for this lol (lazy ass)
-      section.push(<MenuInfo key={Math.random(999)} infoList={infoList} />)
+    if (tagsInUse.length === 0 && infoList.length > 0) {
+      section.push(<MenuInfo key={uuid()} infoList={infoList} />)
     }
 
     section = section.map(item => {
@@ -114,7 +114,7 @@ class Section extends React.Component {
             item={item.props.item}
             itemIndex={updatedIndex}
             lang={lang}
-            onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
+            onClick={(e) => {routeToItemDetail(e, item.key, lang)}}
           />
         )
       } else {
