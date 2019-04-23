@@ -107,7 +107,8 @@ class Section extends React.Component {
 
     section = section.map(item => {
       if (item && item !== '' && item.type.name === 'MenuItem') {
-        updatedIndex ++
+        // console.log(updatedIndex);
+        updatedIndex++
         return (
           <MenuItem
             key={item.key}
@@ -132,6 +133,8 @@ class Section extends React.Component {
       subSection = name.substring((name.indexOf('%') + 1), name.length)
       name = name.substring(0, name.indexOf('%'))
     }
+
+    // replace name with tags in use
     if (tagsInUse.length > 0) {
       tagsInUse = tagsInUse.join(', ')
       name = tagsInUse
@@ -142,7 +145,7 @@ class Section extends React.Component {
 
     let section = this.getSection()
 
-    if (section.slice(-1)[0] === undefined) {
+    if (section.slice(-1)[0] === undefined && index > 0) {
       return <div></div>
     } else {
       return (

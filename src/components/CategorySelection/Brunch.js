@@ -70,7 +70,7 @@ class Brunch extends React.Component{
             <a href="/"><img src="/mryum_assets/Mr_Yum_logo_white.svg" alt="Mr Yum"/></a>
           </header>
 
-          { this.printBrunch(categoryRes) }
+          { categoryRes ? this.printBrunch(categoryRes) : '' }
 
         </div>
       )

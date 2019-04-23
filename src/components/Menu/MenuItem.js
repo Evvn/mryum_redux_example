@@ -63,7 +63,7 @@ class MenuItem extends React.Component {
     if (itemIndex % 2 === 0) {
       return (
         <div className="menuItem" onClick={(e) => onClick(e)}>
-          <div className="leftBox" style={style}></div>
+          <div className="leftBox itemPhoto" style={style}></div>
           <div className="rightBox">
             { this.itemDetails(item) }
           </div>
@@ -75,7 +75,7 @@ class MenuItem extends React.Component {
           <div className="leftBox">
             { this.itemDetails(item) }
           </div>
-          <div className="rightBox" style={style}></div>
+          <div className="rightBox itemPhoto" style={style}></div>
         </div>
       )
     }

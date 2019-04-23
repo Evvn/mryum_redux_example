@@ -33,10 +33,6 @@ function menuReducer(state = initialState, action) {
         ...state,
         item: action.id,
       }
-    case action.type === 'CLEAR_STATE':
-      return {
-        ...initialState,
-      };
     default:
       return state
   }

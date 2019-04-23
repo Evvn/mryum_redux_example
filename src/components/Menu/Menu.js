@@ -4,7 +4,6 @@ import Section from './Section.js'
 import ItemDetail from './ItemDetail.js'
 
 class Menu extends Component {
-
   getTags(){
     const { filter } = this.props;
     const tagsInUse = [];
