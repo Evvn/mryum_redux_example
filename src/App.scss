@@ -1146,6 +1146,9 @@ h1 {
   grid-template-rows: 1fr;
   grid-template-areas: "leftBox rightBox";
   background-color: $cardColor;
+  box-shadow: 0 2px 5px rgba(92, 92, 92, 0.3);
+  margin: 5px 5px 5px 5px;
+  border-radius: 5px;
 
   .forDummies {
     color: white;
@@ -1293,17 +1296,19 @@ h1 {
 }
 
 .leftBox {
+  border-radius: 5px 0px 0px 5px;
   grid-area: leftBox;
   position: relative;
-  width: 50vw;
+  // width: 50vw;
   max-width: 250px;
   max-height: 250px;
 }
 
 .rightBox {
+  border-radius: 0px 5px 5px 0px;
   grid-area: rightBox;
   position: relative;
-  width: 50vw;
+  // width: 50vw;
   max-width: 250px;
   max-height: 250px;
 }
