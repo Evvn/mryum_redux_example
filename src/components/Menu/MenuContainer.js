@@ -52,26 +52,28 @@ class MenuContainer extends React.Component {
    }
  }
 
- componentDidUpdate() {
-   let index = 0
-   document.querySelectorAll('.menuItem').forEach(item => {
-     if (item.classList.contains('water')) {
-       return
-     }
-     if (index % 2 === 0) {
-       if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
-         item.querySelector('.leftBox').className = 'rightBox'
-         item.querySelector('.rightBox').className = 'leftBox'
-       }
-     } else {
-       if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
-         item.querySelector('.leftBox').className = 'rightBox'
-         item.querySelector('.rightBox').className = 'leftBox'
-       }
-     }
-     index++
-   })
- }
+
+ // old alternating code - delete when fixed
+ // componentDidUpdate() {
+ //   let index = 0
+ //   document.querySelectorAll('.menuItem').forEach(item => {
+ //     if (item.classList.contains('water')) {
+ //       return
+ //     }
+ //     if (index % 2 === 0) {
+ //       if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
+ //         item.querySelector('.leftBox').className = 'rightBox'
+ //         item.querySelector('.rightBox').className = 'leftBox'
+ //       }
+ //     } else {
+ //       if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
+ //         item.querySelector('.leftBox').className = 'rightBox'
+ //         item.querySelector('.rightBox').className = 'leftBox'
+ //       }
+ //     }
+ //     index++
+ //   })
+ // }
 
  componentWillUnmount() {
    const { clearSectionPositions } = this.props;
@@ -128,6 +130,30 @@ class MenuContainer extends React.Component {
       setSectionPosition,
       itemId,
     } = this.props;
+
+    // const tagsInUse = [];
+    // Object.keys(filter).forEach(tag => {
+    //   if (filter[tag]) {
+    //     tagsInUse.push(tag);
+    //   }
+    // });
+    //
+    // let tags = item.fields['Tags Filtering']
+    // if (tags) {
+    //   tags.forEach((tag, index) => {
+    //     if (tag === 'vegetarian') {
+    //       tags[index] = 'V'
+    //     }
+    //     if (tag === 'vegan') {
+    //       tags[index] = 'VE'
+    //     }
+    //     if (tag === 'gluten-free') {
+    //       tags[index] = 'GF'
+    //     }
+    //   })
+    // }
+    //
+    // console.log(bffRes);
 
     return (
       isLoading || !bffRes ? <LoadingScreen/> :

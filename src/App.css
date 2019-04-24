@@ -990,9 +990,9 @@ h1 img {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "leftBox rightBox";
-  background-color: #f3f3f3;
-  box-shadow: 0 2px 5px rgba(92, 92, 92, 0.3);
-  margin: 5px 5px 10px 5px;
+  background-color: #f8f8f8;
+  box-shadow: 0 5px 10px rgba(198, 198, 198, 0.5);
+  margin: 0px 5px 12px 5px;
   border-radius: 5px;
 }
 .menuItem .forDummies {
@@ -1744,7 +1744,7 @@ footer a:focus {
   max-width: 500px;
   height: auto;
   min-height: 150px;
-  background-color: #f3f3f3;
+  background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;

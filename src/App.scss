@@ -24,7 +24,7 @@ $blue: #6189ea;
 $sectionColor: #373737;
 $titleColor: #494949;
 $bodyColor: #6f6f6f;
-$cardColor: #f3f3f3;
+$cardColor: #f8f8f8;
 $maxWidth: 500px;
 $grey: #f7f7f7;
 $hopscotch: #70d3c7;
@@ -1146,8 +1146,8 @@ h1 {
   grid-template-rows: 1fr;
   grid-template-areas: "leftBox rightBox";
   background-color: $cardColor;
-  box-shadow: 0 2px 5px rgba(92, 92, 92, 0.3);
-  margin: 5px 5px 10px 5px;
+  box-shadow: 0 5px 10px rgba(#c6c6c6, 0.5);
+  margin: 0px 5px 12px 5px;
   border-radius: 5px;
 
   .forDummies {
