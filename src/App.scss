@@ -24,7 +24,7 @@ $blue: #6189ea;
 $sectionColor: #373737;
 $titleColor: #494949;
 $bodyColor: #6f6f6f;
-$cardColor: #fafafa;
+$cardColor: #f8f8f8;
 $maxWidth: 500px;
 $grey: #f7f7f7;
 $hopscotch: #70d3c7;
@@ -1060,10 +1060,11 @@ h1 {
 .section {
   @extend %sectionFont;
   padding: 85px 15px 15px;
-  margin-bottom: 0;
+  margin-bottom: -7px;
   background-color: white;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
 
   span {
     display: block;
@@ -1145,6 +1146,9 @@ h1 {
   grid-template-rows: 1fr;
   grid-template-areas: "leftBox rightBox";
   background-color: $cardColor;
+  box-shadow: 0 5px 10px rgba(#c6c6c6, 0.5);
+  margin: 0px 5px 12px 5px;
+  border-radius: 5px;
 
   .forDummies {
     color: white;
@@ -1292,17 +1296,19 @@ h1 {
 }
 
 .leftBox {
+  border-radius: 5px 0px 0px 5px;
   grid-area: leftBox;
   position: relative;
-  width: 50vw;
+  // width: 50vw;
   max-width: 250px;
   max-height: 250px;
 }
 
 .rightBox {
+  border-radius: 0px 5px 5px 0px;
   grid-area: rightBox;
   position: relative;
-  width: 50vw;
+  // width: 50vw;
   max-width: 250px;
   max-height: 250px;
 }
@@ -2058,7 +2064,7 @@ footer {
     padding-top: 145px;
   }
 
-  .menu > div > div {
+  .menu > div > div > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -2220,29 +2226,29 @@ footer {
     }
   }
 
-  .menuItem:nth-of-type(even) {
-    grid-template-areas: "rightBox" "leftBox";
-
-    .rightBox {
-      height: 350px;
-      border: none;
-      border-radius: 0;
-      border-radius: 4px 4px 0 0;
-    }
-
-    .leftBox {
-      height: 250px;
-      border-radius: 0 0 4px 4px;
-    }
-  }
+  // .menuItem:nth-of-type(even) {
+  //   grid-template-areas: "rightBox" "leftBox";
+  //
+  //   .rightBox {
+  //     height: 350px;
+  //     border: none;
+  //     border-radius: 0;
+  //     border-radius: 4px 4px 0 0;
+  //   }
+  //
+  //   .leftBox {
+  //     height: 250px;
+  //     border-radius: 0 0 4px 4px;
+  //   }
+  // }
 
   .menuListItem {
     height: 200px;
   }
 
-  .menuListItem:nth-of-type(even) {
-    grid-template-areas: "leftBox" "rightBox";
-  }
+  // .menuListItem:nth-of-type(even) {
+  //   grid-template-areas: "leftBox" "rightBox";
+  // }
 
   .tiny {
     display: none !important;

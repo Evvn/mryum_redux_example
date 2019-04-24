@@ -55,7 +55,7 @@ class MenuItem extends React.Component {
   }
 
   render() {
-    const { item, itemIndex, onClick } = this.props;
+    const { item, onClick } = this.props;
     let img = item['Image'] ? item['Image'][0].url : '/mryum_assets/missing_photo.jpg'
     const style = {
       backgroundImage: 'url(' + img + ')',
@@ -64,26 +64,26 @@ class MenuItem extends React.Component {
       backgroundRepeat: 'no-repeat'
     }
 
-    // if even/odd
-    if (itemIndex % 2 === 0) {
-      return (
-        <div className="menuItem" onClick={(e) => onClick(e)}>
-          <div className="leftBox itemPhoto" style={style}></div>
-          <div className="rightBox">
-            { this.itemDetails(item) }
-          </div>
+    // if even/odd //////////////////// GONE
+    // if (itemIndex % 2 === 0) {
+    return (
+      <div className="menuItem" onClick={(e) => onClick(e)}>
+        <div className="leftBox itemPhoto" style={style}></div>
+        <div className="rightBox">
+          { this.itemDetails(item) }
         </div>
-      )
-    } else {
-      return (
-        <div className="menuItem" onClick={(e) => onClick(e)}>
-          <div className="leftBox">
-            { this.itemDetails(item) }
-          </div>
-          <div className="rightBox itemPhoto" style={style}></div>
-        </div>
-      )
-    }
+      </div>
+    )
+    // } else {
+    //   return (
+    //     <div className="menuItem" onClick={(e) => onClick(e)}>
+    //       <div className="leftBox">
+    //         { this.itemDetails(item) }
+    //       </div>
+    //       <div className="rightBox itemPhoto" style={style}></div>
+    //     </div>
+    //   )
+    // }
   }
 }
 

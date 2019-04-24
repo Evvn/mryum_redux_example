@@ -21,17 +21,19 @@ class Section extends React.Component {
       lang,
     } = this.props;
     let tags = item.fields['Tags Filtering']
-    tags.forEach((tag, index) => {
-      if (tag === 'vegetarian') {
-        tags[index] = 'V'
-      }
-      if (tag === 'vegan') {
-        tags[index] = 'VE'
-      }
-      if (tag === 'gluten-free') {
-        tags[index] = 'GF'
-      }
-    })
+    if (tags) {
+      tags.forEach((tag, index) => {
+        if (tag === 'vegetarian') {
+          tags[index] = 'V'
+        }
+        if (tag === 'vegan') {
+          tags[index] = 'VE'
+        }
+        if (tag === 'gluten-free') {
+          tags[index] = 'GF'
+        }
+      })
+    }
 
     // If menu item tags match any tags in filter -> should match ALL filter tags -> done
     // changed .some method to .every
@@ -73,7 +75,7 @@ class Section extends React.Component {
     } = this.props;
 
     let infoList = [];
-    let updatedIndex = -1;
+    // let updatedIndex = -1;
 
     let section = menuSection.map((item, index) => {
       const hasTag = item.fields.Tags ? true : false;
@@ -105,23 +107,24 @@ class Section extends React.Component {
       section.push(<MenuInfo key={uuid()} infoList={infoList} />)
     }
 
-    section = section.map(item => {
-      if (item && item !== '' && item.type.name === 'MenuItem') {
-        // console.log(updatedIndex);
-        updatedIndex++
-        return (
-          <MenuItem
-            key={item.key}
-            item={item.props.item}
-            itemIndex={updatedIndex}
-            lang={lang}
-            onClick={(e) => {routeToItemDetail(e, item.key, lang)}}
-          />
-        )
-      } else {
-        return item
-      }
-    })
+    // old alternating code - delete when fixed
+    // section = section.map(item => {
+    //   if (item && item !== '' && item.type.name === 'MenuItem') {
+    //     // console.log(updatedIndex);
+    //     updatedIndex++
+    //     return (
+    //       <MenuItem
+    //         key={item.key}
+    //         item={item.props.item}
+    //         itemIndex={updatedIndex}
+    //         lang={lang}
+    //         onClick={(e) => {routeToItemDetail(e, item.key, lang)}}
+    //       />
+    //     )
+    //   } else {
+    //     return item
+    //   }
+    // })
 
     return section
   }
