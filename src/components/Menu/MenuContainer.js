@@ -11,6 +11,7 @@ import Water from './Water';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import * as actions from './actions/actions.js';
 import classNames from 'classnames'
+import ReactGA from 'react-ga'
 
 class MenuContainer extends React.Component {
   constructor(props) {
@@ -19,7 +20,19 @@ class MenuContainer extends React.Component {
     const paramArray = window.location.href.split('/');
     this.params = {
        requestedVenue: paramArray[3],
-       item: paramArray.length === 5 ? paramArray[4] : false,
+       item: paramArray.length === 5 ? paramArray[4] === 'qr' || paramArray[4] === 'test' || paramArray[4] === 'menu' ? false : paramArray[4] : false,
+    }
+
+    if (paramArray[4] && (paramArray[4] === 'qr' || paramArray[4] === 'test')) {
+      if (paramArray[4] === 'qr') {
+        ReactGA.event({category: 'Page view', action: 'via QR code scan', label: paramArray[3], nonInteraction: true});
+      } else if (paramArray[4] === 'menu') {
+        ReactGA.event({category: 'Page view', action: 'via /menu URL', label: paramArray[3], nonInteraction: true});
+      } else if (paramArray[4] === 'test') {
+        console.log('%c テスティング. \nｔｅｓｔｉｎｇ.', 'color: #a1b5ff; font-size: 250%; font-family: monospace;');
+        ReactGA.event({category: 'Page view', action: 'DEV :) // Test view', label: paramArray[3], nonInteraction: true});
+      }
+      window.history.replaceState({}, document.title, '/' + paramArray[3])
     }
 
     this.routeToItemDetail = this.routeToItemDetail.bind(this)

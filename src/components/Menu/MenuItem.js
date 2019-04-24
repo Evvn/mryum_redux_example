@@ -64,16 +64,16 @@ class MenuItem extends React.Component {
       backgroundRepeat: 'no-repeat'
     }
 
-    // if even/odd
+    // if even/odd //////////////////// GONE
     // if (itemIndex % 2 === 0) {
-      return (
-        <div className="menuItem" onClick={(e) => onClick(e)}>
-          <div className="leftBox itemPhoto" style={style}></div>
-          <div className="rightBox">
-            { this.itemDetails(item) }
-          </div>
+    return (
+      <div className="menuItem" onClick={(e) => onClick(e)}>
+        <div className="leftBox itemPhoto" style={style}></div>
+        <div className="rightBox">
+          { this.itemDetails(item) }
         </div>
-      )
+      </div>
+    )
     // } else {
     //   return (
     //     <div className="menuItem" onClick={(e) => onClick(e)}>

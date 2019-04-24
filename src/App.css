@@ -1810,18 +1810,18 @@ body {
     padding-top: 145px;
   }
 
-  .menu > div > div {
+  .menu > div > div > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
-  .menu > div > div .footerCont,
-.menu > div > div footer {
+  .menu > div > div > div .footerCont,
+.menu > div > div > div footer {
     max-width: none;
     width: 100%;
   }
-  .menu > div > div .define {
+  .menu > div > div > div .define {
     color: #6f6f6f;
     border-bottom: 1px solid transparent;
     cursor: pointer;
@@ -1832,7 +1832,7 @@ body {
       border-bottom: 1px solid #6f6f6f;
     }
   }
-  .menu > div > div .definition {
+  .menu > div > div > div .definition {
     width: 85vw;
     max-width: 400px;
     height: auto;
@@ -1856,13 +1856,13 @@ body {
       opacity: 1;
     }
   }
-  .menu > div > div .definition .definedWord {
+  .menu > div > div > div .definition .definedWord {
     text-transform: capitalize;
     font-size: 26px;
     letter-spacing: 1px;
     padding-bottom: 15px;
   }
-  .menu > div > div .definition .definitionText {
+  .menu > div > div > div .definition .definitionText {
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: 0.3px;
@@ -1954,26 +1954,8 @@ body {
     border-radius: 0 0 4px 4px;
   }
 
-  .menuItem:nth-of-type(even) {
-    grid-template-areas: "rightBox" "leftBox";
-  }
-  .menuItem:nth-of-type(even) .rightBox {
-    height: 350px;
-    border: none;
-    border-radius: 0;
-    border-radius: 4px 4px 0 0;
-  }
-  .menuItem:nth-of-type(even) .leftBox {
-    height: 250px;
-    border-radius: 0 0 4px 4px;
-  }
-
   .menuListItem {
     height: 200px;
-  }
-
-  .menuListItem:nth-of-type(even) {
-    grid-template-areas: "leftBox" "rightBox";
   }
 
   .tiny {
