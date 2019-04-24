@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NotFound from '../NotFound/NotFound.js'
 import Section from './Section.js'
 import ItemDetail from './ItemDetail.js'
+import ClassNames from 'classnames'
 
 class Menu extends Component {
   getTags(){
@@ -75,12 +76,13 @@ class Menu extends Component {
 
     return (
       <div>
-        {this.getMenu()}
-        {
-          itemId
-            ? <ItemDetail details={menuItems[itemId].fields} lang={lang} />
-            : ''
-        }
+        <div className={ClassNames(itemId ? 'lockScroll' : '')}>
+          {this.getMenu()}
+        </div>
+
+        { itemId ?
+          <ItemDetail details={menuItems[itemId].fields} lang={lang} />
+           : '' }
       </div>
     );
   }
