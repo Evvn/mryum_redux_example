@@ -135,7 +135,7 @@ class MenuContainer extends React.Component {
 
 
     return (
-      isLoading ? <LoadingScreen/> :
+      isLoading || !bffRes ? <LoadingScreen/> :
       (
         <div className="Menu">
           {this.getHeader()}

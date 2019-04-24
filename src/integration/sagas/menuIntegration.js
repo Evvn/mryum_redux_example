@@ -2,6 +2,7 @@ import * as actionTypes from '../../components/Menu/actions/actionTypes/actionTy
 import * as commonActionTypes from '../../components/Common/actions/actionTypes/actionTypes.js';
 import { takeLatest, put, select } from 'redux-saga/effects';
 import callBff from '../callBff.js'
+import { sortByValue } from '../../utils/objectUtils.js';
 
 export function* getMenuData(action) {
   try {
@@ -27,20 +28,8 @@ export function* getMenuData(action) {
 }
 
 export function* setSectionPositions(action) {
-  const sortByValue = (obj) => {
-    const newObj = {};
-    const sortable = Object.keys(obj).map(key => [key, obj[key]]);
-    sortable.sort((a,b) => a[1] - b[1]);
-    sortable.forEach(obj => {
-      newObj[obj[0]] = obj[1]
-    });
-
-    return newObj;
-  }
-    const getCurrentPositions = state => state.menu.sectionPositions;
-    let sectionPositions = yield select(getCurrentPositions);
-    sectionPositions = !sectionPositions ? {} : sectionPositions;
-    sectionPositions[action.section] = action.position;
+    const sectionPositions = {};
+    yield sectionPositions[action.section] = action.position;
     yield put({
       type: actionTypes.SET_SECTION_POSITION_SUCCESS,
       sectionPositions: sortByValue(sectionPositions),

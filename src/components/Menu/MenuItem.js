@@ -10,15 +10,20 @@ class MenuItem extends React.Component {
     let desc = item['Item Description Raw']
     let translatedName = 'name-' + lang
     let translatedDesc = 'description-' + lang
+    let trimmedName;
 
     if (lang !== 'en') {
       name = item[translatedName]
       desc = item[translatedDesc]
     }
 
-    let trimmedName = name
+    if (name){
+    trimmedName = name
     if (trimmedName.length > 30) {
       trimmedName = trimmedName.substring(0,31).trim() + '...'
+    }}
+    else{
+      trimmedName = '';
     }
 
     // <JsxParser

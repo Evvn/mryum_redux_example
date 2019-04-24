@@ -25,6 +25,7 @@ class HorizontalScrollNav extends React.Component {
         window.addEventListener('mousemove', this.mouseMoveHandle.bind(this));
         // add event listener on scroll with throttling to prevent excessive events being fired
         window.addEventListener('scroll', _.throttle(this.scrollHandle.bind(this), 500, { trailing: true, leading: true }));
+        this.refs.container.scrollLeft = 0;
 
     }
 
@@ -112,6 +113,7 @@ class HorizontalScrollNav extends React.Component {
         const { currentPosition } = this.state;
         const sectionNames = Object.keys(sectionPositions);
         const sortedPositions = this.sortByValue(sectionPositions);
+        
 
         return (
             <div
