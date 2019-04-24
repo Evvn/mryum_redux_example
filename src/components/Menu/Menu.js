@@ -27,7 +27,9 @@ class Menu extends Component {
   }
 
   componentDidUpdate() {
-    if (document.querySelectorAll('.menuItem').length === 0) {
+    const { itemId } = this.props
+
+    if (document.querySelectorAll('.menuItem').length === 0 && !itemId) {
       this.setState({
         showWater: true,
       })
