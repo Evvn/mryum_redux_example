@@ -129,14 +129,6 @@ class MenuContainer extends React.Component {
       itemId,
     } = this.props;
 
-    const filteredRes = Object.values(bffRes).map(item => {
-      if (item.fields['Tags Filtering'] && item.fields['Tags Filtering'].includes('GF')) {
-        return item
-      }
-    })
-
-    console.log(filteredRes);
-
     return (
       isLoading || !bffRes ? <LoadingScreen/> :
       (
@@ -145,7 +137,7 @@ class MenuContainer extends React.Component {
           <div className="menu">
             <Menu
               menuItemKeys={Object.keys(bffRes)}
-              menuItems={filteredRes}
+              menuItems={bffRes}
               filter={filter}
               lang={lang}
               itemId={itemId}
