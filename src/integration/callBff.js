@@ -13,6 +13,8 @@ const callBff = (suffix, type, body, returnJson = true) => {
    payload.body = JSON.stringify(body);
  }
 
+payload.credentials = 'omit'
+
  return fetch(`${process.env.REACT_APP_BFF_BASE_URL}/yumbff/${suffix}`, payload).then((response) => {
    if (response.ok) {
      if (returnJson) {
