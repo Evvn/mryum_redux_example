@@ -21,17 +21,19 @@ class Section extends React.Component {
       lang,
     } = this.props;
     let tags = item.fields['Tags Filtering']
-    tags.forEach((tag, index) => {
-      if (tag === 'vegetarian') {
-        tags[index] = 'V'
-      }
-      if (tag === 'vegan') {
-        tags[index] = 'VE'
-      }
-      if (tag === 'gluten-free') {
-        tags[index] = 'GF'
-      }
-    })
+    if (tags) {
+      tags.forEach((tag, index) => {
+        if (tag === 'vegetarian') {
+          tags[index] = 'V'
+        }
+        if (tag === 'vegan') {
+          tags[index] = 'VE'
+        }
+        if (tag === 'gluten-free') {
+          tags[index] = 'GF'
+        }
+      })
+    }
 
     // If menu item tags match any tags in filter -> should match ALL filter tags -> done
     // changed .some method to .every

@@ -1060,10 +1060,11 @@ h1 {
 .section {
   @extend %sectionFont;
   padding: 85px 15px 15px;
-  margin-bottom: 0;
+  margin-bottom: -7px;
   background-color: white;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
 
   span {
     display: block;
