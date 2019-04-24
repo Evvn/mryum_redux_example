@@ -76,7 +76,7 @@ class Menu extends Component {
 
     return (
       <div>
-        <div className={ClassNames(itemId ? 'lockScroll' : '')}>
+        <div className={ClassNames(itemId ? 'menuCont lockScroll' : 'menuCont')}>
           {this.getMenu()}
         </div>
 

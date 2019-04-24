@@ -145,19 +145,14 @@ class Section extends React.Component {
 
     let section = this.getSection()
 
-    if ((section.slice(-1)[0] === undefined && index > 0) || !section || !tagsInUse) {
-      return <div></div>
-    } else {
-      return (
-        <div>
-          {tagsInUse.length > 0 && index > 1 ? '' :
-            <h2 className={`section ${ index === 0 && tagsInUse.length === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
-          }
-          { section }
-        </div>
-
-      )
-    }
+    return (
+      <div>
+        {tagsInUse.length > 0 && index > 0 ? '' :
+          <h2 className={`section ${ index === 0 && tagsInUse.length === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
+        }
+        { section }
+      </div>
+    )
   }
 }
 
