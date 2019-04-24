@@ -38,18 +38,20 @@ class Section extends React.Component {
 
     // If menu item tags match any tags in filter -> should match ALL filter tags -> done
     // changed .some method to .every
-    if ((tagsInUse.length > 0 && tagsInUse.every(tag => tags.includes(tag)))
-      || tagsInUse.length === 0) {
-        return (
-          <MenuItem
-            key={item.id}
-            item={item.fields}
-            itemIndex={index}
-            lang={lang}
-            onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
-          />
-        );
-      }
+    if (tags) {
+      if ((tagsInUse.length > 0 && tagsInUse.every(tag => tags.includes(tag)))
+        || tagsInUse.length === 0) {
+          return (
+            <MenuItem
+              key={item.id}
+              item={item.fields}
+              itemIndex={index}
+              lang={lang}
+              onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
+            />
+          );
+        }
+    }
 
     return '';
   }
