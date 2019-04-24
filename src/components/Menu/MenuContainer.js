@@ -7,7 +7,6 @@ import LanguageSelect from './LanguageSelect.js';
 import Menu from './Menu';
 // import { persistStore } from 'redux-persist'
 import Footer from './Footer';
-import Water from './Water';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import * as actions from './actions/actions.js';
 import classNames from 'classnames'
@@ -183,7 +182,6 @@ class MenuContainer extends React.Component {
               routeToItemDetail={this.routeToItemDetail}
               setSectionPosition={setSectionPosition}
             />
-            <Water/>
             <Footer/>
           </div>
         </div>
