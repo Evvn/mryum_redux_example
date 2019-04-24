@@ -32,7 +32,7 @@ export default (initialState = {}) => {
   let store = '';
 
   // for dev
-  if (process.env.REACT_APP_REDUX_DEV_TOOLS === 'false') {
+  if (process.env.REACT_APP_REDUX_DEV_TOOLS === 'true') {
     store = createStore(
       persistReducer(persistConfig, makeRootReducer(history)),
       initialState,
