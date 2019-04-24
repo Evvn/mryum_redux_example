@@ -74,17 +74,33 @@ class Menu extends Component {
       itemId,
     } = this.props
 
-    return (
-      <div>
-        <div className={ClassNames(itemId ? 'menuCont lockScroll' : 'menuCont')}>
-          {this.getMenu()}
-        </div>
+    const desktopView = window.innerWidth > 768 ? true : false;
+    console.log(desktopView);
+
+    return desktopView ?
+      (
+        <div>
+          <div className={ClassNames(itemId ? 'menuCont lockScroll' : 'menuCont')}>
+            {this.getMenu()}
+          </div>
 
         { itemId ?
           <ItemDetail details={menuItems[itemId].fields} lang={lang} />
            : '' }
       </div>
-    );
+    )
+      :
+    (
+      <div>
+        { itemId ?
+          <ItemDetail details={menuItems[itemId].fields} lang={lang} />
+           :
+           <div>
+             {this.getMenu()}
+           </div>
+          }
+      </div>
+    )
   }
 }
 
