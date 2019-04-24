@@ -60,13 +60,11 @@ class MenuContainer extends React.Component {
      }
      if (index % 2 === 0) {
        if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
-         console.log('item photo on right, swap sides');
          item.querySelector('.leftBox').className = 'rightBox'
          item.querySelector('.rightBox').className = 'leftBox'
        }
      } else {
        if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
-         console.log('item photo on left, swap sides');
          item.querySelector('.leftBox').className = 'rightBox'
          item.querySelector('.rightBox').className = 'leftBox'
        }
@@ -122,9 +120,7 @@ class MenuContainer extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line
     const {
-      venueName,
       filter,
       lang,
       bffRes,

@@ -113,7 +113,7 @@ class HorizontalScrollNav extends React.Component {
         const { currentPosition } = this.state;
         const sectionNames = Object.keys(sectionPositions);
         const sortedPositions = this.sortByValue(sectionPositions);
-        
+
 
         return (
             <div
