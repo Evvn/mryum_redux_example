@@ -5,8 +5,6 @@ import MenuList from './MenuList';
 import MenuInfo from './MenuInfo';
 import uuid from 'uuid/v4';
 
-// import Water from './Water';
-// <Water/>
 
 class Section extends React.Component {
 
@@ -144,9 +142,10 @@ class Section extends React.Component {
     if (tagsInUse.length > 0) {
       tagsInUse = tagsInUse.join(', ')
       name = tagsInUse
-      .replace(new RegExp("\\bV\\b"), 'Vegetarian')
-      .replace(new RegExp("\\bVE\\b"), 'Vegan')
-      .replace(new RegExp("\\bGF\\b"), 'Gluten Free')
+              .replace(new RegExp("\\bV\\b"), 'Vegetarian')
+              .replace(new RegExp("\\bVE\\b"), 'Vegan')
+              .replace(new RegExp("\\bGF\\b"), 'Gluten Free')
+      subSection = ''
     };
 
     let section = this.getSection()
