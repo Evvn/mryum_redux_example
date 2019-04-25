@@ -2028,6 +2028,7 @@ footer {
 }
 
 // menu desktop view
+// MENU DESKTOP VIEW
 @media screen and (min-width: 768px) {
   .App,
   body {
@@ -2053,6 +2054,12 @@ footer {
     }
 
     .filter {
+
+      .filterIcon {
+        top: 21px;
+        right: 2px;
+      }
+
       .filterList {
         right: 45px;
       }

@@ -1801,6 +1801,10 @@ body {
   header .hamburger {
     right: 20px;
   }
+  header .filter .filterIcon {
+    top: 21px;
+    right: 2px;
+  }
   header .filter .filterList {
     right: 45px;
   }
