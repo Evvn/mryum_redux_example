@@ -5,7 +5,6 @@ import MenuList from './MenuList';
 import MenuInfo from './MenuInfo';
 import uuid from 'uuid/v4';
 
-
 class Section extends React.Component {
 
   componentDidMount(){
@@ -151,6 +150,7 @@ class Section extends React.Component {
     };
 
     let section = this.getSection()
+    section = section.filter(elem => elem)
 
     return (
       <div>

@@ -58,6 +58,15 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+:global .sumome-image-sharer {
+  height: 0;
+  display: none !important;
+}
+
+:global .sumome-share-client-wrapper {
+  height: 10px;
+}
+
 body {
   background-color: #e3e3e3;
   max-width: 500px;

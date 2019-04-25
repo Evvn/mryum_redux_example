@@ -76,6 +76,16 @@ $hsdark: #282828;
   -webkit-tap-highlight-color: transparent;
 }
 
+// SUMO ME GLOBAL RULES
+:global .sumome-image-sharer {
+  height: 0;
+  display: none !important;
+}
+
+:global .sumome-share-client-wrapper {
+  height: 10px;
+}
+
 body {
   // font-family: 'Helvetica', sans-serif;
   // background-color: $black;
