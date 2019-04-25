@@ -3,7 +3,6 @@ import NotFound from '../NotFound/NotFound.js'
 import Section from './Section.js'
 import ItemDetail from './ItemDetail.js'
 import ClassNames from 'classnames'
-import Water from './Water';
 
 class Menu extends Component {
   constructor(props) {
@@ -27,13 +26,7 @@ class Menu extends Component {
   }
 
   componentDidUpdate() {
-    const { itemId } = this.props
 
-    if (document.querySelectorAll('.menuItem').length === 0 && !itemId) {
-      this.setState({
-        showWater: true,
-      })
-    }
   }
 
   getSections(){
@@ -58,7 +51,7 @@ class Menu extends Component {
     const {
       setSectionPosition,
       lang,
-      routeToItemDetail,
+      routeToItemDetail
     } = this.props
     const menuSections = this.getSections();
     const tagsInUse = this.getTags();
@@ -93,14 +86,12 @@ class Menu extends Component {
       itemId,
     } = this.props
     const desktopView = window.innerWidth > 768 ? true : false;
-    const showWater = this.state.showWater
 
     return desktopView ?
       (
         <div>
           <div className={ClassNames(itemId ? 'menuCont lockScroll' : 'menuCont')}>
             { this.getMenu() }
-            { showWater ? <Water /> : '' }
           </div>
 
         { itemId ?
@@ -116,7 +107,6 @@ class Menu extends Component {
            :
            <div>
              { this.getMenu() }
-             { showWater ? <Water /> : '' }
            </div>
           }
       </div>
