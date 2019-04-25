@@ -11,6 +11,7 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import * as actions from './actions/actions.js';
 import classNames from 'classnames'
 import ReactGA from 'react-ga'
+import Water from './Water.js'
 
 class MenuContainer extends React.Component {
   constructor(props) {
@@ -143,29 +144,45 @@ class MenuContainer extends React.Component {
       itemId,
     } = this.props;
 
-    // const tagsInUse = [];
-    // Object.keys(filter).forEach(tag => {
-    //   if (filter[tag]) {
-    //     tagsInUse.push(tag);
-    //   }
-    // });
-    //
-    // let tags = item.fields['Tags Filtering']
-    // if (tags) {
-    //   tags.forEach((tag, index) => {
-    //     if (tag === 'vegetarian') {
-    //       tags[index] = 'V'
-    //     }
-    //     if (tag === 'vegan') {
-    //       tags[index] = 'VE'
-    //     }
-    //     if (tag === 'gluten-free') {
-    //       tags[index] = 'GF'
-    //     }
-    //   })
-    // }
-    //
-    // console.log(bffRes);
+    const tagsInUse = [];
+    Object.keys(filter).forEach(tag => {
+      if (filter[tag]) {
+        tagsInUse.push(tag);
+      }
+    });
+
+    tagsInUse.forEach((tag, index) => {
+      if (tag === 'vegetarian') {
+        tagsInUse[index] = 'V'
+      }
+      if (tag === 'vegan') {
+        tagsInUse[index] = 'VE'
+      }
+      if (tag === 'gluten-free') {
+        tagsInUse[index] = 'GF'
+      }
+    })
+
+    let filteredRes = []
+    if (tagsInUse.length > 0) {
+      Object.values(bffRes).forEach((elem, index) => {
+        if (elem.fields['Tags Filtering']) {
+
+          // IF ELEMENT HAS TAGS ...
+          let matchCount = 0
+          tagsInUse.forEach(tag => {
+            if (elem.fields['Tags Filtering'].includes(tag)) {
+              matchCount++
+            }
+          })
+          if (matchCount === tagsInUse.length) {
+            filteredRes.push(':)')
+          }
+        }
+      })
+    }
+
+    const showWater = filteredRes.length === 0 && tagsInUse.length > 0 ? true : false
 
     return (
       isLoading || !bffRes ? <LoadingScreen/> :
@@ -182,6 +199,7 @@ class MenuContainer extends React.Component {
               routeToItemDetail={this.routeToItemDetail}
               setSectionPosition={setSectionPosition}
             />
+            { showWater ? <Water /> : '' }
             <Footer/>
           </div>
         </div>

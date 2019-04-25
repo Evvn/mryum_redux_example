@@ -5,14 +5,6 @@ import ItemDetail from './ItemDetail.js'
 import ClassNames from 'classnames'
 
 class Menu extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      showWater: false,
-    }
-  }
-
   getTags(){
     const { filter } = this.props;
     const tagsInUse = [];

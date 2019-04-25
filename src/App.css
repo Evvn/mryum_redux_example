@@ -105,6 +105,10 @@ body {
   overflow: hidden;
 }
 
+.water:first-of-type {
+  display: grid !important;
+}
+
 .slideOutLeft {
   -webkit-transform: translateX(0%);
   -webkit-animation: slideOutLeft 0.2s ease-in-out forwards;
@@ -1579,6 +1583,7 @@ footer a:focus {
 }
 
 .footerCont {
+  position: relative;
   bottom: 0;
 }
 .footerCont .linkToMenu {
