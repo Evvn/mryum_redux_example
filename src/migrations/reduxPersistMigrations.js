@@ -5,6 +5,7 @@
     3: state => {},
     4: state => {},
     5: state => {},
+    6: state => {},
 };
 
 export default migrations;
