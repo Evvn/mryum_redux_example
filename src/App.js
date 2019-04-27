@@ -13,6 +13,10 @@ import MenuContainer from './components/Menu/MenuContainer.js';
 import NotFound from './components/NotFound/NotFound.js';
 import Brunch from './components/CategorySelection/Brunch.js';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen.js';
+import ReactGA from 'react-ga'
+// initialize Google Analytics
+ReactGA.initialize('UA-129043240-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 class App extends React.Component {

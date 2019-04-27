@@ -447,7 +447,7 @@ body {
 .venue {
   @extend %displayFont;
   color: $hsdark;
-  background-color: #fff;
+  background-color: white;
   font-weight: bold;
   font-size: 20px;
   padding-top: 4px;
@@ -609,7 +609,7 @@ header {
   position: fixed;
   top: 0;
   color: black;
-  background-color: #fff;
+  background-color: white;
   z-index: 10;
   padding: 15px;
   transition: 0.4s ease-in-out all;
@@ -2455,7 +2455,7 @@ footer {
     flex-direction: column;
 
     .venuesHeader {
-      color: #fff;
+      color: white;
       // text-transform: uppercase;
       // font-family: "Roboto Condensed", "Futura", sans-serif;
       // font-weight: bold;

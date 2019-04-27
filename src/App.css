@@ -378,7 +378,7 @@ body {
 
 .venue {
   color: #282828;
-  background-color: #fff;
+  background-color: white;
   font-weight: bold;
   font-size: 20px;
   padding-top: 4px;
@@ -523,7 +523,7 @@ header {
   position: fixed;
   top: 0;
   color: black;
-  background-color: #fff;
+  background-color: white;
   z-index: 10;
   padding: 15px;
   transition: 0.4s ease-in-out all;
@@ -2135,7 +2135,7 @@ body {
   flex-direction: column;
 }
 .landingPage .logos .venuesHeader {
-  color: #fff;
+  color: white;
   font-weight: 500;
   font-size: 18px;
   margin-top: 20px;

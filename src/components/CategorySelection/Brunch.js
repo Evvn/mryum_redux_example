@@ -14,7 +14,12 @@ class Brunch extends React.Component{
 
   createBackground(url) {
     let style = {
-      backgroundImage: `url('${url}')`,
+      backgroundColor: '#fc4250'
+    }
+    if (url) {
+      style = {
+        backgroundImage: `url('${url}')`,
+      }
     }
     return style
   }
@@ -24,12 +29,13 @@ class Brunch extends React.Component{
     let unverified = []
 
     categoryRes.forEach((venue, index) => {
+      let bannerUrl = venue.BANNER_IMAGE ? venue.BANNER_IMAGE.url : false
       if (venue.VERIFIED) {
         verified.push(
           <div
             key={index}
             className="venueCard"
-            style={this.createBackground(venue.BANNER_IMAGE.url)}
+            style={this.createBackground(bannerUrl)}
           >
             <a className="venueName" href={`/${venue.NAME_NO_SPACE}`}>{ venue.NAME }</a>
           </div>
@@ -39,7 +45,7 @@ class Brunch extends React.Component{
           <div
             key={index}
             className="venueCard"
-            style={this.createBackground(venue.BANNER_IMAGE.url)}
+            style={this.createBackground(bannerUrl)}
           >
             <a className="venueName" href={`/${venue.NAME_NO_SPACE}`}>{ venue.NAME }</a>
           </div>
