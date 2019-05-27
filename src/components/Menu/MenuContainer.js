@@ -1,109 +1,150 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import HorizontalScrollNav from '../Common/HorizontalScrollNav';
-import Filter from './Filter.js';
-import LanguageSelect from './LanguageSelect.js';
-import Menu from './Menu';
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import HorizontalScrollNav from "../Common/HorizontalScrollNav";
+import Filter from "./Filter.js";
+import LanguageSelect from "./LanguageSelect.js";
+import Menu from "./Menu";
 // import { persistStore } from 'redux-persist'
-import Footer from './Footer';
-import LoadingScreen from '../LoadingScreen/LoadingScreen';
-import * as actions from './actions/actions.js';
-import classNames from 'classnames'
-import ReactGA from 'react-ga'
-import Water from './Water.js'
+import Footer from "./Footer";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import * as actions from "./actions/actions.js";
+import * as commonActions from "../Common/actions/actions.js";
+import classNames from "classnames";
+import ReactGA from "react-ga";
+import Water from "./Water.js";
+import MenuSearch from "../Common/MenuSearch";
+
+import "./styles/menuContainer.scss";
 
 class MenuContainer extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    const paramArray = window.location.href.split('/');
+    const paramArray = window.location.href.split("/");
     this.params = {
-       requestedVenue: paramArray[3],
-       item: paramArray.length === 5 ? paramArray[4] === 'qr' || paramArray[4] === 'test' || paramArray[4] === 'menu' ? false : paramArray[4] : false,
-    }
+      requestedVenue: paramArray[3],
+      item:
+        paramArray.length === 5
+          ? paramArray[4] === "qr" ||
+            paramArray[4] === "test" ||
+            paramArray[4] === "menu"
+            ? false
+            : paramArray[4]
+          : false
+    };
 
-    if (paramArray[4] && (paramArray[4] === 'qr' || paramArray[4] === 'test')) {
-      if (paramArray[4] === 'qr') {
-        ReactGA.event({category: 'Page view', action: 'via QR code scan', label: paramArray[3], nonInteraction: true});
-      } else if (paramArray[4] === 'menu') {
-        ReactGA.event({category: 'Page view', action: 'via /menu URL', label: paramArray[3], nonInteraction: true});
-      } else if (paramArray[4] === 'test') {
-        console.log('%c テスティング. \nｔｅｓｔｉｎｇ.', 'color: #a1b5ff; font-size: 250%; font-family: monospace;');
-        ReactGA.event({category: 'Page view', action: 'DEV :) // Test view', label: paramArray[3], nonInteraction: true});
+    if (paramArray[4] && (paramArray[4] === "qr" || paramArray[4] === "test")) {
+      if (paramArray[4] === "qr") {
+        ReactGA.event({
+          category: "Page view",
+          action: "via QR code scan",
+          label: paramArray[3],
+          nonInteraction: true
+        });
+      } else if (paramArray[4] === "menu") {
+        ReactGA.event({
+          category: "Page view",
+          action: "via /menu URL",
+          label: paramArray[3],
+          nonInteraction: true
+        });
+      } else if (paramArray[4] === "test") {
+        console.log(
+          "%c テスティング. \nｔｅｓｔｉｎｇ.",
+          "color: #a1b5ff; font-size: 250%; font-family: monospace;"
+        );
+        ReactGA.event({
+          category: "Page view",
+          action: "DEV :) // Test view",
+          label: paramArray[3],
+          nonInteraction: true
+        });
       }
-      window.history.replaceState({}, document.title, '/' + paramArray[3])
+      window.history.replaceState({}, document.title, "/" + paramArray[3]);
     }
 
-    this.routeToItemDetail = this.routeToItemDetail.bind(this)
+    this.routeToItemDetail = this.routeToItemDetail.bind(this);
   }
 
- componentWillMount() {
-   const { getMenuData, bffRes, venue, itemId, setItemId, clearSectionPositions } = this.props;
-   if (!bffRes || this.params.requestedVenue !== venue) {
-    document.title = "Mr Yum";
-     getMenuData(this.params.requestedVenue, this.params.item);
-     clearSectionPositions();
-   }
-   else{
-    const venueName = Object.values(bffRes)[0].fields.Venue;
-    document.title = venueName + " Menu";
-   }
-   if(this.params.item !== itemId){
-     setItemId(this.params.item)
-   }
- }
+  componentWillMount() {
+    const {
+      getMenuData,
+      bffRes,
+      venue,
+      itemId,
+      setItemId,
+      clearSectionPositions
+    } = this.props;
 
- componentWillUpdate() {
-   const { getMenuData, bffRes, venue, itemId, setItemId, clearSectionPositions } = this.props;
-   if (!bffRes || this.params.requestedVenue !== venue) {
-     getMenuData(this.params.requestedVenue, this.params.item);
-     clearSectionPositions();
-   }
-   if(this.params.item !== itemId){
-     setItemId(this.params.item)
-   }
- }
+    if (!bffRes || this.params.requestedVenue !== venue) {
+      document.title = "Mr Yum";
+      getMenuData(this.params.requestedVenue, this.params.item);
+      clearSectionPositions();
+    } else {
+      const venueName = bffRes.venue.NAME;
+      document.title = venueName + " Menu";
+    }
+    if (this.params.item !== itemId) {
+      setItemId(this.params.item);
+    }
+  }
 
+  componentWillUpdate() {
+    const {
+      getMenuData,
+      bffRes,
+      venue,
+      itemId,
+      setItemId,
+      clearSectionPositions
+    } = this.props;
+    if (!bffRes || this.params.requestedVenue !== venue) {
+      getMenuData(this.params.requestedVenue, this.params.item);
+      clearSectionPositions();
+    }
+    if (this.params.item !== itemId) {
+      setItemId(this.params.item);
+    }
+  }
 
- // old alternating code - delete when fixed
- // componentDidUpdate() {
- //   let index = 0
- //   document.querySelectorAll('.menuItem').forEach(item => {
- //     if (item.classList.contains('water')) {
- //       return
- //     }
- //     if (index % 2 === 0) {
- //       if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
- //         item.querySelector('.leftBox').className = 'rightBox'
- //         item.querySelector('.rightBox').className = 'leftBox'
- //       }
- //     } else {
- //       if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
- //         item.querySelector('.leftBox').className = 'rightBox'
- //         item.querySelector('.rightBox').className = 'leftBox'
- //       }
- //     }
- //     index++
- //   })
- // }
+  // old alternating code - delete when fixed
+  // componentDidUpdate() {
+  //   let index = 0
+  //   document.querySelectorAll('.menuItem').forEach(item => {
+  //     if (item.classList.contains('water')) {
+  //       return
+  //     }
+  //     if (index % 2 === 0) {
+  //       if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
+  //         item.querySelector('.leftBox').className = 'rightBox'
+  //         item.querySelector('.rightBox').className = 'leftBox'
+  //       }
+  //     } else {
+  //       if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
+  //         item.querySelector('.leftBox').className = 'rightBox'
+  //         item.querySelector('.rightBox').className = 'leftBox'
+  //       }
+  //     }
+  //     index++
+  //   })
+  // }
 
- componentWillUnmount() {
-   const { clearSectionPositions } = this.props;
-   clearSectionPositions();
-   window.scrollTo(0,0)
-   //persistStore(this.props).purge();
- }
+  componentWillUnmount() {
+    const { clearSectionPositions } = this.props;
+    clearSectionPositions();
+    window.scrollTo(0, 0);
+    //persistStore(this.props).purge();
+  }
 
- routeToItemDetail(e, id, lang) {
-   //const { setItemId } = this.props;
-   const newId = id ? id : false;
-   const refSuffix = newId ? `/${id}` : '';
-   window.location = window.location.href + `${refSuffix}`
- }
+  routeToItemDetail(e, id, lang) {
+    // const { setItemId } = this.props;
+    const newId = id ? id : false;
+    const refSuffix = newId ? `/${id}` : "";
+    window.location = window.location.href + `${refSuffix}`;
+  }
 
-
-  getHeader(){
+  getHeader() {
     const {
       sectionPositions,
       filter,
@@ -112,20 +153,41 @@ class MenuContainer extends React.Component {
       lang,
       bffRes,
       itemId,
+      searchLength
     } = this.props;
-    const venueName = bffRes ? Object.values(bffRes)[0].fields.Venue : false;
+    const venueName = bffRes ? bffRes.venue.NAME : false;
     const itemView = itemId ? true : false;
-    const filtersInUse = Object.values(filter).includes(true)
+    const filtersInUse = Object.values(filter).includes(true);
+    const searchInUse = searchLength > 0 ? true : false;
 
     return (
       <div>
-        <header className={ classNames('header', itemView ? 'previewHeader' : '') }>
+        <header
+          className={classNames("header", itemView ? "previewHeader" : "")}
+        >
           {/* back arrow for routing, control this and venuename via props */}
-          { itemView ? <img onClick={() => {window.history.back()}} src="/icons/arrow-left-solid-grey.svg" className="headerBackArrow" alt="back arrow"/> : null }
-          { !!venueName && !itemView? <h1 className="venue">{venueName}</h1> : null }
-          { !itemView && <Filter filter={filter} updateFilter={updateFilter} lang={lang} /> }
-          { !itemView && !filtersInUse ? <HorizontalScrollNav sectionPositions={sectionPositions}/> : ''}
-          { !itemView && <LanguageSelect lang={lang} updateLang={updateLang} /> }
+          {itemView ? (
+            <img
+              onClick={() => {
+                window.history.back();
+              }}
+              src="/icons/arrow-left-solid-grey.svg"
+              className="headerBackArrow"
+              alt="back arrow"
+            />
+          ) : null}
+          {!!venueName && !itemView ? (
+            <h1 className="venue">{venueName}</h1>
+          ) : null}
+          {!itemView && (
+            <Filter filter={filter} updateFilter={updateFilter} lang={lang} />
+          )}
+          {!itemView && !filtersInUse && !searchInUse ? (
+            <HorizontalScrollNav sectionPositions={sectionPositions} />
+          ) : (
+            ""
+          )}
+          {!itemView && <LanguageSelect lang={lang} updateLang={updateLang} />}
           {/* <img className="cartIcon" src="/icons/cart_icon.svg" alt="cart"/> */}
           {/* need check to see when to display cart badge */}
           {/* { hasCartItems && <div className="cartBadge"/> } */}
@@ -142,7 +204,13 @@ class MenuContainer extends React.Component {
       isLoading,
       setSectionPosition,
       itemId,
+      searchTerm,
+      setSearchRes,
+      searchLength,
+      searchRes
     } = this.props;
+    const itemView = itemId ? true : false;
+    const searchInUse = searchLength > 0 ? true : false;
 
     const tagsInUse = [];
     Object.keys(filter).forEach(tag => {
@@ -152,73 +220,99 @@ class MenuContainer extends React.Component {
     });
 
     tagsInUse.forEach((tag, index) => {
-      if (tag === 'vegetarian') {
-        tagsInUse[index] = 'V'
+      if (tag === "vegetarian") {
+        tagsInUse[index] = "V";
       }
-      if (tag === 'vegan') {
-        tagsInUse[index] = 'VE'
+      if (tag === "vegan") {
+        tagsInUse[index] = "VE";
       }
-      if (tag === 'gluten-free') {
-        tagsInUse[index] = 'GF'
+      if (tag === "gluten-free") {
+        tagsInUse[index] = "GF";
       }
-    })
+    });
 
-    let filteredRes = []
+    let filteredRes = [];
     if (tagsInUse.length > 0) {
       Object.values(bffRes).forEach((elem, index) => {
-        if (elem.fields['Tags Filtering']) {
-
+        if (elem.DIETARY_TAGS) {
           // IF ELEMENT HAS TAGS ...
-          let matchCount = 0
+          let matchCount = 0;
           tagsInUse.forEach(tag => {
-            if (elem.fields['Tags Filtering'].includes(tag)) {
-              matchCount++
+            if (elem.DIETARY_TAGS.includes(tag)) {
+              matchCount++;
             }
-          })
+          });
           if (matchCount === tagsInUse.length) {
-            filteredRes.push(':)')
+            filteredRes.push(":)");
           }
         }
-      })
+      });
     }
 
-    const showWater = filteredRes.length === 0 && tagsInUse.length > 0 ? true : false
+    const showWater =
+      filteredRes.length === 0 && tagsInUse.length > 0 ? true : false;
 
-    return (
-      isLoading || !bffRes ? <LoadingScreen/> :
-      (
-        <div className="Menu">
-          {this.getHeader()}
-          <div className="menu">
-            <Menu
-              menuItemKeys={Object.keys(bffRes)}
-              menuItems={bffRes}
-              filter={filter}
-              lang={lang}
-              itemId={itemId}
-              routeToItemDetail={this.routeToItemDetail}
-              setSectionPosition={setSectionPosition}
-            />
-            { showWater ? <Water /> : '' }
-            <Footer/>
-          </div>
+    return isLoading || !bffRes ? (
+      <LoadingScreen />
+    ) : (
+      <div className="Menu">
+        {this.getHeader()}
+        {!itemView && (
+          <MenuSearch
+            data={bffRes}
+            hide={false}
+            onInput={result => result}
+            setSearchRes={setSearchRes}
+            searchInUse={searchInUse}
+          />
+        )}
+        <div className="menu">
+          <Menu
+            menuItemKeys={Object.keys(bffRes.items)}
+            menuItems={bffRes.items}
+            filter={filter}
+            lang={lang}
+            itemId={itemId}
+            routeToItemDetail={this.routeToItemDetail}
+            setSectionPosition={setSectionPosition}
+            searchInUse={searchInUse}
+            searchTerm={searchTerm}
+            searchRes={searchRes}
+          />
+          {showWater ? <Water /> : ""}
+          {searchInUse && searchRes.length === 0 ? (
+            <div className="noSearchRes">
+              <img src="/icons/no_results.svg" alt="" className="searchFace" />
+              <p>Sorry, looks like there are no results.</p>
+              <p>Try something else!</p>
+            </div>
+          ) : (
+            ""
+          )}
+          <Footer />
         </div>
-      )
+      </div>
     );
   }
+}
 
-};
-
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ ...actions, ...commonActions }, dispatch);
 
 const mapStateToProps = state => ({
   bffRes: state.persistentMenu.bffRes,
+  category: state.persistentMenu.category,
   isLoading: state.common.isLoading,
   venue: state.persistentMenu.venue,
-  itemId: state.persistentMenu.item,
   sectionPositions: state.menu.sectionPositions,
   filter: state.persistentMenu.filter,
   lang: state.persistentMenu.lang,
+  searchTerm: state.common.searchTerm,
+  searchRes: state.common.searchRes,
+  searchLength: state.common.searchLength
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MenuContainer);

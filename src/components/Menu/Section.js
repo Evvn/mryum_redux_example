@@ -1,166 +1,184 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import MenuItem from './MenuItem';
-import MenuList from './MenuList';
-import MenuInfo from './MenuInfo';
-import uuid from 'uuid/v4';
+import React from "react";
+import ReactDOM from "react-dom";
+import MenuItem from "./MenuItem";
+import MenuList from "./MenuList";
+import MenuInfo from "./MenuInfo";
+import uuid from "uuid/v4";
 
 class Section extends React.Component {
-
-  componentDidMount(){
+  componentDidMount() {
     const { name, setSectionPosition } = this.props;
-    const position = ReactDOM
-      .findDOMNode(this).offsetTop;
-    setSectionPosition(name.split('%')[0], position);
+    const position = ReactDOM.findDOMNode(this).offsetTop;
+    setSectionPosition(name.split("%")[0], position);
   }
 
-  processItem(item, index){
-    const {
-      tagsInUse,
-      routeToItemDetail,
-      lang,
-    } = this.props;
-    let tags = item.fields['Tags Filtering']
+  processItem(item, index) {
+    const { tagsInUse, routeToItemDetail, lang } = this.props;
+    let tags = item.DIETARY_TAGS;
     if (tags) {
       tags.forEach((tag, index) => {
-        if (tag === 'vegetarian') {
-          tags[index] = 'V'
+        if (tag === "vegetarian") {
+          tags[index] = "V";
         }
-        if (tag === 'vegan') {
-          tags[index] = 'VE'
+        if (tag === "vegan") {
+          tags[index] = "VE";
         }
-        if (tag === 'gluten-free') {
-          tags[index] = 'GF'
+        if (tag === "gluten-free") {
+          tags[index] = "GF";
         }
-      })
+      });
     }
 
     // If menu item tags match any tags in filter -> should match ALL filter tags -> done
     // changed .some method to .every
     if (tags) {
-      if ((tagsInUse.length > 0 && tagsInUse.every(tag => tags.includes(tag)))
-        || tagsInUse.length === 0) {
-          return (
-            <MenuItem
-              key={item.id}
-              item={item.fields}
-              itemIndex={index}
-              lang={lang}
-              onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
-            />
-          );
-        }
+      if (
+        (tagsInUse.length > 0 && tagsInUse.every(tag => tags.includes(tag))) ||
+        tagsInUse.length === 0
+      ) {
+        return (
+          <MenuItem
+            key={item.ID}
+            item={item}
+            itemIndex={index}
+            lang={lang}
+            onClick={e => {
+              routeToItemDetail(e, item.ID, lang);
+            }}
+          />
+        );
+      }
     }
 
-    return '';
+    return "";
   }
 
-  getList(item, index){
+  getList(item, index) {
     const { routeToItemDetail } = this.props;
     return (
       <MenuList
-        key={item.id}
+        key={item.ID}
         // disable menu list item click until ordering
-        onClick={(e) => {routeToItemDetail(e, item.id)}}
-        item={item.fields}
+        onClick={e => {
+          routeToItemDetail(e, item.ID);
+        }}
+        item={item}
         itemIndex={index}
       />
     );
   }
 
-  getSection(){
+  getSection() {
     const {
       menuSection,
       lang,
       routeToItemDetail,
       tagsInUse,
+      searchInUse
     } = this.props;
 
     let infoList = [];
-    // let updatedIndex = -1;
 
-    let section = menuSection.map((item, index) => {
-      const hasTag = item.fields.Tags ? true : false;
-      const tags = item.fields.Tags;
-      const menuItemTemplate = (
-        <MenuItem
-          key={item.id}
-          item={item.fields}
-          itemIndex={index}
-          lang={lang}
-          onClick={(e) => {routeToItemDetail(e, item.id, lang)}}
-        />
-      );
+    let section = menuSection
+      ? menuSection.map((item, index) => {
+          const hasTag = item.DIETARY_TAGS ? true : false;
+          const tags = item.DIETARY_TAGS;
+          const menuItemTemplate = (
+            <MenuItem
+              key={item.ID}
+              item={item}
+              itemIndex={index}
+              lang={lang}
+              onClick={e => {
+                routeToItemDetail(e, item.ID, lang);
+              }}
+            />
+          );
 
-      if (item.fields.itemType === 'info') {
-        infoList.push(item.fields)
-        // eslint-disable-next-line
-        return
-      }
+          if (item.TYPE === "info") {
+            infoList.push(item);
+            // eslint-disable-next-line
+            return;
+          }
 
-      if (tagsInUse.length > 0 && !hasTag) {
-        return ''
-      }
+          if (tagsInUse.length > 0 && !hasTag) {
+            return "";
+          }
 
-      return hasTag ? tags[0] !== 'LIST' ? this.processItem(item, index) : this.getList(item, index) : menuItemTemplate
-    });
+          return hasTag
+            ? tags[0] !== "LIST"
+              ? this.processItem(item, index)
+              : this.getList(item, index)
+            : menuItemTemplate;
+        })
+      : [];
 
-    if (tagsInUse.length === 0 && infoList.length > 0) {
-      section.push(<MenuInfo key={uuid()} infoList={infoList} />)
+    if (tagsInUse.length === 0 && infoList.length > 0 && !searchInUse) {
+      section.push(<MenuInfo key={uuid()} infoList={infoList} />);
     }
 
-    // old alternating code - delete when fixed
-    // section = section.map(item => {
-    //   if (item && item !== '' && item.type.name === 'MenuItem') {
-    //     // console.log(updatedIndex);
-    //     updatedIndex++
-    //     return (
-    //       <MenuItem
-    //         key={item.key}
-    //         item={item.props.item}
-    //         itemIndex={updatedIndex}
-    //         lang={lang}
-    //         onClick={(e) => {routeToItemDetail(e, item.key, lang)}}
-    //       />
-    //     )
-    //   } else {
-    //     return item
-    //   }
-    // })
-
-    return section
+    return section;
   }
 
   render() {
-    let { name, index, tagsInUse } = this.props
-    let subSection = ""
-    if (name.indexOf("%") !== -1) {
-      subSection = name.substring((name.indexOf('%') + 1), name.length)
-      name = name.substring(0, name.indexOf('%'))
+    const { name, index, tagsInUse, searchInUse, searchTerm } = this.props;
+    let tags = tagsInUse;
+    let nameClone = name ? name : "";
+    let subSection = "";
+    let hideSection = false;
+
+    if (nameClone.indexOf("%") !== -1) {
+      subSection = nameClone.substring(
+        nameClone.indexOf("%") + 1,
+        nameClone.length
+      );
+      nameClone = nameClone.substring(0, nameClone.indexOf("%"));
     }
 
-    // replace name with tags in use
-    if (tagsInUse.length > 0) {
-      tagsInUse = tagsInUse.join(', ')
-      name = tagsInUse
-              .replace(new RegExp("\\bV\\b"), 'Vegetarian')
-              .replace(new RegExp("\\bVE\\b"), 'Vegan')
-              .replace(new RegExp("\\bGF\\b"), 'Gluten Free')
-      subSection = ''
-    };
+    // replace nameClone with tags in use
+    if (tags.length > 0) {
+      tags = tags.join(", ");
+      nameClone = tags
+        .replace(new RegExp("\\bV\\b"), "Vegetarian")
+        .replace(new RegExp("\\bVE\\b"), "Vegan")
+        .replace(new RegExp("\\bGF\\b"), "Gluten Free");
+      subSection = "";
+    }
 
-    let section = this.getSection()
-    section = section.filter(elem => elem)
+    // replace nameClose with search term in use
+    if (searchInUse) {
+      nameClone = `Search results for '${searchTerm}'`;
+      subSection = "";
+    }
+
+    // concat tags and filter res
+    if (tags.length > 0 || searchInUse) {
+      if (index > 0) {
+        hideSection = true;
+      }
+    }
+
+    let section = this.getSection();
+    section = section.filter(elem => elem);
 
     return (
       <div>
-        {tagsInUse.length > 0 && index > 0 ? '' :
-          <h2 className={`section ${ index === 0 && tagsInUse.length === 0 ? 'sectionTaller' : '' }` } >{ name }<span className="subSection">{ subSection }</span></h2>
-        }
-        { section }
+        {hideSection ? (
+          ""
+        ) : (
+          <h2
+            className={`section ${
+              index === 0 && tags.length === 0 ? "sectionTaller" : ""
+            }`}
+          >
+            {nameClone}
+            <span className="subSection">{subSection}</span>
+          </h2>
+        )}
+        {section}
       </div>
-    )
+    );
   }
 }
 
-export default Section
+export default Section;

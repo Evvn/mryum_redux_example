@@ -1,14 +1,14 @@
-import React from 'react'
-import JsxParser from 'react-jsx-parser'
+import React from "react";
+import JsxParser from "react-jsx-parser";
 import Swipe from "react-easy-swipe";
 
 class ItemDetail extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       swipeRight: false
-    }
+    };
 
     this.onSwipeRight = this.onSwipeRight.bind(this);
     this.onSwipeMove = this.onSwipeMove.bind(this);
@@ -58,15 +58,15 @@ class ItemDetail extends React.Component {
 
   // calls swipe right event if swipe is greater than 175px long to prevent accidental swipes when scrolling
   onSwipeRight() {
-    window.history.back()
+    window.history.back();
   }
 
   handleClick(e) {
-    if (e.target.className === 'previewModal') {
-      window.history.back()
+    if (e.target.className === "previewModal") {
+      window.history.back();
     }
     if (e.target.className === "define") {
-      return
+      return;
     }
     document.querySelector(".prevDefinition").classList.add("fadeOut");
     setTimeout(function() {
@@ -77,48 +77,44 @@ class ItemDetail extends React.Component {
   }
 
   render() {
-    const { details, lang } = this.props
-    let name = details['Item Name']
-    let desc = details['Item Description']
-    let translatedName = 'name-' + lang
-    let translatedDesc = 'description-' + lang
-    let creditUrl
-    let img = details['Image'] ? details['Image'][0].url : '/mryum_assets/missing_photo.jpg'
+    const { item, lang } = this.props;
+    let name = item.NAME[lang];
+    let desc = item.DESCRIPTION_WITH_SPANS;
+    let creditUrl;
+    let img = item.IMAGE ? item.IMAGE.url : "/mryum_assets/missing_photo.jpg";
 
-    if (lang !== 'en') {
-      name = details[translatedName]
-      desc = details[translatedDesc]
+    // let translatedName = 'name-' + lang
+    // let translatedDesc = 'description-' + lang
+
+    if (lang !== "en") {
+      // name = item[translatedName]
+      desc = item.DESCRIPTION[lang];
     }
 
-    if (details['image credit']) {
-      creditUrl = 'https://www.instagram.com/' + details['image credit'].substr(1) + '/'
+    if (item["image credit"]) {
+      creditUrl =
+        "https://www.instagram.com/" + item.IMAGE.credit.substr(1) + "/";
     }
 
-    let backgroundImage
-    if (details.Tags !== 'LIST' && !!details.Image) {
+    let backgroundImage;
+    if (item.DIETARY_TAGS !== "LIST" && !!item.IMAGE) {
       backgroundImage = {
-        backgroundImage: 'url(' + img + ')',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }
+        backgroundImage: "url(" + img + ")",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      };
     }
 
     return (
-      <Swipe
-        onSwipeMove={this.onSwipeMove}
-        onSwipeEnd={this.onSwipeEnd}
-      >
-        <div className='previewModal' onClick={this.handleClick}>
-
+      <Swipe onSwipeMove={this.onSwipeMove} onSwipeEnd={this.onSwipeEnd}>
+        <div className="previewModal" onClick={this.handleClick}>
           <div className="previewItem">
-
-            { !!details.Tags && details.Tags[0] === 'LIST' ? null :
-              <div className="previewImage" style={ backgroundImage }></div>
-            }
+            {!!item.DIETARY_TAGS && item.DIETARY_TAGS[0] === "LIST" ? null : (
+              <div className="previewImage" style={backgroundImage} />
+            )}
 
             <div className="previewWrapper">
-
               {/* hidden definition modal */}
               <div className="prevDefinition hidden">
                 <div className="prevDefinedWord" />
@@ -126,46 +122,47 @@ class ItemDetail extends React.Component {
               </div>
 
               <div className="prevDefinition hidden">
-                <div className="prevDefinedWord"></div>
-                <div className="prevDefinitionText"></div>
+                <div className="prevDefinedWord" />
+                <div className="prevDefinitionText" />
               </div>
 
               {/* No image credit? Don't show this section */}
-              { !!details['image credit'] && !!details.Tags && details.Tags[0] !== 'LIST' ?
+              {!!item.IMAGE.credit &&
+              !!item.DIETARY_TAGS &&
+              item.DIETARY_TAGS[0] !== "LIST" ? (
                 <div className="imageCredit">
-                  <div className="imageCreditLabel">photo by
-                    <a className="imageCreditLink" href={creditUrl}>{details['image credit']}</a>
+                  <div className="imageCreditLabel">
+                    photo by
+                    <a className="imageCreditLink" href={creditUrl}>
+                      {item.IMAGE.credit}
+                    </a>
                   </div>
                 </div>
-                : null }
+              ) : null}
 
               <div className="previewName">{name}</div>
 
               <div className="previewDescription">
-                <JsxParser
-                  jsx={
-                    `${desc}`
-                  }
-                />
+                <JsxParser jsx={`${desc}`} />
               </div>
 
               <div className="previewDetails">
-                <div className="previewPrice">{details['Price']}</div>
+                <div className="previewPrice">{item.PRICE}</div>
 
                 {/* Tags are LIST? Don't show */}
-                { !!details.Tags && details.Tags[0] === 'LIST' ? null :
-                  <div className="previewTags">{ !!details.Tags ? details.Tags.join(', ') : null }</div>
-                }
+                {!!item.DIETARY_TAGS &&
+                item.DIETARY_TAGS[0] === "LIST" ? null : (
+                  <div className="previewTags">
+                    {!!item.DIETARY_TAGS ? item.DIETARY_TAGS.join(", ") : null}
+                  </div>
+                )}
               </div>
-
             </div>
-
           </div>
-
         </div>
       </Swipe>
-    )
+    );
   }
 }
 
-export default ItemDetail
+export default ItemDetail;

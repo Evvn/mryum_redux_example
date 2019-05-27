@@ -1100,7 +1100,7 @@ h1 {
 }
 
 .sectionTaller {
-  padding-top: 125px;
+  padding-top: 0px;
 }
 // hack lol
 .filterSection:first-of-type {
@@ -2081,10 +2081,6 @@ footer {
     font-size: 34px;
     padding-left: 40px;
     padding-right: 40px;
-  }
-
-  .sectionTaller {
-    padding-top: 145px;
   }
 
   .menu > div > div > div {
