@@ -81,7 +81,7 @@ class ItemDetail extends React.Component {
     let name = item.NAME[lang];
     let desc = item.DESCRIPTION_WITH_SPANS;
     let creditUrl;
-    let img = item.IMAGE ? item.IMAGE.url : "/mryum_assets/missing_photo.jpg";
+    let img = "/mryum_assets/missing_photo.jpg";
 
     // let translatedName = 'name-' + lang
     // let translatedDesc = 'description-' + lang
@@ -91,13 +91,18 @@ class ItemDetail extends React.Component {
       desc = item.DESCRIPTION[lang];
     }
 
-    if (item["image credit"]) {
-      creditUrl =
-        "https://www.instagram.com/" + item.IMAGE.credit.substr(1) + "/";
+    if (item.IMAGE !== null) {
+      if (item.IMAGE.credit) {
+        creditUrl =
+          "https://www.instagram.com/" + item.IMAGE.credit.substr(1) + "/";
+      }
+      if (item.IMAGE.url) {
+        img = item.IMAGE.url;
+      }
     }
 
     let backgroundImage;
-    if (item.DIETARY_TAGS !== "LIST" && !!item.IMAGE) {
+    if (item.TYPE !== "list") {
       backgroundImage = {
         backgroundImage: "url(" + img + ")",
         backgroundSize: "cover",
@@ -110,7 +115,7 @@ class ItemDetail extends React.Component {
       <Swipe onSwipeMove={this.onSwipeMove} onSwipeEnd={this.onSwipeEnd}>
         <div className="previewModal" onClick={this.handleClick}>
           <div className="previewItem">
-            {!!item.DIETARY_TAGS && item.DIETARY_TAGS[0] === "LIST" ? null : (
+            {!!item.DIETARY_TAGS && item.TYPE === "list" ? null : (
               <div className="previewImage" style={backgroundImage} />
             )}
 
@@ -127,9 +132,10 @@ class ItemDetail extends React.Component {
               </div>
 
               {/* No image credit? Don't show this section */}
-              {!!item.IMAGE.credit &&
+              {item.IMAGE !== null &&
+              !!item.IMAGE.credit &&
               !!item.DIETARY_TAGS &&
-              item.DIETARY_TAGS[0] !== "LIST" ? (
+              item.TYPE !== "list" ? (
                 <div className="imageCredit">
                   <div className="imageCreditLabel">
                     photo by
@@ -150,8 +156,7 @@ class ItemDetail extends React.Component {
                 <div className="previewPrice">{item.PRICE}</div>
 
                 {/* Tags are LIST? Don't show */}
-                {!!item.DIETARY_TAGS &&
-                item.DIETARY_TAGS[0] === "LIST" ? null : (
+                {!!item.DIETARY_TAGS && item.TYPE !== "list" ? null : (
                   <div className="previewTags">
                     {!!item.DIETARY_TAGS ? item.DIETARY_TAGS.join(", ") : null}
                   </div>

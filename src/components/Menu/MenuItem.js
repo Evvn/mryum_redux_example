@@ -3,11 +3,31 @@ import LinesEllipsis from "react-lines-ellipsis";
 // import JsxParser from 'react-jsx-parser'
 
 class MenuItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isMobile: window.innerWidth < 768 ? true : false
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.checkWindowSize);
+  }
+
+  checkWindowSize = () => {
+    this.setState({
+      isMobile: window.innerWidth < 768 ? true : false
+    });
+  };
+
   itemDetails(item) {
     const { lang } = this.props;
+    const { isMobile } = this.state;
     let name = item.NAME[lang];
     let desc = item.DESCRIPTION[lang];
     let trimmedName;
+    let maxLines = isMobile ? 3 : 5;
     // let translatedName = 'name-' + lang
     // let translatedDesc = 'description-' + lang
 
@@ -34,7 +54,7 @@ class MenuItem extends React.Component {
     const clampedDesc = (
       <LinesEllipsis
         text={desc}
-        maxLine={3}
+        maxLine={maxLines}
         ellipsis="..."
         basedOn="words"
         trimRight

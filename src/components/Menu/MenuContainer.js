@@ -74,19 +74,22 @@ class MenuContainer extends React.Component {
       venue,
       itemId,
       setItemId,
-      clearSectionPositions
+      clearSectionPositions,
+      venueUrl
     } = this.props;
 
-    if (!bffRes || this.params.requestedVenue !== venue) {
+    if (!bffRes || venueUrl.toLowerCase() !== venue) {
       document.title = "Mr Yum";
-      getMenuData(this.params.requestedVenue, this.params.item);
+      getMenuData(venueUrl.toLowerCase(), this.params.item);
       clearSectionPositions();
     } else {
       const venueName = bffRes.venue.NAME;
       document.title = venueName + " Menu";
     }
     if (this.params.item !== itemId) {
-      setItemId(this.params.item);
+      if (itemId !== "qr" || itemId !== "test") {
+        setItemId(this.params.item);
+      }
     }
   }
 
@@ -97,14 +100,17 @@ class MenuContainer extends React.Component {
       venue,
       itemId,
       setItemId,
-      clearSectionPositions
+      clearSectionPositions,
+      venueUrl
     } = this.props;
-    if (!bffRes || this.params.requestedVenue !== venue) {
-      getMenuData(this.params.requestedVenue, this.params.item);
+    if (!bffRes || venueUrl.toLowerCase() !== venue) {
+      getMenuData(venueUrl.toLowerCase(), this.params.item);
       clearSectionPositions();
     }
     if (this.params.item !== itemId) {
-      setItemId(this.params.item);
+      if (itemId !== "qr" || itemId !== "test") {
+        setItemId(this.params.item);
+      }
     }
   }
 
@@ -156,7 +162,10 @@ class MenuContainer extends React.Component {
       searchLength
     } = this.props;
     const venueName = bffRes ? bffRes.venue.NAME : false;
-    const itemView = itemId ? true : false;
+    let itemView = itemId ? true : false;
+    if (itemId === "qr" || itemId === "test") {
+      itemView = false;
+    }
     const filtersInUse = Object.values(filter).includes(true);
     const searchInUse = searchLength > 0 ? true : false;
 
@@ -169,7 +178,16 @@ class MenuContainer extends React.Component {
           {itemView ? (
             <img
               onClick={() => {
-                window.history.back();
+                if (
+                  document.referrer.includes("mryum") ||
+                  document.referrer.includes("localhost")
+                ) {
+                  window.history.back();
+                } else {
+                  let location = window.location.href.split("/");
+                  location.pop();
+                  window.location = location.join("/");
+                }
               }}
               src="/icons/arrow-left-solid-grey.svg"
               className="headerBackArrow"
@@ -209,7 +227,10 @@ class MenuContainer extends React.Component {
       searchLength,
       searchRes
     } = this.props;
-    const itemView = itemId ? true : false;
+    let itemView = itemId ? true : false;
+    if (itemId === "qr" || itemId === "test") {
+      itemView = false;
+    }
     const searchInUse = searchLength > 0 ? true : false;
 
     const tagsInUse = [];
@@ -220,25 +241,26 @@ class MenuContainer extends React.Component {
     });
 
     tagsInUse.forEach((tag, index) => {
-      if (tag === "vegetarian") {
-        tagsInUse[index] = "V";
+      if (tag === "V") {
+        tagsInUse[index] = "vegetarian";
       }
-      if (tag === "vegan") {
-        tagsInUse[index] = "VE";
+      if (tag === "VE") {
+        tagsInUse[index] = "vegan";
       }
-      if (tag === "gluten-free") {
-        tagsInUse[index] = "GF";
+      if (tag === "GF") {
+        tagsInUse[index] = "gluten-free";
       }
     });
 
     let filteredRes = [];
     if (tagsInUse.length > 0) {
-      Object.values(bffRes).forEach((elem, index) => {
-        if (elem.DIETARY_TAGS) {
+      Object.values(Object.values(bffRes.items)).forEach((elem, index) => {
+        if (elem.DIETARY_DESCRIPTORS) {
+          Object.keys(elem.DIETARY_DESCRIPTORS);
           // IF ELEMENT HAS TAGS ...
           let matchCount = 0;
           tagsInUse.forEach(tag => {
-            if (elem.DIETARY_TAGS.includes(tag)) {
+            if (elem.DIETARY_DESCRIPTORS.includes(tag)) {
               matchCount++;
             }
           });
@@ -264,6 +286,7 @@ class MenuContainer extends React.Component {
             onInput={result => result}
             setSearchRes={setSearchRes}
             searchInUse={searchInUse}
+            tagsInUse={tagsInUse.length > 0 ? true : false}
           />
         )}
         <div className="menu">

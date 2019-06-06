@@ -232,9 +232,13 @@ class MenuSearch extends React.Component {
   debounce_input = debounce(text => this.handleInput(text), 250);
 
   render() {
-    const { searchInUse } = this.props;
+    const { searchInUse, tagsInUse } = this.props;
     return (
-      <div className={searchInUse ? "searchCont searchInUse" : "searchCont"}>
+      <div
+        className={
+          searchInUse || tagsInUse ? "searchCont searchInUse" : "searchCont"
+        }
+      >
         <input
           className="searchInput"
           type="search"

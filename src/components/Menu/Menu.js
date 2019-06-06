@@ -126,6 +126,10 @@ class Menu extends Component {
   render() {
     const { lang, menuItems, itemId } = this.props;
     const desktopView = window.innerWidth > 768 ? true : false;
+    let showItem = itemId ? true : false;
+    if (itemId === "qr" || itemId === "test") {
+      showItem = false;
+    }
 
     return desktopView ? (
       <div>
@@ -135,11 +139,11 @@ class Menu extends Component {
           {this.getMenu()}
         </div>
 
-        {itemId ? <ItemDetail item={menuItems[itemId]} lang={lang} /> : ""}
+        {showItem ? <ItemDetail item={menuItems[itemId]} lang={lang} /> : ""}
       </div>
     ) : (
       <div>
-        {itemId ? (
+        {showItem ? (
           <ItemDetail item={menuItems[itemId]} lang={lang} />
         ) : (
           <div>{this.getMenu()}</div>

@@ -14,7 +14,11 @@ class Section extends React.Component {
 
   processItem(item, index) {
     const { tagsInUse, routeToItemDetail, lang } = this.props;
-    let tags = item.DIETARY_TAGS;
+    let tags = "";
+    if (item.DIETARY_DESCRIPTORS) {
+      tags = item.DIETARY_DESCRIPTORS.split(", ");
+    }
+
     if (tags) {
       tags.forEach((tag, index) => {
         if (tag === "vegetarian") {
@@ -81,8 +85,7 @@ class Section extends React.Component {
 
     let section = menuSection
       ? menuSection.map((item, index) => {
-          const hasTag = item.DIETARY_TAGS ? true : false;
-          const tags = item.DIETARY_TAGS;
+          const hasTag = item.DIETARY_DESCRIPTORS ? true : false;
           const menuItemTemplate = (
             <MenuItem
               key={item.ID}
@@ -95,6 +98,7 @@ class Section extends React.Component {
             />
           );
 
+          // this creates LIST, e.g. wine list or coffees
           if (item.TYPE === "info") {
             infoList.push(item);
             // eslint-disable-next-line
@@ -105,8 +109,9 @@ class Section extends React.Component {
             return "";
           }
 
+          // this creates PHOTOLESS MENU ITEMS, e.g. beers (that can be ordered)
           return hasTag
-            ? tags[0] !== "LIST"
+            ? item.TYPE !== "list"
               ? this.processItem(item, index)
               : this.getList(item, index)
             : menuItemTemplate;
@@ -168,7 +173,7 @@ class Section extends React.Component {
         ) : (
           <h2
             className={`section ${
-              index === 0 && tags.length === 0 ? "sectionTaller" : ""
+              index === 0 || tags.length > 0 ? "sectionTaller" : ""
             }`}
           >
             {nameClone}

@@ -54,8 +54,14 @@ class App extends React.Component {
         <Route exact path="/brunch" component={Brunch} />
         <Route
           exact
-          path="/:venue"
-          component={showMenu ? MenuContainer : NotFound}
+          path="/:venueUrl"
+          component={({ match }) =>
+            showMenu ? (
+              <MenuContainer venueUrl={match.params.venueUrl} />
+            ) : (
+              NotFound
+            )
+          }
         />
         <Route
           exact

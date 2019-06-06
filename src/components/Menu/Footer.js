@@ -1,28 +1,30 @@
-import React from 'react'
+import React from "react";
 
 class Footer extends React.Component {
   render() {
     return (
       <div className="footerCont">
-
         <div className="cta">
           <div className="mryum">
-            <img src="/mryum_assets/Mr_Yum_logo_red.svg" alt="Mr Yum"/>
+            <img src="/mryum_assets/Mr_Yum_logo_red.svg" alt="Mr Yum" />
           </div>
 
           <h3>Are you loving Mr Yum's visual menus?</h3>
 
-          <p>Check out our website to learn more and discover other participating venues.</p>
+          <p>
+            Check out our website to learn more and discover other participating
+            venues.
+          </p>
 
-          <a className='ctaBtn' href="/">
+          <a className="ctaBtn" href="/">
             <span>Check it out!</span>
-          </a> 
+          </a>
         </div>
 
-        <footer>©Copyright Mr Yum 2018</footer>
+        <footer>©Copyright Mr Yum 2019</footer>
       </div>
-    )
+    );
   }
 }
 
-export default Footer
+export default Footer;
