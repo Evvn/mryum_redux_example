@@ -2,6 +2,9 @@ import React from "react";
 import LinesEllipsis from "react-lines-ellipsis";
 // import JsxParser from 'react-jsx-parser'
 
+//scss
+import "./styles/menuItem.scss";
+
 class MenuItem extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +25,9 @@ class MenuItem extends React.Component {
   };
 
   itemDetails(item) {
-    const { lang } = this.props;
+    const { lang, searchInUse, filterInUse } = this.props;
     const { isMobile } = this.state;
+    const subHeading = item.SECTIONS;
     let name = item.NAME[lang];
     let desc = item.DESCRIPTION[lang];
     let trimmedName;
@@ -64,6 +68,15 @@ class MenuItem extends React.Component {
     return (
       <div>
         <h3 className="title">{trimmedName}</h3>
+        {item.VENUE_NAME === "QVM Winter Market" ? (
+          searchInUse || filterInUse ? (
+            <div className="subHeading">{subHeading}</div>
+          ) : (
+            ""
+          )
+        ) : (
+          ""
+        )}
         <div className="bodyText">{clampedDesc}</div>
         <div className="info">
           <span className="price">{item.PRICE}</span>

@@ -80,7 +80,8 @@ class Menu extends Component {
       lang,
       routeToItemDetail,
       searchInUse,
-      searchTerm
+      searchTerm,
+      filterInUse
     } = this.props;
     const menuSections = this.getSections();
     const tagsInUse = this.getTags();
@@ -115,6 +116,7 @@ class Menu extends Component {
             lang={lang}
             searchInUse={searchInUse}
             searchTerm={searchTerm}
+            filterInUse={filterInUse}
           />
         );
       });

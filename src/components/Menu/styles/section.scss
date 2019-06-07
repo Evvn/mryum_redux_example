@@ -1,0 +1,36 @@
+@import "../../../palette.scss";
+
+// NOTE
+// Lots of styling for this still lives in the big App.scss file and needs to be moved, this is where I'll be adding new styles relevant to ordering and WV/HS\
+
+.mapBtn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  background-color: $primary;
+  width: 95px;
+  height: 25px;
+  margin: 0 !important;
+  border-radius: 25px;
+}
+
+.mapModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(#000, 0.8);
+}
+
+.map {
+  border-radius: 5px;
+  z-index: 999;
+  width: 90vw;
+  height: 85vh;
+}

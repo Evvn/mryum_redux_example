@@ -83,6 +83,8 @@ class ItemDetail extends React.Component {
     let creditUrl;
     let img = "/mryum_assets/missing_photo.jpg";
 
+    console.log(item);
+
     // let translatedName = 'name-' + lang
     // let translatedDesc = 'description-' + lang
 

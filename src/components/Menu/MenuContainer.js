@@ -166,7 +166,7 @@ class MenuContainer extends React.Component {
     if (itemId === "qr" || itemId === "test") {
       itemView = false;
     }
-    const filtersInUse = Object.values(filter).includes(true);
+    const filterInUse = Object.values(filter).includes(true);
     const searchInUse = searchLength > 0 ? true : false;
 
     return (
@@ -200,7 +200,7 @@ class MenuContainer extends React.Component {
           {!itemView && (
             <Filter filter={filter} updateFilter={updateFilter} lang={lang} />
           )}
-          {!itemView && !filtersInUse && !searchInUse ? (
+          {!itemView && !filterInUse && !searchInUse ? (
             <HorizontalScrollNav sectionPositions={sectionPositions} />
           ) : (
             ""
@@ -232,7 +232,7 @@ class MenuContainer extends React.Component {
       itemView = false;
     }
     const searchInUse = searchLength > 0 ? true : false;
-
+    const filterInUse = Object.values(filter).includes(true);
     const tagsInUse = [];
     Object.keys(filter).forEach(tag => {
       if (filter[tag]) {
@@ -301,6 +301,7 @@ class MenuContainer extends React.Component {
             searchInUse={searchInUse}
             searchTerm={searchTerm}
             searchRes={searchRes}
+            filterInUse={filterInUse}
           />
           {showWater ? <Water /> : ""}
           {searchInUse && searchRes.length === 0 ? (

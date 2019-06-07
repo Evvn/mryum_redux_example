@@ -1111,6 +1111,7 @@ h1 {
 
 .title {
   @extend %titleFont;
+  font-family: "SF-UI-Text-Bold", "Helvetica Bold", sans-serif;
   padding: 21px 14px;
   height: auto;
   margin-bottom: 0;

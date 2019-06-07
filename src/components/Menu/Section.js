@@ -5,7 +5,18 @@ import MenuList from "./MenuList";
 import MenuInfo from "./MenuInfo";
 import uuid from "uuid/v4";
 
+//scss
+import "./styles/section.scss";
+
 class Section extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showMap: false
+    };
+  }
+
   componentDidMount() {
     const { name, setSectionPosition } = this.props;
     const position = ReactDOM.findDOMNode(this).offsetTop;
@@ -13,7 +24,13 @@ class Section extends React.Component {
   }
 
   processItem(item, index) {
-    const { tagsInUse, routeToItemDetail, lang } = this.props;
+    const {
+      tagsInUse,
+      routeToItemDetail,
+      lang,
+      searchInUse,
+      filterInUse
+    } = this.props;
     let tags = "";
     if (item.DIETARY_DESCRIPTORS) {
       tags = item.DIETARY_DESCRIPTORS.split(", ");
@@ -46,6 +63,8 @@ class Section extends React.Component {
             item={item}
             itemIndex={index}
             lang={lang}
+            searchInUse={searchInUse}
+            filterInUse={filterInUse}
             onClick={e => {
               routeToItemDetail(e, item.ID, lang);
             }}
@@ -78,7 +97,8 @@ class Section extends React.Component {
       lang,
       routeToItemDetail,
       tagsInUse,
-      searchInUse
+      searchInUse,
+      filterInUse
     } = this.props;
 
     let infoList = [];
@@ -92,6 +112,8 @@ class Section extends React.Component {
               item={item}
               itemIndex={index}
               lang={lang}
+              searchInUse={searchInUse}
+              filterInUse={filterInUse}
               onClick={e => {
                 routeToItemDetail(e, item.ID, lang);
               }}
@@ -125,12 +147,49 @@ class Section extends React.Component {
     return section;
   }
 
+  showMap = mapUrl => {
+    this.setState(
+      {
+        showMap: true
+      },
+      () => {
+        const mapStyle = document.querySelector(".map").style;
+        mapStyle.backgroundImage = `url('${mapUrl}')`;
+        console.log(mapUrl);
+        mapStyle.backgroundRepeat = "no-repeat";
+        mapStyle.backgroundPosition = "center";
+        mapStyle.backgroundSize = "contain";
+      }
+    );
+  };
+
+  hideMap = () => {
+    this.setState({
+      showMap: false
+    });
+  };
+
   render() {
-    const { name, index, tagsInUse, searchInUse, searchTerm } = this.props;
+    const {
+      name,
+      index,
+      tagsInUse,
+      searchInUse,
+      searchTerm,
+      menuSection
+    } = this.props;
+    const { showMap } = this.state;
+    const venueName = Object.values(menuSection)[0].VENUE_NAME;
+    const isQvm = venueName === "QVM Winter Market" ? true : false;
     let tags = tagsInUse;
     let nameClone = name ? name : "";
     let subSection = "";
     let hideSection = false;
+    let mapUrl = "";
+
+    if (isQvm) {
+      mapUrl = `/qvm/section_map_${Object.values(menuSection)[0].map_zone}.jpg`;
+    }
 
     if (nameClone.indexOf("%") !== -1) {
       subSection = nameClone.substring(
@@ -178,9 +237,28 @@ class Section extends React.Component {
           >
             {nameClone}
             <span className="subSection">{subSection}</span>
+            {isQvm ? (
+              <span className="mapBtn" onClick={() => this.showMap(mapUrl)}>
+                View on map
+              </span>
+            ) : (
+              ""
+            )}
           </h2>
         )}
         {section}
+        {showMap ? (
+          <div
+            className="mapModal"
+            onClick={() => {
+              this.hideMap();
+            }}
+          >
+            <div className="map" />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

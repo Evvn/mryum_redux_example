@@ -1,0 +1,18 @@
+@import "../../../palette.scss";
+
+// NOTE
+// Lots of styling for this still lives in the big App.scss file and needs to be moved, this is where I'll be adding new styles relevant to ordering and WV/HS\
+
+.subHeading {
+  max-width: $maxWidth;
+  font-family: "SF-UI-Text-Semibold", "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: $titleFontColor;
+  padding: 0px 15px 5px;
+  text-transform: capitalize;
+}
