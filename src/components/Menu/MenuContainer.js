@@ -26,30 +26,34 @@ class MenuContainer extends React.Component {
       requestedVenue: paramArray[3],
       item:
         paramArray.length === 5
-          ? paramArray[4] === "qr" ||
-            paramArray[4] === "test" ||
-            paramArray[4] === "menu"
+          ? paramArray[4].toLowerCase() === "qr" ||
+            paramArray[4].toLowerCase() === "test" ||
+            paramArray[4].toLowerCase() === "menu"
             ? false
             : paramArray[4]
           : false
     };
 
-    if (paramArray[4] && (paramArray[4] === "qr" || paramArray[4] === "test")) {
-      if (paramArray[4] === "qr") {
+    if (
+      paramArray[4] &&
+      (paramArray[4].toLowerCase() === "qr" ||
+        paramArray[4].toLowerCase() === "test")
+    ) {
+      if (paramArray[4].toLowerCase() === "qr") {
         ReactGA.event({
           category: "Page view",
           action: "via QR code scan",
           label: paramArray[3],
           nonInteraction: true
         });
-      } else if (paramArray[4] === "menu") {
+      } else if (paramArray[4].toLowerCase() === "menu") {
         ReactGA.event({
           category: "Page view",
           action: "via /menu URL",
           label: paramArray[3],
           nonInteraction: true
         });
-      } else if (paramArray[4] === "test") {
+      } else if (paramArray[4].toLowerCase() === "test") {
         console.log(
           "%c テスティング. \nｔｅｓｔｉｎｇ.",
           "color: #a1b5ff; font-size: 250%; font-family: monospace;"
@@ -87,8 +91,10 @@ class MenuContainer extends React.Component {
       document.title = venueName + " Menu";
     }
     if (this.params.item !== itemId) {
-      if (itemId !== "qr" || itemId !== "test") {
-        setItemId(this.params.item);
+      if (itemId !== undefined) {
+        if (itemId.toLowerCase() !== "qr" || itemId.toLowerCase() !== "test") {
+          setItemId(this.params.item);
+        }
       }
     }
   }
@@ -108,33 +114,13 @@ class MenuContainer extends React.Component {
       clearSectionPositions();
     }
     if (this.params.item !== itemId) {
-      if (itemId !== "qr" || itemId !== "test") {
-        setItemId(this.params.item);
+      if (itemId !== undefined) {
+        if (itemId.toLowerCase() !== "qr" || itemId.toLowerCase() !== "test") {
+          setItemId(this.params.item);
+        }
       }
     }
   }
-
-  // old alternating code - delete when fixed
-  // componentDidUpdate() {
-  //   let index = 0
-  //   document.querySelectorAll('.menuItem').forEach(item => {
-  //     if (item.classList.contains('water')) {
-  //       return
-  //     }
-  //     if (index % 2 === 0) {
-  //       if (!item.querySelector('.leftBox').classList.contains('itemPhoto')) {
-  //         item.querySelector('.leftBox').className = 'rightBox'
-  //         item.querySelector('.rightBox').className = 'leftBox'
-  //       }
-  //     } else {
-  //       if (!item.querySelector('.rightBox').classList.contains('itemPhoto')) {
-  //         item.querySelector('.leftBox').className = 'rightBox'
-  //         item.querySelector('.rightBox').className = 'leftBox'
-  //       }
-  //     }
-  //     index++
-  //   })
-  // }
 
   componentWillUnmount() {
     const { clearSectionPositions } = this.props;
@@ -163,8 +149,10 @@ class MenuContainer extends React.Component {
     } = this.props;
     const venueName = bffRes ? bffRes.venue.NAME : false;
     let itemView = itemId ? true : false;
-    if (itemId === "qr" || itemId === "test") {
-      itemView = false;
+    if (itemId !== undefined) {
+      if (itemId.toLowerCase() === "qr" || itemId.toLowerCase() === "test") {
+        itemView = false;
+      }
     }
     const filterInUse = Object.values(filter).includes(true);
     const searchInUse = searchLength > 0 ? true : false;
@@ -189,7 +177,7 @@ class MenuContainer extends React.Component {
                   window.location = location.join("/");
                 }
               }}
-              src="/icons/arrow-left-solid-grey.svg"
+              src="/icons/arrow-left-solid-white.svg"
               className="headerBackArrow"
               alt="back arrow"
             />
@@ -228,8 +216,10 @@ class MenuContainer extends React.Component {
       searchRes
     } = this.props;
     let itemView = itemId ? true : false;
-    if (itemId === "qr" || itemId === "test") {
-      itemView = false;
+    if (itemId !== undefined) {
+      if (itemId.toLowerCase() === "qr" || itemId.toLowerCase() === "test") {
+        itemView = false;
+      }
     }
     const searchInUse = searchLength > 0 ? true : false;
     const filterInUse = Object.values(filter).includes(true);

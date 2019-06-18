@@ -19,7 +19,7 @@ class Section extends React.Component {
 
   componentDidMount() {
     const { name, setSectionPosition } = this.props;
-    const position = ReactDOM.findDOMNode(this).offsetTop;
+    const position = ReactDOM.findDOMNode(this).offsetTop - 30;
     setSectionPosition(name.split("%")[0], position);
   }
 
@@ -232,12 +232,16 @@ class Section extends React.Component {
         ) : (
           <h2
             className={`section ${
-              index === 0 || tags.length > 0 ? "sectionTaller" : ""
+              index === 0
+                ? tags.length === 0 && !searchInUse
+                  ? "sectionTaller"
+                  : "sectionFiltered"
+                : ""
             }`}
           >
             {nameClone}
             <span className="subSection">{subSection}</span>
-            {isQvm ? (
+            {isQvm && tags.length === 0 && !searchInUse ? (
               <span className="mapBtn" onClick={() => this.showMap(mapUrl)}>
                 View on map
               </span>

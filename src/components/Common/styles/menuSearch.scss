@@ -1,15 +1,20 @@
 @import "../../../palette.scss";
 
 .searchCont {
-  padding: 124px 10px 15px 10px;
+  padding: 114px 10px 10px 10px;
   background-color: $white;
   margin: 0 auto;
   font-family: "SF-UI-Text-Regular", "Helvetica", sans-serif;
   transition: 0.2s ease-in-out all;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .searchInUse {
-  padding-top: 84px;
+  padding-top: 76px;
 }
 
 .searchInput,
@@ -17,7 +22,7 @@
   outline: none;
   border: 1px solid #dbdbdb;
   border-radius: 25px;
-  height: 50px;
+  height: 35px;
   width: 100%;
   padding: 0 20px;
   font-size: 17px;

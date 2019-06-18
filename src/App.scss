@@ -24,7 +24,7 @@
 $red: #fc4250;
 $black: #000;
 $blue: #6189ea;
-$sectionColor: #373737;
+$sectionFontColor: #373737;
 $titleColor: #494949;
 $bodyColor: #6f6f6f;
 $cardColor: #f8f8f8;
@@ -46,7 +46,7 @@ $hsdark: #282828;
   font-family: "SF-UI-Text-Semibold", "Helvetica Bold", sans-serif;
   // font-size: 20px;
   font-size: 30px;
-  color: $sectionColor;
+  color: $sectionFontColor;
 }
 
 %titleFont {
@@ -193,7 +193,7 @@ body {
   }
 
   .feedbackHeader {
-    color: $sectionColor;
+    color: $sectionFontColor;
     text-align: center;
     font-size: 20px;
     margin-bottom: 10px;
@@ -448,8 +448,8 @@ body {
 
 .venue {
   @extend %displayFont;
-  color: $hsdark;
-  background-color: white;
+  color: white;
+  // background-color: white;
   font-weight: bold;
   font-size: 20px;
   padding-top: 4px;
@@ -562,10 +562,11 @@ body {
   position: fixed;
   top: 61px;
   background-color: white;
-  color: $sectionColor;
+  color: $sectionFontColor;
   // background-color: #000;
   z-index: 4;
   padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 10px;
   margin-left: -15px;
 
@@ -610,8 +611,8 @@ header {
   align-items: center;
   position: fixed;
   top: 0;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: #282828;
   z-index: 10;
   padding: 15px;
   transition: 0.4s ease-in-out all;
@@ -685,11 +686,13 @@ header {
     margin-right: 5px;
 
     .filterText {
+      font-size: 15px;
       position: absolute;
-      top: 19px;
-      right: 23px;
+      top: 21px;
+      right: 18px;
       font-weight: 600;
-      font-variant: small-caps;
+      // font-variant: small-caps;
+      text-transform: uppercase;
     }
 
     .filterIcon {
@@ -700,10 +703,11 @@ header {
       position: fixed;
       z-index: 5;
       top: 20px;
-      right: 16px;
+      right: 10px;
     }
 
     .filterList {
+      color: $hsdark;
       background-color: white;
       border: 1px solid #aaa;
       position: absolute;
@@ -729,7 +733,7 @@ header {
           display: none;
           width: 10px;
           height: 10px;
-          border: 1px solid $sectionColor;
+          border: 1px solid $sectionFontColor;
           border-radius: 2px;
           position: relative;
           top: 3px;
@@ -826,10 +830,11 @@ header {
   position: absolute;
   color: $hsdark;
   font-size: 15px;
-  right: 85px;
-  top: 20px;
+  right: 80px;
+  top: 21px;
 
   .langCode {
+    color: white;
     text-transform: uppercase;
     padding-right: 5px;
     font-weight: 600;
@@ -837,11 +842,11 @@ header {
 
   .langArrow {
     display: inline-block;
-    border-top: 2px solid $hsdark;
-    border-left: 2px solid $hsdark;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
     border-radius: 0;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     position: relative;
     top: -3px;
     right: -1px;
@@ -887,7 +892,7 @@ header {
     display: inline-block;
     height: 7px;
     width: 7px;
-    border: 1px solid $sectionColor;
+    border: 1px solid $sectionFontColor;
     border-radius: 7px;
     position: relative;
     top: 2px;
@@ -913,7 +918,7 @@ header {
   right: -10px;
 
   p {
-    color: $sectionColor;
+    color: $sectionFontColor;
     display: block;
     width: 90%;
   }
@@ -930,7 +935,7 @@ header {
   position: fixed;
   top: 62px;
   background-color: white;
-  color: $sectionColor;
+  color: $sectionFontColor;
   // background-color: #000;
   z-index: 4;
   padding: 20px 5px 5px;
@@ -1076,7 +1081,7 @@ h1 {
 
 .section {
   @extend %sectionFont;
-  padding: 85px 15px 15px;
+  padding: 70px 15px 15px;
   margin-bottom: -7px;
   background-color: white;
   display: flex;
@@ -1086,7 +1091,7 @@ h1 {
   span {
     display: block;
     margin-top: 7px;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -1102,7 +1107,7 @@ h1 {
 }
 
 .sectionTaller {
-  padding-top: 0px;
+  padding-top: 176px;
 }
 // hack lol
 .filterSection:first-of-type {
@@ -1115,7 +1120,7 @@ h1 {
   padding: 21px 14px;
   height: auto;
   margin-bottom: 0;
-  padding-bottom: 6px;
+  padding-bottom: 0px;
 }
 
 .title::first-letter {
@@ -1386,7 +1391,7 @@ h1 {
   .closeInstructions {
     @extend %bodyFont;
     color: white;
-    background-color: $sectionColor;
+    background-color: $sectionFontColor;
     font-size: 16px;
     border-radius: 25px;
     padding: 10px;
@@ -1638,7 +1643,7 @@ h1 {
   }
 
   h3 {
-    color: $sectionColor;
+    color: $sectionFontColor;
     margin: 10px;
     font-size: 20px;
     letter-spacing: 0.5px;
@@ -2006,8 +2011,10 @@ footer {
     max-width: 500px;
     height: auto;
     min-height: 150px;
+    color: $sectionFontColor;
     background-color: $cardColor;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -2501,10 +2508,15 @@ footer {
       color: #000629;
       font-family: "Avenir", "Helvetica", sans-serif;
       font-weight: 500;
-      font-size: 30px;
+      font-size: 18px;
       text-align: center;
       margin: 90px auto;
       padding: 0 35px;
+      text-transform: none;
+
+      p:nth-of-type(1) {
+        font-size: 30px;
+      }
     }
 
     .changeWords {

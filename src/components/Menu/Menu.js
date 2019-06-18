@@ -129,8 +129,10 @@ class Menu extends Component {
     const { lang, menuItems, itemId } = this.props;
     const desktopView = window.innerWidth > 768 ? true : false;
     let showItem = itemId ? true : false;
-    if (itemId === "qr" || itemId === "test") {
-      showItem = false;
+    if (itemId !== undefined) {
+      if (itemId.toLowerCase() === "qr" || itemId.toLowerCase() === "test") {
+        showItem = false;
+      }
     }
 
     return desktopView ? (

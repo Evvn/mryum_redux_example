@@ -4,14 +4,14 @@ import { takeLatest, put } from "redux-saga/effects";
 import callBff from "../callBff.js";
 import { sortByValue } from "../../utils/objectUtils.js";
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
+// const delay = ms => new Promise(res => setTimeout(res, ms));
 
 export function* getMenuData(action) {
   try {
     const res = yield callBff(`menu/${action.venue}`, "GET").then(
       response => response
     );
-    yield delay(2000);
+    // yield delay(2000);
     yield put({
       type: actionTypes.GET_MENU_DATA_SUCCESS,
       venue: action.venue,

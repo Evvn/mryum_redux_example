@@ -23,6 +23,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-P67XCSB");
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- Facebook Pixel Code -->
     <script>
       !(function(f, b, e, v, n, t, s) {
@@ -85,6 +100,16 @@ Beautiful, mobile menus with photos of every dish, ingredient definitions and la
     <title>Mr Yum</title>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-P67XCSB"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <noscript>You need to enable JavaScript to run Mr Yum.</noscript>
     <div id="root"></div>
     <!--
@@ -98,7 +123,7 @@ Beautiful, mobile menus with photos of every dish, ingredient definitions and la
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <script async>
+    <!-- <script async>
       (function(s, u, m, o, j, v) {
         j = u.createElement(m);
         v = u.getElementsByTagName(m)[0];
@@ -108,6 +133,6 @@ Beautiful, mobile menus with photos of every dish, ingredient definitions and la
           "c71fa624b733a94ced95b2083af6a006d4520e980468e4b6a9f5f51199036c22";
         v.parentNode.insertBefore(j, v);
       })(window, document, "script", "//load.sumo.com/");
-    </script>
+    </script> -->
   </body>
 </html>
