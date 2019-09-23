@@ -1,41 +1,44 @@
 import { Provider } from 'react-redux';
-import { RouterProvider } from 'react-router5';
+import { PersistGate } from 'redux-persist/integration/react'
+import { ConnectedRouter } from 'connected-react-router'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './pages/Home';
 import AppBase from './App';
-import configureStore from './Store';
-import initializeRouter from './initializeRouter';
+import configureStore, { history } from './Store';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from "react-router-dom";
 
 const routes = [
   { name: 'home', path: '/' },
+  { name: 'contact', path: '/contact' },
+  { name: 'faq', path: '/faq' },
+  { name: 'brunch', path: '/brunch' },
+  { name: 'menu', path: '/:venueId/:itemId'},
 ];
 
-const moduleMappings = {
-  home: { component: Home, label: 'Home', path: routes[0].path },
-};
-
-const router = initializeRouter({
-  routes,
-  defaultRoute: 'home',
-});
-const store = configureStore(router);
+const { store, persistor } = configureStore();
 const App = (
   <Provider store={store}>
-    <RouterProvider router={router}>
+
+
+      <ConnectedRouter history={history}>
+      <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
       <AppBase
-        moduleMappings={moduleMappings}
-        routerActions={router}
         routes={routes}
       />
-    </RouterProvider>
+      </BrowserRouter>
+      </PersistGate>
+      </ConnectedRouter>
+
+
+
   </Provider>
 );
-router.start(() => {
-  ReactDOM.render(App, document.getElementById('root'));
-});
+
+ReactDOM.render(App, document.getElementById('root'));
+
 
 
 // If you want your app to work offline and load faster, you can change

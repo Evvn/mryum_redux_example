@@ -22,10 +22,93 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-P67XCSB");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "929702950410474");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=929702950410474&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed"
+      rel="stylesheet"
+    />
+
+    <title>Mr Yum</title>
+    <meta name="og:title" content="Mr Yum" />
+    <meta name="og:site-name" content="Mr Yum" />
+    <meta
+      name="description"
+      content="Mr Yum helps you decide what to order.
+Beautiful, mobile menus with photos of every dish, ingredient definitions and language translations."
+    />
+    <meta
+      name="og:description"
+      content="Mr Yum helps you decide what to order.
+Beautiful, mobile menus with photos of every dish, ingredient definitions and language translations."
+    />
+
+    <!-- hamburger menu css -->
+    <link href="%PUBLIC_URL%/hamburgers.css" rel="stylesheet" />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-P67XCSB"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <noscript>You need to enable JavaScript to run Mr Yum.</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -37,5 +120,17 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!-- <script async>
+      (function(s, u, m, o, j, v) {
+        j = u.createElement(m);
+        v = u.getElementsByTagName(m)[0];
+        j.async = 1;
+        j.src = o;
+        j.dataset.sumoSiteId =
+          "c71fa624b733a94ced95b2083af6a006d4520e980468e4b6a9f5f51199036c22";
+        v.parentNode.insertBefore(j, v);
+      })(window, document, "script", "//load.sumo.com/");
+    </script> -->
   </body>
 </html>
