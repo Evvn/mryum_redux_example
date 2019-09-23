@@ -1,6 +1,8 @@
 import React from "react";
 import JsxParser from "react-jsx-parser";
 import Swipe from "react-easy-swipe";
+import { Helmet } from "react-helmet";
+import format from "date-fns/format";
 
 class ItemDetail extends React.Component {
   constructor(props) {
@@ -113,6 +115,27 @@ class ItemDetail extends React.Component {
 
     return (
       <Swipe onSwipeMove={this.onSwipeMove} onSwipeEnd={this.onSwipeEnd}>
+        <Helmet>
+          <title>
+            {item.NAME.en} - {item.VENUE_NAME}
+          </title>
+          <script type="application/ld+json">
+            {`
+              {
+                "@context": "https://schema.org/",
+                "@type": "Recipe",
+                "name": "${item.NAME.en}",
+                "image": "${img}",
+                "author": {
+                  "@type": "Person",
+                  "name": "Mr Yum"
+                },
+                "datePublished": "${format(new Date(), "YYYY-MM-DD")}",
+                "description": "${item.DESCRIPTION.en}"
+              }
+            `}
+          </script>
+        </Helmet>
         <div className="previewModal" onClick={this.handleClick}>
           <div className="previewItem">
             {!!item.DIETARY_TAGS && item.TYPE === "list" ? null : (

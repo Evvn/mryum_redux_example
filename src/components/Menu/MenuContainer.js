@@ -14,6 +14,7 @@ import classNames from "classnames";
 import ReactGA from "react-ga";
 import Water from "./Water.js";
 import MenuSearch from "../Common/MenuSearch";
+import { Helmet } from "react-helmet";
 
 import "./styles/menuContainer.scss";
 
@@ -65,7 +66,7 @@ class MenuContainer extends React.Component {
           nonInteraction: true
         });
       }
-      window.history.replaceState({}, document.title, "/" + paramArray[3]);
+      window.history.replaceState({}, "Mr Yum", "/" + paramArray[3]);
     }
 
     this.routeToItemDetail = this.routeToItemDetail.bind(this);
@@ -83,13 +84,14 @@ class MenuContainer extends React.Component {
     } = this.props;
 
     if (!bffRes || venueUrl.toLowerCase() !== venue) {
-      document.title = "Mr Yum";
+      // document.title = "Mr Yum";
       getMenuData(venueUrl.toLowerCase(), this.params.item);
       clearSectionPositions();
-    } else {
-      const venueName = bffRes.venue.NAME;
-      document.title = venueName + " Menu";
     }
+    // else {
+    //   // const venueName = bffRes.venue.NAME;
+    //   // document.title = venueName + " Menu";
+    // }
     if (this.params.item !== itemId) {
       if (itemId !== undefined) {
         if (itemId.toLowerCase() !== "qr" || itemId.toLowerCase() !== "test") {
@@ -268,6 +270,9 @@ class MenuContainer extends React.Component {
       <LoadingScreen />
     ) : (
       <div className="Menu">
+        <Helmet>
+          <title>{bffRes.venue.NAME} Menu</title>
+        </Helmet>
         {this.getHeader()}
         {!itemView && (
           <MenuSearch
